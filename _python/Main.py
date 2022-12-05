@@ -1,4 +1,4 @@
-# import Settings
+import General
 # import Commands
 # import Threads
 # import UI_Update
@@ -20,7 +20,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         super(self.__class__, self).__init__()
         self.setupUi(self)
 
-        # Settings.init()
+        General.init()
         # Call_Thread.sensor_init(self)
         # Commands.init()
         #

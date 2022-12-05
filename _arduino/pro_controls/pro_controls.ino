@@ -24,7 +24,7 @@ char data[50];
 int commands[COMMANDSIZE];
 
 int interval = 1;
-int currentLimit = 400;
+int currentLimit = 300;
 int microstep = 64;
 boolean dir = false;
 
