@@ -1,0 +1,1 @@
+pyuic5 Flashlapse_Pro.ui > ../_python/Flashlapse_Pro_UI.py
