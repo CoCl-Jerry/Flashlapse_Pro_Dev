@@ -601,13 +601,6 @@
           </property>
          </spacer>
         </item>
-        <item row="6" column="0">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="text">
-           <string>Move Down</string>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="0">
          <spacer name="verticalSpacer_7">
           <property name="orientation">
@@ -647,10 +640,10 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
+        <item row="8" column="0">
          <widget class="QLabel" name="label_8">
           <property name="text">
-           <string>Move to Position:</string>
+           <string>Move to New Position:</string>
           </property>
          </widget>
         </item>
@@ -677,6 +670,13 @@
           </property>
          </widget>
         </item>
+        <item row="9" column="0">
+         <widget class="QSpinBox" name="spinBox">
+          <property name="suffix">
+           <string> mm</string>
+          </property>
+         </widget>
+        </item>
         <item row="5" column="0">
          <spacer name="verticalSpacer_6">
           <property name="orientation">
@@ -690,17 +690,10 @@
           </property>
          </spacer>
         </item>
-        <item row="4" column="2">
-         <widget class="QSpinBox" name="spinBox">
-          <property name="suffix">
-           <string> mm</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1" rowspan="2">
-         <widget class="Line" name="line">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+        <item row="6" column="0">
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>Move Down</string>
           </property>
          </widget>
         </item>
