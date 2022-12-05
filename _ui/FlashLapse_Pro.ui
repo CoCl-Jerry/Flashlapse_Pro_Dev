@@ -562,7 +562,7 @@
        <rect>
         <x>150</x>
         <y>10</y>
-        <width>471</width>
+        <width>291</width>
         <height>501</height>
        </rect>
       </property>
@@ -594,13 +594,6 @@
            </size>
           </property>
          </spacer>
-        </item>
-        <item row="0" column="1" rowspan="8">
-         <widget class="Line" name="line">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
         </item>
         <item row="6" column="0">
          <widget class="QPushButton" name="pushButton_3">
@@ -648,7 +641,7 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
+        <item row="3" column="1">
          <widget class="QLabel" name="label_8">
           <property name="text">
            <string>Move to Position:</string>
@@ -691,28 +684,37 @@
           </property>
          </spacer>
         </item>
-        <item row="4" column="2">
+        <item row="4" column="1">
          <widget class="QSpinBox" name="spinBox">
           <property name="suffix">
            <string> mm</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="3" rowspan="8">
-         <widget class="Line" name="line_4">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
+     </widget>
+     <widget class="QFrame" name="frame_2">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>10</y>
+        <width>171</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
       <widget class="QWidget" name="verticalLayoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>10</x>
          <y>10</y>
-         <width>171</width>
+         <width>151</width>
          <height>481</height>
         </rect>
        </property>
