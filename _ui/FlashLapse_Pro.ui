@@ -749,7 +749,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_6">
+         <widget class="QLabel" name="motion_speed_dial_value_label">
           <property name="text">
            <string>Speed Level: 3</string>
           </property>
@@ -788,7 +788,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_7">
+         <widget class="QLabel" name="motion_torque_dial_value_label">
           <property name="text">
            <string>Torque Level: 3</string>
           </property>

@@ -28,7 +28,7 @@ int currentLimit = 300;
 int microstep = 64;
 boolean dir = false;
 
-// boolean ms_change = false;
+ boolean ms_change = false;
 
 unsigned long NextTime = 0;
 
@@ -76,11 +76,11 @@ void setup() {
 }
 
 void loop() {
-  // if (ms_change)
-  // {
-  //   Motor.microsteps(microstep);
-  //   ms_change = false;
-  // }
+  if (ms_change)
+  {
+    Motor.microsteps(microstep);
+    ms_change = false;
+  }
 
   if (micros() < NextTime)
     NextTime = micros();

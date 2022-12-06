@@ -6,6 +6,9 @@ def TOF_update(self):
         self.motion_rangefinder_data_label.setText(
             str(int(General.current_position)) + " mm"
         )
+        if General.target_position == 0:
+            General.target_position = General.current_position
+            motion_target_position_setting_update(self)
     else:
         self.motion_rangefinder_data_label.setText("Range Finder Error")
 
@@ -45,3 +48,12 @@ def motion_slider_value_changed(self):
 def motion_spinbox_value_changed(self):
     General.target_position = self.motion_new_position_spinBox.value()
     motion_target_position_setting_update(self)
+
+
+def motion_dials_update(self):
+    self.motion_speed_dial_value_label.setText(
+        "Speed Level: " + str(self.motion_speed_dial.value())
+    )
+    self.motion_torque_dial_value_label.setText(
+        "Torque Level: " + str(self.motion_torque_dial.value())
+    )

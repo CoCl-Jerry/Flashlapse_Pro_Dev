@@ -48,6 +48,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.motion_new_position_spinBox.valueChanged.connect(
             lambda: Functions.move_to_position(self)
         )
+        self.motion_speed_dial.valueChanged.connect(
+            lambda: UI_Update.motion_dials_update(self)
+        )
 
         # Call_Thread.sensor_init(self)
         # Commands.init()
