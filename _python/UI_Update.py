@@ -12,9 +12,9 @@ def TOF_update(self):
 
 def TOF_update_pushButton_toggle(self):
     self.TOF_update_pushButton.setEnabled(not self.TOF_update_pushButton.isEnabled())
+# TOF_update complete
 
 # motion UI update
-
 def motion_frames_toggle(self):
     self.motion_control_frame.setEnabled(not self.motion_control_frame.isEnabled())
     self.motion_slider_frame.setEnabled(not self.motion_slider_frame.isEnabled())
@@ -31,3 +31,5 @@ def motion_target_position_setting_label_update(self):
 def motion_slider_value_changed(self):
     General.target_position = self.motion_position_verticalSlider.value()
     motion_target_position_setting_label_update(self)
+
+
