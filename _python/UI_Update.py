@@ -22,16 +22,26 @@ def motion_frames_toggle(self):
     self.motion_slider_frame.setEnabled(not self.motion_slider_frame.isEnabled())
 
 
-def motion_target_position_setting_label_update(self):
+def motion_target_position_setting_update(self):
     self.motion_target_position_setting_label.setText(
         str(int(General.target_position)) + " mm"
     )
 
     self.motion_position_verticalSlider.blockSignals(True)
+    self.motion_new_position_spinBox.blockSignals(True)
+
     self.motion_position_verticalSlider.setValue(General.target_position)
+    self.motion_new_position_spinBox.setValue(General.target_position)
+
+    self.motion_new_position_spinBox.blockSignals(False)
     self.motion_position_verticalSlider.blockSignals(False)
 
 
 def motion_slider_value_changed(self):
     General.target_position = self.motion_position_verticalSlider.value()
-    motion_target_position_setting_label_update(self)
+    motion_target_position_setting_update(self)
+
+
+def motion_spinbox_value_changed(self):
+    General.target_position = self.motion_new_position_spinBox.value()
+    motion_target_position_setting_update(self)
