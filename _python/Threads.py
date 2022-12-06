@@ -9,6 +9,7 @@ from PyQt5.QtCore import QThread, pyqtSignal
 class Motion(QThread):
     stop_motor = pyqtSignal()
     sensor_read = pyqtSignal()
+
     def __init__(self):
         QThread.__init__(self)
 
@@ -22,7 +23,10 @@ class Motion(QThread):
             vl53.timing_budget = 200
             vl53.start_ranging()
             if General.target_direction:
-                while General.current_position <= General.target_position:
+                while (
+                    General.current_position <= General.target_position
+                    and General.motion_thread_running
+                ):
                     while not vl53.data_ready:
                         pass
                     vl53.clear_interrupt()
@@ -31,7 +35,10 @@ class Motion(QThread):
                 vl53.stop_ranging()
 
             else:
-                while General.current_position >= General.target_position:
+                while (
+                    General.current_position >= General.target_position
+                    and General.motion_thread_running
+                ):
                     while not vl53.data_ready:
                         pass
                     vl53.clear_interrupt()
@@ -39,7 +46,8 @@ class Motion(QThread):
                     print(General.current_position)
                 vl53.stop_ranging()
 
-                self.disable_motor.emit()
+            self.disable_motor.emit()
+            General.motion_thread_running = False
 
         except Exception as e:
             print(e, "TOF sensor failure, contact Jerry for support")
