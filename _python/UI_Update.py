@@ -61,6 +61,10 @@ def motion_dials_update(self):
 
 
 def imaging_validate_input(self):
+    General.full_storage_directory = (
+        General.default_storage_directory + "/" + General.imaging_sequence_title
+    )
+    self.imaging_storage_directory_label.setText(General.full_storage_directory)
     if General.current_date not in General.imaging_sequence_title:
         self.imaging_add_date_pushButton.setEnabled(True)
     else:

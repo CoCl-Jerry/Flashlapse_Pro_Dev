@@ -32,8 +32,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.imaging_sequence_title_lineEdit.textChanged.connect(
             lambda: Imaging.imaging_sequence_title_changed(self)
         )
-        # self.addDate_pushButton.clicked.connect(
-        #     lambda: Functions.add_date(self))
+        self.imaging_add_date_pushButton.clicked.connect(
+            lambda: Functions.add_date(self)
+        )
 
         # self.ICI_spinBox.valueChanged.connect(
         #     lambda: Functions.ICI_Change(self))
