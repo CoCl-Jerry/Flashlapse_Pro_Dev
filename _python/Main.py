@@ -51,6 +51,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.motion_speed_dial.valueChanged.connect(
             lambda: UI_Update.motion_dials_update(self)
         )
+        self.motion_torque_dial.valueChanged.connect(
+            lambda: UI_Update.motion_dials_update(self)
+        )
 
         # Call_Thread.sensor_init(self)
         # Commands.init()

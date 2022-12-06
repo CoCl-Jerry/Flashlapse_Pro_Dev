@@ -7,6 +7,9 @@ def init():
     global current_position
     current_position = 0
 
+    global motor_interval
+    motor_interval = 50
+
     global target_position
     target_position = 0
 

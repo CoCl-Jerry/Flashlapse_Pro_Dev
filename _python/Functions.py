@@ -31,8 +31,11 @@ def postion_increment(self, direction):
         "2~1~"
         + str(int(direction))
         + "~"
+        + str(General.motor_interval)
+        + "~"
         + str(2 ** (9 - self.motion_speed_dial.value()))
-        + "~10"
+        + "~"
+        + (self.motion_speed_dial.value() * 100)
     )
     sendCMD(build_cmd)
 
@@ -47,8 +50,11 @@ def move_to_position(self):
         "2~1~"
         + str(int(direction))
         + "~"
+        + str(General.motor_interval)
+        + "~"
         + str(2 ** (9 - self.motion_speed_dial.value()))
-        + "~10"
+        + "~"
+        + (self.motion_speed_dial.value() * 100)
     )
     sendCMD(build_cmd)
 
