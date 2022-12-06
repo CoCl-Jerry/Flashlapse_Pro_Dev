@@ -7,7 +7,7 @@ void setMotor() {
   //Motor.microsteps(commands[3]);
   interval = commands[3];
   microstep = commands[4];
-  Motor.rms_current(commands[4]);  
+  current=(commands[4]);  
   ms_change = true;
   digitalWrite(EN_PIN, LOW);
 }

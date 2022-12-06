@@ -26,6 +26,7 @@ int commands[COMMANDSIZE];
 int interval = 1;
 int currentLimit = 300;
 int microstep = 64;
+int current = 300;
 boolean dir = false;
 
  boolean ms_change = false;
@@ -79,6 +80,7 @@ void loop() {
   if (ms_change)
   {
     Motor.microsteps(microstep);
+    Motor.rms_current(current);  
     ms_change = false;
   }
 

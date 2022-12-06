@@ -49,7 +49,7 @@ def build_motion_cmd(self):
         + "~"
         + str(2 ** (9 - self.motion_speed_dial.value()))
         + "~"
-        + str((self.motion_speed_dial.value() * 100))
+        + str((self.motion_torque_dial.value() * 100))
     )
     sendCMD(cmd)
 
