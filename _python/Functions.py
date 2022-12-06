@@ -23,6 +23,7 @@ def postion_increment(self, direction):
 
 
 def disable_motor():
+    General.motion_thread_running = False
     build_cmd = "2~0~1"
     sendCMD(build_cmd)
 

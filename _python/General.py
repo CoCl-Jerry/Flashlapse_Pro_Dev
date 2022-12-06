@@ -14,6 +14,9 @@ def init():
 
     global target_direction
     target_direction = False
+
+    global motion_thread_running
+    motion_thread_running = False
     # end of motor definitions
 
     # start of error definitions

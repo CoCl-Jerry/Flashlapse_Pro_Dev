@@ -30,6 +30,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.TOF_update_pushButton.clicked.connect(lambda: Sensors.TOF_range(self))
         self.up_pushButton.clicked.connect(lambda: Functions.postion_increment(self, False))
         self.down_pushButton.clicked.connect(lambda: Functions.postion_increment(self, True))
+        self.motion_stop_pushButton.clicked.connect(lambda: Functions.disable_motor())
+
+        
 
         # Call_Thread.sensor_init(self)
         # Commands.init()

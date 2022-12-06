@@ -8,6 +8,7 @@ from PyQt5.QtCore import QThread, pyqtSignal
 
 class Motion(QThread):
     stop_motor = pyqtSignal()
+    sensor_read = pyqtSignal()
     def __init__(self):
         QThread.__init__(self)
 
