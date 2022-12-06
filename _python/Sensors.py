@@ -5,11 +5,11 @@ import adafruit_vl53l4cd
 import General
 import UI_Update
 
-def init():
+def init(self):
     # start of sensor tests and initialization
 
     # TOF sensor test
-    TOF_range()
+    TOF_range(self)
 
 
 def TOF_range(self):

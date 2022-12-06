@@ -23,7 +23,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.setupUi(self)
 
         General.init()
-        Sensors.init()
+        Sensors.init(self)
 
         self.TOF_update_pushButton.clicked.connect(lambda: Sensors.TOF_range(self))
 
