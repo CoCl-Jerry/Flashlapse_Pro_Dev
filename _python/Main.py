@@ -40,7 +40,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
             lambda: UI_Update.motion_slider_value_changed(self)
         )
         self.motion_position_verticalSlider.sliderReleased.connect(
-            lambda: Functions.slider_Released()
+            lambda: Functions.move_to_position()
         )
 
         # Call_Thread.sensor_init(self)
