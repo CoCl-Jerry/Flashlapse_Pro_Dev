@@ -12,8 +12,8 @@ def init():
     global target_position
     target_position = 0
 
-    global current_direction
-    current_direction = False
+    global target_direction
+    target_direction = False
     # end of motor definitions
 
     # start of error definitions

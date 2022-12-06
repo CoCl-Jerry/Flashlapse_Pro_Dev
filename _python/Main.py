@@ -1,6 +1,7 @@
 import General
 import UI_Update
 import Sensors
+import Functions
 
 # import Commands
 # import Threads
@@ -25,7 +26,10 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         General.init()
         Sensors.init(self)
 
+        # start of motor activities
         self.TOF_update_pushButton.clicked.connect(lambda: Sensors.TOF_range(self))
+        self.up_pushButton.clicked.connect(lambda: Functions.postion_increment(self, False))
+        self.down_pushButton.clicked.connect(lambda: Functions.postion_increment(self, True))
 
         # Call_Thread.sensor_init(self)
         # Commands.init()

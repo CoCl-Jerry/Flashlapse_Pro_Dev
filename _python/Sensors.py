@@ -13,6 +13,7 @@ def init(self):
 
 
 def TOF_range(self):
+    UI_Update.TOF_label_toggle(self)
     try:
         vl53 = adafruit_vl53l4cd.VL53L4CD(board.I2C())
         vl53.inter_measurement = 0
@@ -30,3 +31,4 @@ def TOF_range(self):
         print(e, "TOF sensor failure, contact Jerry for support")
         General.TOF_error = True
     UI_Update.TOF_update(self)
+    UI_Update.TOF_label_toggle(self)
