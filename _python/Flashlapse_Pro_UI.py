@@ -343,6 +343,8 @@ class Ui_MainWindow(object):
         self.motion_position_verticalSlider.setMinimum(65)
         self.motion_position_verticalSlider.setMaximum(155)
         self.motion_position_verticalSlider.setOrientation(QtCore.Qt.Vertical)
+        self.motion_position_verticalSlider.setInvertedAppearance(True)
+        self.motion_position_verticalSlider.setInvertedControls(False)
         self.motion_position_verticalSlider.setTickPosition(QtWidgets.QSlider.TicksBothSides)
         self.motion_position_verticalSlider.setTickInterval(5)
         self.motion_position_verticalSlider.setObjectName("motion_position_verticalSlider")
