@@ -9,7 +9,7 @@ def init(self):
     # start of sensor tests and initialization
 
     # TOF sensor test
-    # TOF_range(self)
+    TOF_range(self)
     pass
 
 

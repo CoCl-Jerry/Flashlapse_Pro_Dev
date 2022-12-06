@@ -6,7 +6,6 @@ def TOF_update(self):
         self.motion_rangefinder_data_label.setText(
             str(int(General.current_position)) + " mm"
         )
-        self.position_verticalSlider.setValue(General.current_position)
     else:
         self.motion_rangefinder_data_label.setText("Range Finder Error")
 
@@ -16,7 +15,6 @@ def TOF_update_pushButton_toggle(self):
 
 # motion UI update
 
-
 def motion_frames_toggle(self):
     self.motion_control_frame.setEnabled(not self.motion_control_frame.isEnabled())
     self.motion_slider_frame.setEnabled(not self.motion_slider_frame.isEnabled())
@@ -25,3 +23,11 @@ def motion_target_position_setting_label_update(self):
     self.motion_target_position_setting_label.setText(
         str(int(General.target_position)) + " mm"
     )
+
+    self.motion_position_verticalSlider.blockSignals(True)
+    self.motion_position_verticalSlider.setValue(General.target_position)
+    self.motion_position_verticalSlider.blockSignals(False)
+
+def motion_slider_value_changed(self):
+    General.target_position = self.motion_position_verticalSlider.value()
+    motion_target_position_setting_label_update(self)

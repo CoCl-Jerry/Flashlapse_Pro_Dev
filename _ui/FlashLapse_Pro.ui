@@ -856,7 +856,7 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item alignment="Qt::AlignHCenter">
-         <widget class="QSlider" name="position_verticalSlider">
+         <widget class="QSlider" name="motion_position_verticalSlider">
           <property name="minimumSize">
            <size>
             <width>40</width>
