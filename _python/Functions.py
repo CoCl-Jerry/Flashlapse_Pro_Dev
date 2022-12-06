@@ -18,7 +18,7 @@ def postion_increment(self, direction):
     General.target_direction = direction
     UI_Update.motion_target_position_setting_label_update(self)
     Call_Thread.motion(self)
-    build_cmd = "2~1~" + int(direction) + "~64~100"
+    build_cmd = "2~1~" + str(int(direction)) + "~64~100"
     sendCMD(build_cmd)
 
 
