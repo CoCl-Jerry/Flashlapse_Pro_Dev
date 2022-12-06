@@ -839,7 +839,7 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item alignment="Qt::AlignHCenter">
-         <widget class="QSlider" name="PositionSlider">
+         <widget class="QSlider" name="positionSlider">
           <property name="minimumSize">
            <size>
             <width>40</width>
@@ -871,14 +871,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="Rangefinder_text_label">
+         <widget class="QLabel" name="rangefinder_text_label">
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Rangefinder Data:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="Rangefinder_data_label">
+         <widget class="QLabel" name="rangefinder_data_label">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
@@ -891,7 +891,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="TOF_update_pushButton">
           <property name="text">
            <string>Update Data</string>
           </property>
