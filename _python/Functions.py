@@ -21,6 +21,8 @@ def postion_increment(self, direction):
         General.target_position = (
             General.current_position - self.motion_increment_spinBox.value()
         )
+    else:
+        return
     General.target_direction = direction
     UI_Update.motion_target_position_setting_label_update(self)
     Call_Thread.motion(self)
