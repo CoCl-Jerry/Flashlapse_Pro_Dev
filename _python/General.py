@@ -1,5 +1,3 @@
-
-
 def init():
 
     # start of motor definitions
@@ -28,5 +26,3 @@ def init():
     # start of error definitions
     global TOF_error
     TOF_error = False
-
-

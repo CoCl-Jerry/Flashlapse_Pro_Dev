@@ -1,6 +1,6 @@
 # load in sensors
-import board
-import adafruit_vl53l4cd
+import board  # type: ignore
+import adafruit_vl53l4cd  # type: ignore
 
 import General
 from PyQt5.QtCore import QThread, pyqtSignal

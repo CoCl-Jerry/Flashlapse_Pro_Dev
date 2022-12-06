@@ -1,9 +1,10 @@
 # load in sensors
-import board
-import adafruit_vl53l4cd
+import board  # type: ignore
+import adafruit_vl53l4cd  # type: ignore
 
 import General
 import UI_Update
+
 
 def init(self):
     # start of sensor tests and initialization

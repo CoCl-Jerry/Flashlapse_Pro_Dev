@@ -2,7 +2,7 @@ import General
 import UI_Update
 import Call_Thread
 
-import smbus
+import smbus  # type: ignore
 
 
 def postion_increment(self, direction):
@@ -15,9 +15,11 @@ def postion_increment(self, direction):
             General.current_position + self.motion_increment_spinBox.value()
         )
 
-    elif(not direction
+    elif (
+        not direction
         and General.current_position - self.motion_increment_spinBox.value()
-        >= General.min_position):
+        >= General.min_position
+    ):
         General.target_position = (
             General.current_position - self.motion_increment_spinBox.value()
         )
@@ -29,6 +31,7 @@ def postion_increment(self, direction):
     build_cmd = "2~1~" + str(int(direction)) + "~64~10"
     sendCMD(build_cmd)
 
+
 def move_to_position(self):
     Call_Thread.motion(self)
     if General.target_position > General.current_position:
@@ -37,7 +40,6 @@ def move_to_position(self):
         direction = False
     build_cmd = "2~1~" + str(int(direction)) + "~64~10"
     sendCMD(build_cmd)
-
 
 
 def disable_motor():
