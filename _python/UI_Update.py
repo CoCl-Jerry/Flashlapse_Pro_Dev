@@ -4,7 +4,7 @@ import General
 def TOF_update(self):
     if not General.TOF_error:
         self.motion_rangefinder_data_label.setText(
-            str(General.current_position) + " mm"
+            str(int(General.current_position)) + " mm"
         )
         self.position_verticalSlider.setValue(General.current_position)
     else:
@@ -23,5 +23,5 @@ def motion_frames_toggle(self):
 
 def motion_target_position_setting_label_update(self):
     self.motion_target_position_setting_label.setText(
-        str(General.target_position) + " mm"
+        str(int(General.target_position)) + " mm"
     )
