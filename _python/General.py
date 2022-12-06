@@ -16,9 +16,6 @@ def init():
     global min_position
     min_position = 65
 
-    global target_direction
-    target_direction = False
-
     global motion_thread_running
     motion_thread_running = False
     # end of motor definitions

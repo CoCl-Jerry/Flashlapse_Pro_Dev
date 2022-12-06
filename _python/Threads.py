@@ -22,7 +22,7 @@ class Motion(QThread):
             vl53.inter_measurement = 0
             vl53.timing_budget = 200
             vl53.start_ranging()
-            if General.target_direction:
+            if General.current_position < General.target_position:
                 while (
                     General.current_position < General.target_position
                     and General.motion_thread_running
