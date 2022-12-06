@@ -33,6 +33,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.motion_stop_pushButton.clicked.connect(lambda: Functions.disable_motor())
         # start of slider activities
         self.motion_position_verticalSlider.valueChanged.connect(lambda: UI_Update.motion_slider_value_changed(self))
+        self.motion_position_verticalSlider.sliderReleased.connect(lambda: Commands.slider_Released())
 
         
 

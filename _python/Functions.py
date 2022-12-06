@@ -26,8 +26,18 @@ def postion_increment(self, direction):
     General.target_direction = direction
     UI_Update.motion_target_position_setting_label_update(self)
     Call_Thread.motion(self)
-    build_cmd = "2~1~" + str(int(direction)) + "~64~100"
+    build_cmd = "2~1~" + str(int(direction)) + "~64~10"
     sendCMD(build_cmd)
+
+def move_to_position(self):
+    Call_Thread.motion(self)
+    if General.target_position > General.current_position:
+        direction = True
+    else:
+        direction = False
+    build_cmd = "2~1~" + str(int(direction)) + "~64~10"
+    sendCMD(build_cmd)
+
 
 
 def disable_motor():

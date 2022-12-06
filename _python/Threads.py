@@ -24,7 +24,7 @@ class Motion(QThread):
             vl53.start_ranging()
             if General.target_direction:
                 while (
-                    General.current_position <= General.target_position
+                    General.current_position < General.target_position
                     and General.motion_thread_running
                 ):
                     while not vl53.data_ready:
@@ -33,10 +33,11 @@ class Motion(QThread):
                     General.current_position = vl53.distance * 10
                     self.sensor_read.emit()
                 vl53.stop_ranging()
+                self.stop_motor.emit()
 
             else:
                 while (
-                    General.current_position >= General.target_position
+                    General.current_position > General.target_position
                     and General.motion_thread_running
                 ):
                     while not vl53.data_ready:
@@ -45,8 +46,7 @@ class Motion(QThread):
                     General.current_position = vl53.distance * 10
                     self.sensor_read.emit()
                 vl53.stop_ranging()
-
-            self.stop_motor.emit()
+                self.stop_motor.emit()
             General.motion_thread_running = False
 
         except Exception as e:
