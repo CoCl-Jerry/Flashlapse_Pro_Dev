@@ -6,12 +6,18 @@ import smbus
 
 
 def postion_increment(self, direction):
-    if direction:
+    if (
+        direction
+        and General.current_position + self.motion_increment_spinBox.value()
+        <= General.max_position
+    ):
         General.target_position = (
             General.current_position + self.motion_increment_spinBox.value()
         )
 
-    else:
+    elif(not direction
+        and General.current_position - self.motion_increment_spinBox.value()
+        >= General.min_position):
         General.target_position = (
             General.current_position - self.motion_increment_spinBox.value()
         )

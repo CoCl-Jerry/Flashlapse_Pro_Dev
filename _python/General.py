@@ -12,6 +12,12 @@ def init():
     global target_position
     target_position = 0
 
+    global max_positon
+    max_positon = 155
+
+    global min_positon
+    min_positon = 65
+
     global target_direction
     target_direction = False
 
