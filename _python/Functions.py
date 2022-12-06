@@ -27,7 +27,13 @@ def postion_increment(self, direction):
         return
     UI_Update.motion_target_position_setting_update(self)
     Call_Thread.motion(self)
-    build_cmd = "2~1~" + str(int(direction)) + "~64~10"
+    build_cmd = (
+        "2~1~"
+        + str(int(direction))
+        + "~"
+        + str(2 ** (9 - self.motion_speed_dial.value()))
+        + "~10"
+    )
     sendCMD(build_cmd)
 
 
@@ -37,7 +43,13 @@ def move_to_position(self):
         direction = True
     else:
         direction = False
-    build_cmd = "2~1~" + str(int(direction)) + "~64~10"
+    build_cmd = (
+        "2~1~"
+        + str(int(direction))
+        + "~"
+        + str(2 ** (9 - self.motion_speed_dial.value()))
+        + "~10"
+    )
     sendCMD(build_cmd)
 
 
