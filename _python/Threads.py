@@ -31,7 +31,7 @@ class Motion(QThread):
                         pass
                     vl53.clear_interrupt()
                     General.current_position = vl53.distance * 10
-                    print(General.current_position)
+                    self.sensor_read.emit()
                 vl53.stop_ranging()
 
             else:
@@ -43,10 +43,10 @@ class Motion(QThread):
                         pass
                     vl53.clear_interrupt()
                     General.current_position = vl53.distance * 10
-                    print(General.current_position)
+                    self.sensor_read.emit()
                 vl53.stop_ranging()
 
-            self.disable_motor.emit()
+            self.stop_motor.emit()
             General.motion_thread_running = False
 
         except Exception as e:
