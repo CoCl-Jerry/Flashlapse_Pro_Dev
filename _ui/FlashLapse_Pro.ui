@@ -77,7 +77,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -110,7 +110,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QLineEdit" name="title_lineEdit">
+            <widget class="QLineEdit" name="imaging_sequence_title_lineEdit">
              <property name="enabled">
               <bool>true</bool>
              </property>
@@ -120,7 +120,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QPushButton" name="addDate_pushButton">
+            <widget class="QPushButton" name="imaging_add_date_pushButton">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -155,7 +155,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="ICI_spinBox">
+          <widget class="QSpinBox" name="Imaging_capture_interval_spinBox">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -201,7 +201,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="ISD_spinBox">
+          <widget class="QSpinBox" name="imaging_sequence_duration_spinBox">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -227,7 +227,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="directory_label">
+          <widget class="QLabel" name="imaging_storage_directory_label">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -246,7 +246,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="directory_pushButton">
+          <widget class="QPushButton" name="imaging_select_directory_pushButton">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -273,14 +273,14 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_7">
        <item alignment="Qt::AlignHCenter">
-        <widget class="QLabel" name="Progress_Label_2">
+        <widget class="QLabel" name="imaging_progress_Label">
          <property name="text">
           <string>Progress: 0 / 1</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QProgressBar" name="Progress_Bar_2">
+        <widget class="QProgressBar" name="imaging_progress_bar">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -334,14 +334,14 @@
          </widget>
         </item>
         <item row="3" column="4">
-         <widget class="QLabel" name="yAxis_label">
+         <widget class="QLabel" name="imaging_xAxis_label_2">
           <property name="text">
            <string>Zoom Axis B: 1.00</string>
           </property>
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QSlider" name="xAxis_horizontalSlider">
+         <widget class="QSlider" name="imaging_xAxis_horizontalSlider">
           <property name="toolTip">
            <string>Zoom controls, snapshot is taken when released, useful during focusing</string>
           </property>
@@ -357,7 +357,7 @@
          </widget>
         </item>
         <item row="6" column="0">
-         <widget class="QRadioButton" name="JPG_radioButton">
+         <widget class="QRadioButton" name="imaging_JPG_radioButton">
           <property name="text">
            <string>.JPG</string>
           </property>
@@ -367,7 +367,7 @@
          </widget>
         </item>
         <item row="3" column="3">
-         <widget class="QSlider" name="yAxis_horizontalSlider">
+         <widget class="QSlider" name="imaging_yAxis_horizontalSlider">
           <property name="toolTip">
            <string>Zoom controls, snapshot is taken when released, useful during focusing</string>
           </property>
@@ -402,7 +402,7 @@
          </widget>
         </item>
         <item row="6" column="3">
-         <widget class="QRadioButton" name="PNG_radioButton">
+         <widget class="QRadioButton" name="imaging_PNG_radioButton">
           <property name="text">
            <string>.PNG</string>
           </property>
@@ -416,7 +416,7 @@
          </widget>
         </item>
         <item row="1" column="3">
-         <widget class="QSpinBox" name="y_resolution_spinBox">
+         <widget class="QSpinBox" name="imaging_y_resolution_spinBox">
           <property name="suffix">
            <string> px</string>
           </property>
@@ -432,14 +432,14 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLabel" name="xAxis_label">
+         <widget class="QLabel" name="imaging_xAxis_label">
           <property name="text">
            <string>Zoom Axis A: 0.00</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QSpinBox" name="x_resolution_spinBox">
+         <widget class="QSpinBox" name="imaging_x_resolution_spinBox">
           <property name="suffix">
            <string> px</string>
           </property>
@@ -1051,7 +1051,7 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_17">
       <item>
-       <widget class="QPushButton" name="snapshot_pushButton">
+       <widget class="QPushButton" name="imaging_snapshot_pushButton">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -1064,7 +1064,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="preview_pushButton">
+       <widget class="QPushButton" name="imaging_preview_pushButton">
         <property name="toolTip">
          <string>Takes a image with current settings</string>
         </property>
@@ -1074,7 +1074,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="rotate_pushButton">
+       <widget class="QPushButton" name="imaging_rotate_pushButton">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -1088,7 +1088,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QPushButton" name="startImaging_pushButton">
+    <widget class="QPushButton" name="imaging_start_timelapse_pushButton">
      <property name="enabled">
       <bool>false</bool>
      </property>

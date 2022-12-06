@@ -1,5 +1,6 @@
 import General
 import UI_Update
+import Imaging
 import Sensors
 import Functions
 
@@ -25,6 +26,41 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
 
         General.init()
         Sensors.init(self)
+
+        # start of imaging activities
+
+        self.imaging_sequence_title_lineEdit.textChanged.connect(
+            lambda: Imaging.imaging_sequence_title_changed(self)
+        )
+        # self.addDate_pushButton.clicked.connect(
+        #     lambda: Functions.add_date(self))
+
+        # self.ICI_spinBox.valueChanged.connect(
+        #     lambda: Functions.ICI_Change(self))
+        # self.ISD_spinBox.valueChanged.connect(
+        #     lambda: Functions.ISD_Change(self))
+        # self.directory_pushButton.clicked.connect(
+        #     lambda: Functions.select_directory(self))
+
+        # self.x_resolution_spinBox.valueChanged.connect(
+        #     lambda: Functions.camera_update(self))
+        # self.y_resolution_spinBox.valueChanged.connect(
+        #     lambda: Functions.camera_update(self))
+
+        # self.xAxis_horizontalSlider.valueChanged.connect(
+        #     lambda: Functions.camera_update(self))
+        # self.xAxis_horizontalSlider.sliderReleased.connect(
+        #     lambda: Call_Thread.start_snapshot(self))
+
+        # self.yAxis_horizontalSlider.valueChanged.connect(
+        #     lambda: Functions.camera_update(self))
+        # self.yAxis_horizontalSlider.sliderReleased.connect(
+        #     lambda: Call_Thread.start_snapshot(self))
+
+        # self.JPG_radioButton.toggled.connect(
+        #     lambda: Functions.update_mode(self))
+        # self.infraredImaging_checkBox.stateChanged.connect(
+        #     lambda: Functions.IR_mode(self))
 
         # start of motor activities
         self.TOF_update_pushButton.clicked.connect(lambda: Sensors.TOF_range(self))
@@ -54,6 +90,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.motion_torque_dial.valueChanged.connect(
             lambda: UI_Update.motion_dials_update(self)
         )
+        # end of motor activities
 
         # Call_Thread.sensor_init(self)
         # Commands.init()
@@ -123,37 +160,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         # self.light_Reset_pushButton.clicked.connect(
         #     lambda: Commands.light_reset(self))
         #
-        # self.title_lineEdit.textChanged.connect(
-        #     lambda: Functions.IST_Edit(self))
-        # self.addDate_pushButton.clicked.connect(
-        #     lambda: Functions.add_date(self))
-        #
-        # self.ICI_spinBox.valueChanged.connect(
-        #     lambda: Functions.ICI_Change(self))
-        # self.ISD_spinBox.valueChanged.connect(
-        #     lambda: Functions.ISD_Change(self))
-        # self.directory_pushButton.clicked.connect(
-        #     lambda: Functions.select_directory(self))
-        #
-        # self.x_resolution_spinBox.valueChanged.connect(
-        #     lambda: Functions.camera_update(self))
-        # self.y_resolution_spinBox.valueChanged.connect(
-        #     lambda: Functions.camera_update(self))
-        #
-        # self.xAxis_horizontalSlider.valueChanged.connect(
-        #     lambda: Functions.camera_update(self))
-        # self.xAxis_horizontalSlider.sliderReleased.connect(
-        #     lambda: Call_Thread.start_snapshot(self))
-        #
-        # self.yAxis_horizontalSlider.valueChanged.connect(
-        #     lambda: Functions.camera_update(self))
-        # self.yAxis_horizontalSlider.sliderReleased.connect(
-        #     lambda: Call_Thread.start_snapshot(self))
-        #
-        # self.JPG_radioButton.toggled.connect(
-        #     lambda: Functions.update_mode(self))
-        # self.infraredImaging_checkBox.stateChanged.connect(
-        #     lambda: Functions.IR_mode(self))
+
         #
         # self.fanSpeed_horizontalSlider.sliderReleased.connect(
         #     lambda: Functions.fanspeed_update(self))

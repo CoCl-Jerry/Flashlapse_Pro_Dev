@@ -58,3 +58,13 @@ def motion_dials_update(self):
     self.motion_torque_dial_value_label.setText(
         "Torque Level: " + str(self.motion_torque_dial.value())
     )
+
+
+def imaging_validate_input(self):
+    if General.current_date not in General.imaging_sequence_title:
+        self.imaging_add_date_pushButton.setEnabled(True)
+    else:
+        self.imaging_add_date_pushButton.setEnabled(False)
+
+    if len(General.imaging_sequence_title) == 0:
+        self.imaging_add_date_pushButton.setEnabled(False)
