@@ -27,36 +27,31 @@ def postion_increment(self, direction):
         return
     UI_Update.motion_target_position_setting_update(self)
     Call_Thread.motion(self)
-    build_cmd = (
-        "2~1~"
-        + str(int(direction))
-        + "~"
-        + str(General.motor_interval)
-        + "~"
-        + str(2 ** (9 - self.motion_speed_dial.value()))
-        + "~"
-        + (self.motion_speed_dial.value() * 100)
-    )
-    sendCMD(build_cmd)
+    General.target_direction = direction
+    build_motion_cmd(self)
 
 
 def move_to_position(self):
     Call_Thread.motion(self)
     if General.target_position > General.current_position:
-        direction = True
+        General.target_direction = True
     else:
-        direction = False
-    build_cmd = (
+        General.target_direction = False
+    build_motion_cmd(self)
+
+
+def build_motion_cmd(self):
+    cmd = (
         "2~1~"
-        + str(int(direction))
+        + str(int(General.target_direction))
         + "~"
         + str(General.motor_interval)
         + "~"
         + str(2 ** (9 - self.motion_speed_dial.value()))
         + "~"
-        + (self.motion_speed_dial.value() * 100)
+        + str((self.motion_speed_dial.value() * 100))
     )
-    sendCMD(build_cmd)
+    sendCMD(cmd)
 
 
 def disable_motor():
