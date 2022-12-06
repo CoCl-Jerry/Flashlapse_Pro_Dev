@@ -6,7 +6,7 @@ import General
 from PyQt5.QtCore import QThread, pyqtSignal
 
 
-class motion(QThread):
+class Motion(QThread):
     disable_motor = pyqtSignal()
     def __init__(self):
         QThread.__init__(self)
