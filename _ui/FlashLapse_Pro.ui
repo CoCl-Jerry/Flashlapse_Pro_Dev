@@ -733,7 +733,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QDial" name="dial">
+         <widget class="QDial" name="motion_speed_dial">
           <property name="minimum">
            <number>1</number>
           </property>
@@ -772,7 +772,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QDial" name="dial_2">
+         <widget class="QDial" name="motion_torque_dial">
           <property name="minimum">
            <number>1</number>
           </property>
