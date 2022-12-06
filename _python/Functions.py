@@ -8,12 +8,12 @@ import smbus
 def postion_increment(self, direction):
     if direction:
         General.target_position = (
-            General.current_position + self.motion_increment_spinBox.value()
+            General.current_position + int(self.motion_increment_spinBox.value())
         )
 
     else:
         General.target_position = (
-            General.current_position - self.motion_increment_spinBox.value()
+            General.current_position - int(self.motion_increment_spinBox.value())
         )
     General.target_direction = direction
     UI_Update.motion_target_position_setting_label_update(self)
