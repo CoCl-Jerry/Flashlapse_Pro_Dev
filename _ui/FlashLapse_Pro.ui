@@ -334,7 +334,7 @@
          </widget>
         </item>
         <item row="3" column="4">
-         <widget class="QLabel" name="imaging_xAxis_label_2">
+         <widget class="QLabel" name="imaging_yAxis_label">
           <property name="text">
            <string>Zoom Axis B: 1.00</string>
           </property>
@@ -1049,7 +1049,7 @@
        <x>10</x>
        <y>5</y>
        <width>161</width>
-       <height>118</height>
+       <height>111</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_17">
