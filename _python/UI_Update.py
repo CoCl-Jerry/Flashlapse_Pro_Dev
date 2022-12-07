@@ -1,5 +1,6 @@
 import General
 from PyQt5.QtGui import QImage, QPixmap
+from pyqtgraph import mkPen  # type: ignore
 
 # start of error UI update
 def error_UI_update(self):
@@ -142,3 +143,26 @@ def motion_dials_update(self):
 
 
 # end of motion UI update
+
+# start of sensor UI update
+def ambient_UI_update(self):
+    if General.ambient_thread_running:
+        self.imaging_start_timelapse_pushButton.setText("Stop Ambient Sensors")
+    else:
+        self.imaging_start_timelapse_pushButton.setText("Start Ambient Sensors")
+
+
+def ambient_temperature_start(self):
+    pen = mkPen(color=(197, 5, 12), width=2)
+    General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
+        General.SCD_time_points, General.ambient_temperature, pen=pen
+    )
+
+
+def ambient_SCD_update(self):
+    General.ambient_temperature_graph_ref.setData(
+        General.SCD_time_points, General.ambient_temperature
+    )
+
+
+# end of sensor UI update

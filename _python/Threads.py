@@ -3,11 +3,12 @@ import os
 # load in sensors
 import board  # type: ignore
 import adafruit_vl53l4cd  # type: ignore
+import adafruit_scd4x  # type: ignore
 from picamera import PiCamera  # type: ignore
 
 import General
 from PyQt5.QtCore import QThread, pyqtSignal
-from time import sleep
+from time import sleep, perf_counter
 
 
 class Motion(QThread):
@@ -181,3 +182,28 @@ class Timelapse(QThread):
             if not General.timelapse_thread_running:
                 break
         General.timelapse_thread_running = False
+
+
+class Ambient(QThread):
+    update = pyqtSignal()
+
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):
+        scd4x = adafruit_scd4x.SCD4X(board.I2C())
+        scd4x.start_periodic_measurement()
+        General.SCD_initial_time = perf_counter()
+        while General.ambient_thread_running:
+            if perf_counter() - General.SCD_capture_time > General.SCD_capture_interval:
+                if scd4x.data_ready:
+                    General.SCD_time_points.append(
+                        perf_counter() - General.SCD_initial_time
+                    )
+                    General.ambient_temperature.append(scd4x.temperature)
+                    General.ambient_humidity.append(scd4x.relative_humidity)
+                    General.ambient_CO2.append(scd4x.CO2)
+                    self.update.emit()

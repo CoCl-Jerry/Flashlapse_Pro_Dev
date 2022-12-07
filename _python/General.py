@@ -123,9 +123,37 @@ def init():
 
     # end of motor definitions
 
+    # start of sensor definitions
+    global ambient_temperature
+    ambient_temperature = []
+
+    global ambient_humidity
+    ambient_humidity = []
+
+    global ambient_CO2
+    ambient_CO2 = []
+
+    global SCD_time_points
+    SCD_time_points = []
+
+    global SCD_initial_time
+    SCD_initial_time = 0
+
+    global SCD_capture_interval
+    SCD_capture_interval = 5
+    # end of sensor definitions
+
+    # start of graph definitions
+    global ambient_temperature_graph_ref
+    ambient_temperature_graph_ref = ""
+    # end of graph definitions
+
     # start of thread flag definitions
     global motion_thread_running
     motion_thread_running = False
 
     global timelapse_thread_running
     timelapse_thread_running = False
+
+    global ambient_thread_running
+    ambient_thread_running = False

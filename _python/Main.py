@@ -71,31 +71,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.imaging_yAxis_horizontalSlider.sliderReleased.connect(
             lambda: Call_Thread.snapshot(self)
         )
-
-        #
-        # self.rotate_pushButton.clicked.connect(
-        #     lambda: Functions.rotate_image(self))
-        #
-
-        # self.x_resolution_spinBox.valueChanged.connect(
-        #     lambda: Functions.camera_update(self))
-        # self.y_resolution_spinBox.valueChanged.connect(
-        #     lambda: Functions.camera_update(self))
-
-        # self.xAxis_horizontalSlider.valueChanged.connect(
-        #     lambda: Functions.camera_update(self))
-        # self.xAxis_horizontalSlider.sliderReleased.connect(
-        #     lambda: Call_Thread.start_snapshot(self))
-
-        # self.yAxis_horizontalSlider.valueChanged.connect(
-        #     lambda: Functions.camera_update(self))
-        # self.yAxis_horizontalSlider.sliderReleased.connect(
-        #     lambda: Call_Thread.start_snapshot(self))
-
-        # self.JPG_radioButton.toggled.connect(
-        #     lambda: Functions.update_mode(self))
-        # self.infraredImaging_checkBox.stateChanged.connect(
-        #     lambda: Functions.IR_mode(self))
+        # end of imaging activities
 
         # start of motor activities
         self.TOF_update_pushButton.clicked.connect(lambda: Sensors.TOF_range(self))
@@ -126,6 +102,12 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
             lambda: UI_Update.motion_dials_update(self)
         )
         # end of motor activities
+
+        # start of sensor activities
+        self.start_ambient_sensors_pushButton.clicked.connect(
+            lambda: Call_Thread.ambient_sensors(self)
+        )
+        # end of sensor activities
 
         # Call_Thread.sensor_init(self)
         # Commands.init()
