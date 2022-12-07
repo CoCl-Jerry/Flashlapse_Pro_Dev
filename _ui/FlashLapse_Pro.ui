@@ -36,7 +36,7 @@
     <normaloff>../_image/icon.png</normaloff>../_image/icon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="Preview_Frame">
+   <widget class="QLabel" name="imaging_preview_frame">
     <property name="geometry">
      <rect>
       <x>660</x>
