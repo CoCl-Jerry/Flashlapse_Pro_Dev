@@ -1,8 +1,4 @@
 import time
-import General
-import smbus  # type: ignore
-
-
 from PyQt5 import QtGui
 
 
@@ -10,22 +6,6 @@ def init():
     # start of general definitions
     global current_date
     current_date = time.strftime("%m_%d_%Y")
-
-    global camera_error_image
-    camera_error_image = QtGui.QImage("../_image/camera_error.png")
-
-    global communication_error_image
-    communication_error_image = QtGui.QImage("../_image/communication_error.png")
-
-    global motor_error_image
-    motor_error_image = QtGui.QImage("../_image/motor_error.png")
-
-    global rangefinder_error_image
-    rangefinder_error_image = QtGui.QImage("../_image/rangefinder_error.png")
-
-    global soil_sensor_error_image
-    soil_sensor_error_image = QtGui.QImage("../_image/soil_sensor_error.png")
-
     # end of general definitions
 
     # start of error definitions
@@ -35,11 +15,32 @@ def init():
     global communication_error
     communication_error = False
 
+    global communication_error_image
+    communication_error_image = QtGui.QImage("../_image/communication_error.png")
+
     global motor_error
     motor_error = False
 
+    global motor_error_image
+    motor_error_image = QtGui.QImage("../_image/motor_error.png")
+
     global camera_error
     camera_error = False
+
+    global camera_error_image
+    camera_error_image = QtGui.QImage("../_image/camera_error.png")
+
+    global rangefinder_error
+    rangefinder_error = False
+
+    global rangefinder_error_image
+    rangefinder_error_image = QtGui.QImage("../_image/rangefinder_error.png")
+
+    global soil_sensor_error
+    soil_sensor_error = False
+
+    global soil_sensor_error_image
+    soil_sensor_error_image = QtGui.QImage("../_image/soil_sensor_error.png")
     # end of error definitions
 
     # start of imaging definitions
@@ -107,20 +108,3 @@ def init():
     global motion_thread_running
     motion_thread_running = False
     # end of motor definitions
-
-
-def sendCMD(cont):
-    print("sending command...\n" + cont)
-    temp = cont + "\n"
-    while True:
-        try:
-            bus = smbus.SMBus(1)
-            converted = []
-            for b in temp:
-                converted.append(ord(b))
-            bus.write_i2c_block_data(0x08, 0x5E, converted)
-            break
-        except Exception as e:
-            General.communication_error = True
-            print(e, "communication failure,contact Jerry for support")
-        pass

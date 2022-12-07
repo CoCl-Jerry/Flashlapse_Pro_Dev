@@ -1,6 +1,7 @@
 import General
 import UI_Update
 import Call_Thread
+import Communication
 
 
 def postion_increment(self, direction):
@@ -49,10 +50,10 @@ def build_motion_cmd(self):
         + "~"
         + str((self.motion_torque_dial.value() * 100))
     )
-    General.sendCMD(cmd)
+    Communication.sendCMD(cmd)
 
 
 def disable_motor():
     General.motion_thread_running = False
     build_cmd = "2~0~1"
-    General.sendCMD(build_cmd)
+    Communication.sendCMD(build_cmd)
