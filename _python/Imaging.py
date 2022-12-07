@@ -1,5 +1,6 @@
 import General
 import UI_Update
+from PyQt5.QtWidgets import QFileDialog
 
 
 def imaging_sequence_title_changed(self):
