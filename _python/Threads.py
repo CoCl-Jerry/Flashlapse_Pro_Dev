@@ -170,7 +170,7 @@ class Timelapse(QThread):
             except Exception as e:
                 print(e, "Camera failure, contact Jerry for support")
                 General.camera_error = True
-            for x in range(General.imaging_capture_interval):
+            for x in range(General.imaging_capture_interval * 60):
                 self.countdown.emit()
                 General.imaging_countdown_value = General.imaging_capture_interval - x
                 sleep(1)
