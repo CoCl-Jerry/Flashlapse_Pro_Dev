@@ -1,4 +1,6 @@
 import time
+import smbus  # type: ignore
+
 
 from PyQt5 import QtGui
 
@@ -101,3 +103,19 @@ def init():
     global motion_thread_running
     motion_thread_running = False
     # end of motor definitions
+
+
+def sendCMD(cont):
+    print("sending command...\n" + cont)
+    temp = cont + "\n"
+    while True:
+        try:
+            bus = smbus.SMBus(1)
+            converted = []
+            for b in temp:
+                converted.append(ord(b))
+            bus.write_i2c_block_data(0x08, 0x5E, converted)
+            break
+        except Exception as e:
+            print(e, "communication failure,contact Jerry for support")
+        pass
