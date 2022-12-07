@@ -23,3 +23,10 @@ def imaging_capture_interval_changed(self):
 def imaging_sequence_duration_changed(self):
     General.imaging_sequence_duration = self.imaging_sequence_duration_spinBox.value()
     UI_Update.imaging_validate_input(self)
+
+
+def imaging_select_directory_pushButton_clicked(self):
+    temp = str(QFileDialog.getExistingDirectory(self, "Select Directory", "/media/pi"))
+    if len(temp) != 0:
+        General.full_storage_directory = temp + "/" + General.imaging_sequence_title
+    UI_Update.imaging_validate_input(self)

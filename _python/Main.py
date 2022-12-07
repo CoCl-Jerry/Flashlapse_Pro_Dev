@@ -42,8 +42,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.imaging_sequence_duration_spinBox.valueChanged.connect(
             lambda: Imaging.imaging_sequence_duration_changed(self)
         )
-        # self.directory_pushButton.clicked.connect(
-        #     lambda: Functions.select_directory(self))
+        self.imaging_select_directory_pushButton.clicked.connect(
+            lambda: Imaging.imaging_select_directory_pushButton_clicked(self)
+        )
 
         # self.x_resolution_spinBox.valueChanged.connect(
         #     lambda: Functions.camera_update(self))
