@@ -45,13 +45,13 @@ def init():
 
     # start of imaging definitions
     global imaging_capture_total
-    imaging_capture_total = 10
+    imaging_capture_total = 5
 
     global imaging_capture_interval
     imaging_capture_interval = 1
 
     global imaging_sequence_duration
-    imaging_sequence_duration = 10
+    imaging_sequence_duration = 5
 
     global imaging_countdown_value
     imaging_countdown_value = 0

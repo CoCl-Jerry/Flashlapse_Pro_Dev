@@ -178,4 +178,4 @@ class Timelapse(QThread):
                     break
             if not General.timelapse_thread_running:
                 break
-            General.timelapse_thread_running = False
+        General.timelapse_thread_running = False
