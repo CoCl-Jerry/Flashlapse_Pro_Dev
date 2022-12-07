@@ -79,7 +79,7 @@ class Snap(QThread):
             General.camera_error = True
 
 
-class Snap(QThread):
+class Preview(QThread):
     def __init__(self):
         QThread.__init__(self)
 
