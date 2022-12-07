@@ -172,7 +172,9 @@ class Timelapse(QThread):
                 General.camera_error = True
             for x in range(General.imaging_capture_interval * 60):
                 self.countdown.emit()
-                General.imaging_countdown_value = General.imaging_capture_interval - x
+                General.imaging_countdown_value = (
+                    General.imaging_capture_interval * 60 - x
+                )
                 sleep(1)
                 if not General.timelapse_thread_running:
                     break
