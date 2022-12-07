@@ -46,6 +46,22 @@ def imaging_settings_update(self):
 
     General.live_duration = self.imaging_live_feed_spinBox.value()
 
+    if General.image_format:
+        General.full_file_name = (
+            General.full_storage_directory
+            + "/"
+            + General.imaging_sequence_title
+            + "_%04d.jpg"
+        )
+    else:
+        General.full_file_name = (
+            General.full_storage_directory
+            + "/"
+            + General.imaging_sequence_title
+            + "_%04d.png"
+        )
+    self.imaging_progress_bar.setMaximum(General.imaging_capture_total)
+
 
 def imaging_AOI_slider_changed(self):
     self.imaging_xAxis_label.setText(

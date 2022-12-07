@@ -15,9 +15,8 @@ def motion(self):
     self.Motion_Thread.started.connect(lambda: UI_Update.motion_frames_toggle(self))
 
     self.Motion_Thread.finished.connect(lambda: UI_Update.motion_frames_toggle(self))
-
-    self.Motion_Thread.start()
     General.motion_thread_running = True
+    self.Motion_Thread.start()
 
 
 def snapshot(self):
@@ -65,3 +64,33 @@ def livefeed(self):
     self.Livefeed_Thread.started.connect(lambda: UI_Update.imaging_frame_toggle(self))
     self.Livefeed_Thread.finished.connect(lambda: UI_Update.imaging_frame_toggle(self))
     self.Livefeed_Thread.start()
+
+
+def timelapse(self):
+
+    if not General.timelapse_thread_running:
+        Imaging.imaging_settings_update(self)
+        self.Timelapse_Thread = Threads.Timelapse()
+        self.Timelapse_Thread.started.connect(
+            lambda: UI_Update.timelapse_UI_update(self)
+        )
+        self.Timelapse_Thread.finished.connect(
+            lambda: UI_Update.timelapse_UI_update(self)
+        )
+        self.Timelapse_Thread.imaging.connect(
+            lambda: UI_Update.imaging_frame_toggle(self)
+        )
+        self.Timelapse_Thread.complete.connect(
+            lambda: UI_Update.imaging_frame_toggle(self)
+        )
+        self.Timelapse_Thread.complete.connect(
+            lambda: UI_Update.update_preview_frame(self)
+        )
+        self.Timelapse_Thread.countdown.connect(
+            lambda: UI_Update.timelapse_countdown(self)
+        )
+        General.timelapse_thread_running = True
+        self.Timelapse_Thread.start()
+    else:
+        General.timelapse_thread_running = False
+        UI_Update.timelapse_UI_update(self)

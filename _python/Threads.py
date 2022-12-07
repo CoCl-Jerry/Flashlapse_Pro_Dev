@@ -1,3 +1,5 @@
+import os
+
 # load in sensors
 import board  # type: ignore
 import adafruit_vl53l4cd  # type: ignore
@@ -116,14 +118,64 @@ class Livefeed(QThread):
         self._running = False
 
     def run(self):
-        with PiCamera() as camera:
-            camera.zoom = (
-                General.AOI_X,
-                General.AOI_Y,
-                General.AOI_W,
-                General.AOI_H,
-            )
-            camera.resolution = (General.x_resolution, General.y_resolution)
-            camera._set_rotation(90 * General.imaging_rotation)
-            camera.start_preview()
-            sleep(General.live_duration)
+        try:
+            with PiCamera() as camera:
+                camera.zoom = (
+                    General.AOI_X,
+                    General.AOI_Y,
+                    General.AOI_W,
+                    General.AOI_H,
+                )
+                camera.resolution = (General.x_resolution, General.y_resolution)
+                camera._set_rotation(90 * General.imaging_rotation)
+                camera.start_preview()
+                sleep(General.live_duration)
+        except Exception as e:
+            print(e, "Camera failure, contact Jerry for support")
+            General.camera_error = True
+
+
+class Timelapse(QThread):
+    imaging = pyqtSignal()
+    complete = pyqtSignal()
+    countdown = pyqtSignal()
+
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):
+        if not os.path.isdir(General.full_storage_directory):
+            original_umask = os.umask(0)
+            os.mkdir(General.full_storage_directory, mode=0o777)
+            os.umask(original_umask)
+        for i in range(General.imaging_capture_total):
+            General.current_image_counter = i + 1
+            General.current_full_file_name = General.full_file_name % (i + 1)
+            self.imaging.emit()
+            try:
+                with PiCamera() as camera:
+                    camera.zoom = (
+                        General.AOI_X,
+                        General.AOI_Y,
+                        General.AOI_W,
+                        General.AOI_H,
+                    )
+                    camera.resolution = (General.x_resolution, General.y_resolution)
+                    camera._set_rotation(90 * General.imaging_rotation)
+                    camera.capture(General.current_full_file_name)
+                    self.complete.emit()
+            except Exception as e:
+                print(e, "Camera failure, contact Jerry for support")
+                General.camera_error = True
+            for x in range(General.imaging_capture_interval):
+                self.countdown.emit()
+                General.imaging_countdown_value = General.imaging_capture_interval - x
+                sleep(1)
+                if not General.timelapse_thread_running:
+                    break
+            if not General.timelapse_thread_running:
+                break
+            General.timelapse_thread_running = False

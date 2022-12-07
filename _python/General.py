@@ -53,11 +53,20 @@ def init():
     global imaging_sequence_duration
     imaging_sequence_duration = 1
 
+    global imaging_countdown_value
+    imaging_countdown_value = 0
+
     global current_image_counter
     current_image_counter = 0
 
     global imaging_sequence_title
     imaging_sequence_title = ""
+
+    global full_file_name
+    full_file_name = ""
+
+    global current_full_file_name
+    current_full_file_name = ""
 
     global full_storage_directory
     full_storage_directory = ""
@@ -87,6 +96,7 @@ def init():
 
     global live_duration
     live_duration = 5
+
     # end of imaging definitions
 
     # start of motor definitions
@@ -111,6 +121,11 @@ def init():
     global min_position
     min_position = 65
 
+    # end of motor definitions
+
+    # start of thread flag definitions
     global motion_thread_running
     motion_thread_running = False
-    # end of motor definitions
+
+    global timelapse_thread_running
+    timelapse_thread_running = False

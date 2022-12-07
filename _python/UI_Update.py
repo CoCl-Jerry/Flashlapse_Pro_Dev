@@ -70,7 +70,24 @@ def imaging_frame_toggle(self):
 
 def update_preview_frame(self, file):
     if not General.camera_error:
+        self.imaging_progress_Label.setText(
+            "Progress: " + str(General.current_image_counter) + "/" + str(General.total)
+        )
+        self.imaging_progress_bar.setValue(General.current_image_counter)
         self.imaging_preview_frame.setPixmap(QPixmap(QImage(file)))
+
+
+def timelapse_UI_update(self):
+    if General.timelapse_thread_running:
+        self.imaging_start_timelapse_pushButton.setText("END TIMELAPSE")
+    else:
+        self.imaging_start_timelapse_pushButton.setText("START TIMELAPSE")
+
+
+def timelapse_countdown(self):
+    self.imaging_countdown_label.setText(
+        "Next Image: " + str(General.imaging_countdown_value) + " s"
+    )
 
 
 # end of imaging UI update
