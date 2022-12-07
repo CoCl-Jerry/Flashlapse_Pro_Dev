@@ -1,14 +1,14 @@
 import Threads
 import UI_Update
 import General
-import Functions
+import Motion
 import Imaging
 
 
 # call thread for motion control
 def motion(self):
     self.Motion_Thread = Threads.Motion()
-    self.Motion_Thread.stop_motor.connect(lambda: Functions.disable_motor())
+    self.Motion_Thread.stop_motor.connect(lambda: Motion.disable_motor())
     self.Motion_Thread.sensor_read.connect(lambda: UI_Update.TOF_update(self))
     self.Motion_Thread.started.connect(lambda: UI_Update.motion_frames_toggle(self))
 
