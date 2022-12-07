@@ -81,6 +81,9 @@ def init():
 
     global imaging_rotation
     imaging_rotation = 2
+
+    global image_format
+    image_format = 1
     # end of imaging definitions
 
     # start of motor definitions

@@ -41,3 +41,5 @@ def imaging_settings_update(self):
 
     General.x_resolution = self.imaging_x_resolution_spinBox.value()
     General.y_resolution = self.imaging_y_resolution_spinBox.value()
+
+    General.image_format = self.imaging_JPG_radioButton.isChecked()

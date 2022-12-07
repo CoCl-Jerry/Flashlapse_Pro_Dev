@@ -68,7 +68,7 @@ def imaging_frame_toggle(self):
     self.imaging_capture_frame.setEnabled(not self.imaging_capture_frame.isEnabled())
 
 
-def update_frame_snapshot(self, file):
+def update_preview_frame(self, file):
     if not General.camera_error:
         self.imaging_preview_frame.setPixmap(QPixmap(QImage(file)))
 
