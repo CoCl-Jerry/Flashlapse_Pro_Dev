@@ -2,7 +2,7 @@ import General
 import UI_Update
 import Imaging
 import Sensors
-import Functions
+import Motion
 import Call_Thread
 
 # import Commands
@@ -82,24 +82,24 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         # start of motor activities
         self.TOF_update_pushButton.clicked.connect(lambda: Sensors.TOF_range(self))
         self.up_pushButton.clicked.connect(
-            lambda: Functions.postion_increment(self, False)
+            lambda: Motion.postion_increment(self, False)
         )
         self.down_pushButton.clicked.connect(
-            lambda: Functions.postion_increment(self, True)
+            lambda: Motion.postion_increment(self, True)
         )
-        self.motion_stop_pushButton.clicked.connect(lambda: Functions.disable_motor())
+        self.motion_stop_pushButton.clicked.connect(lambda: Motion.disable_motor())
 
         self.motion_position_verticalSlider.valueChanged.connect(
             lambda: UI_Update.motion_slider_value_changed(self)
         )
         self.motion_position_verticalSlider.sliderReleased.connect(
-            lambda: Functions.move_to_position(self)
+            lambda: Motion.move_to_position(self)
         )
         self.motion_new_position_spinBox.valueChanged.connect(
             lambda: UI_Update.motion_spinbox_value_changed(self)
         )
         self.motion_new_position_spinBox.valueChanged.connect(
-            lambda: Functions.move_to_position(self)
+            lambda: Motion.move_to_position(self)
         )
         self.motion_speed_dial.valueChanged.connect(
             lambda: UI_Update.motion_dials_update(self)
