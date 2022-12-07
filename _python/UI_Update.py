@@ -62,6 +62,7 @@ def imaging_validate_input(self):
         + "/"
         + str(General.imaging_capture_total)
     )
+    self.imaging_progress_bar.setValue(General.current_image_counter)
 
 
 def imaging_frame_toggle(self):
@@ -85,6 +86,7 @@ def timelapse_UI_update(self):
         self.imaging_start_timelapse_pushButton.setText("END TIMELAPSE")
     else:
         self.imaging_start_timelapse_pushButton.setText("START TIMELAPSE")
+    General.current_image_counter = 0
 
 
 def timelapse_countdown(self):
