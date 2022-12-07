@@ -385,6 +385,12 @@
         </item>
         <item row="1" column="0">
          <widget class="QSpinBox" name="imaging_x_resolution_spinBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="suffix">
            <string> px</string>
           </property>
@@ -483,6 +489,12 @@
         </item>
         <item row="1" column="3">
          <widget class="QSpinBox" name="imaging_y_resolution_spinBox">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="suffix">
            <string> px</string>
           </property>
