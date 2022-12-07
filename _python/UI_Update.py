@@ -71,7 +71,10 @@ def imaging_frame_toggle(self):
 def update_preview_frame(self, file):
     if not General.camera_error:
         self.imaging_progress_Label.setText(
-            "Progress: " + str(General.current_image_counter) + "/" + str(General.total)
+            "Progress: "
+            + str(General.current_image_counter)
+            + "/"
+            + str(General.imaging_capture_total)
         )
         self.imaging_progress_bar.setValue(General.current_image_counter)
         self.imaging_preview_frame.setPixmap(QPixmap(QImage(file)))
