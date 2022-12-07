@@ -98,10 +98,10 @@ class Preview(QThread):
                 camera.resolution = (General.x_resolution, General.y_resolution)
                 camera._set_rotation(90 * General.imaging_rotation)
 
-            if General.image_format:
-                camera.capture("../_temp/preview.jpg")
-            else:
-                camera.capture("../_temp/preview.png")
+                if General.image_format:
+                    camera.capture("../_temp/preview.jpg")
+                else:
+                    camera.capture("../_temp/preview.png")
         except Exception as e:
             print(e, "Camera failure, contact Jerry for support")
             General.camera_error = True
