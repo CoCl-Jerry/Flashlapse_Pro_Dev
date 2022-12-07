@@ -26,6 +26,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.setupUi(self)
 
         General.init()
+        General.UI_Update(self)
         Sensors.init(self)
 
         # start of imaging activities

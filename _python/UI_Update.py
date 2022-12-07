@@ -2,6 +2,16 @@ import General
 from PyQt5.QtGui import QImage, QPixmap
 from pyqtgraph import mkPen  # type: ignore
 
+
+def init(self):
+    self.ambient_temperature_graphWidget.setBackground("#fbfbfb")
+    self.ambient_temperature_graphWidget.showGrid(x=True, y=True)
+
+    styles = {"color": "r", "font-size": "15px"}
+    self.ambient_temperature_graphWidget.setLabel("left", "Temperature (°C)", **styles)
+    self.ambient_temperature_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+
 # start of error UI update
 def error_UI_update(self):
     if General.camera_error:

@@ -198,7 +198,10 @@ class Ambient(QThread):
         scd4x.start_periodic_measurement()
         General.SCD_initial_time = perf_counter()
         while General.ambient_thread_running:
-            if perf_counter() - General.SCD_capture_time > General.SCD_capture_interval:
+            if (
+                perf_counter() - General.SCD_time_points[-1]
+                > General.SCD_capture_interval
+            ):
                 if scd4x.data_ready:
                     General.SCD_time_points.append(
                         perf_counter() - General.SCD_initial_time
