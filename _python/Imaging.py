@@ -43,3 +43,14 @@ def imaging_settings_update(self):
     General.y_resolution = self.imaging_y_resolution_spinBox.value()
 
     General.image_format = self.imaging_JPG_radioButton.isChecked()
+
+    General.live_duration = self.imaging_live_feed_spinBox.value()
+
+
+def imaging_AOI_slider_changed(self):
+    self.imaging_xAxis_label.setText(
+        "AXIS A: " + str(self.imaging_xAxis_horizontalSlider.sliderPosition() / 100)
+    )
+    self.imaging_yAxis_label.setText(
+        "AXIS B: " + str(self.imaging_yAxis_horizontalSlider.sliderPosition() / 100)
+    )

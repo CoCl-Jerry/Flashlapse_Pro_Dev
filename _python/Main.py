@@ -36,7 +36,6 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.imaging_add_date_pushButton.clicked.connect(
             lambda: Imaging.imaging_add_date(self)
         )
-
         self.imaging_capture_interval_spinBox.valueChanged.connect(
             lambda: Imaging.imaging_capture_interval_changed(self)
         )
@@ -51,6 +50,22 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         )
         self.imaging_preview_pushButton.clicked.connect(
             lambda: Call_Thread.preview(self)
+        )
+        self.imaging_live_feed_pushButton.clicked.connect(
+            lambda: Call_Thread.livefeed(self)
+        )
+        self.imaging_xAxis_horizontalSlider.valueChanged.connect(
+            lambda: Imaging.imaging_AOI_slider_changed(self)
+        )
+        self.imaging_xAxis_horizontalSlider.sliderReleased.connect(
+            lambda: Call_Thread.snapshot(self)
+        )
+
+        self.imaging_yAxis_horizontalSlider.valueChanged.connect(
+            lambda: Imaging.imaging_AOI_slider_changed(self)
+        )
+        self.imaging_yAxis_horizontalSlider.sliderReleased.connect(
+            lambda: Call_Thread.snapshot(self)
         )
 
         # self.startImaging_pushButton.clicked.connect(

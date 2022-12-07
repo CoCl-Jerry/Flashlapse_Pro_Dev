@@ -84,6 +84,9 @@ def init():
 
     global image_format
     image_format = 1
+
+    global live_duration
+    live_duration = 5
     # end of imaging definitions
 
     # start of motor definitions

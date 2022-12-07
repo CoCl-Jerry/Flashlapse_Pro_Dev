@@ -57,3 +57,11 @@ def preview(self):
     self.Preview_Thread.finished.connect(lambda: UI_Update.error_UI_update(self))
 
     self.Preview_Thread.start()
+
+
+def livefeed(self):
+    Imaging.imaging_settings_update(self)
+    self.Livefeed_Thread = Threads.Livefeed()
+    self.Livefeed_Thread.started.connect(lambda: UI_Update.imaging_frame_toggle(self))
+    self.Livefeed_Thread.finished.connect(lambda: UI_Update.imaging_frame_toggle(self))
+    self.livefeed_Thread.start()

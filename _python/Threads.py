@@ -5,6 +5,7 @@ from picamera import PiCamera  # type: ignore
 
 import General
 from PyQt5.QtCore import QThread, pyqtSignal
+from time import sleep
 
 
 class Motion(QThread):
@@ -105,3 +106,24 @@ class Preview(QThread):
         except Exception as e:
             print(e, "Camera failure, contact Jerry for support")
             General.camera_error = True
+
+
+class Livefeed(QThread):
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):
+        with PiCamera() as camera:
+            camera.zoom = (
+                General.AOI_X,
+                General.AOI_Y,
+                General.AOI_W,
+                General.AOI_H,
+            )
+            camera.resolution = (General.x_resolution, General.y_resolution)
+            camera._set_rotation(90 * General.imaging_rotation)
+            camera.start_preview()
+            sleep(General.live_duration)
