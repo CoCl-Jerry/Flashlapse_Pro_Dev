@@ -8,22 +8,33 @@ def init():
     global current_date
     current_date = time.strftime("%m_%d_%Y")
 
-    global camera_error
-    camera_error = QtGui.QImage("../_image/camera_error.png")
+    global camera_error_image
+    camera_error_image = QtGui.QImage("../_image/camera_error.png")
 
-    global communication_error
-    communication_error = QtGui.QImage("../_image/communication_error.png")
+    global communication_error_image
+    communication_error_image = QtGui.QImage("../_image/communication_error.png")
 
-    global motor_error
-    motor_error = QtGui.QImage("../_image/motor_error.png")
+    global motor_error_image
+    motor_error_image = QtGui.QImage("../_image/motor_error.png")
 
-    global rangefinder_error
-    rangefinder_error = QtGui.QImage("../_image/rangefinder_error.png")
+    global rangefinder_error_image
+    rangefinder_error_image = QtGui.QImage("../_image/rangefinder_error.png")
 
-    global soil_sensor_error
-    soil_sensor_error = QtGui.QImage("../_image/soil_sensor_error.png")
+    global soil_sensor_error_image
+    soil_sensor_error_image = QtGui.QImage("../_image/soil_sensor_error.png")
 
     # end of general definitions
+
+    # start of error definitions
+    global TOF_error
+    TOF_error = False
+
+    global motor_error
+    motor_error = False
+
+    global camera_error
+    camera_error = False
+    # end of error definitions
 
     # start of imaging definitions
     global imaging_capture_total
@@ -90,14 +101,3 @@ def init():
     global motion_thread_running
     motion_thread_running = False
     # end of motor definitions
-
-    # start of error definitions
-    global TOF_error
-    TOF_error = False
-
-    global motor_error
-    motor_error = False
-
-    global camera_error
-    camera_error = False
-    # end of error definitions
