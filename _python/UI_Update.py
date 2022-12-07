@@ -72,3 +72,18 @@ def imaging_validate_input(self):
 
     if len(General.imaging_sequence_title) == 0:
         self.imaging_add_date_pushButton.setEnabled(False)
+
+    General.imaging_capture_total = int(
+        General.imaging_sequence_duration / General.imaging_capture_interval
+    )
+
+    if General.imaging_capture_total > 0 and len(General.imaging_sequence_title) != 0:
+        self.imaging_start_timelapse_pushButton.setEnabled(True)
+    else:
+        self.imaging_start_timelapse_pushButton.setEnabled(False)
+    self.imaging_progress_Label.setText(
+        "Progress: "
+        + str(General.current_image_counter)
+        + "/"
+        + str(General.imaging_capture_total)
+    )

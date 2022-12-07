@@ -155,7 +155,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="Imaging_capture_interval_spinBox">
+          <widget class="QSpinBox" name="imaging_capture_interval_spinBox">
            <property name="enabled">
             <bool>true</bool>
            </property>

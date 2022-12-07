@@ -36,10 +36,12 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
             lambda: Imaging.imaging_add_date(self)
         )
 
-        # self.ICI_spinBox.valueChanged.connect(
-        #     lambda: Functions.ICI_Change(self))
-        # self.ISD_spinBox.valueChanged.connect(
-        #     lambda: Functions.ISD_Change(self))
+        self.imaging_capture_interval_spinBox.valueChanged.connect(
+            lambda: Imaging.imaging_capture_interval_changed(self)
+        )
+        self.imaging_sequence_duration_spinBox.valueChanged.connect(
+            lambda: Imaging.imaging_sequence_duration_changed(self)
+        )
         # self.directory_pushButton.clicked.connect(
         #     lambda: Functions.select_directory(self))
 
