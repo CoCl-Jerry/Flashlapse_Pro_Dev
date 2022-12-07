@@ -10,13 +10,13 @@ def init():
 
     # start of imaging definitions
     global imaging_capture_total
-    imaging_capture_total = 0
+    imaging_capture_total = 1
 
     global imaging_capture_interval
-    imaging_capture_interval = 0
+    imaging_capture_interval = 1
 
     global imaging_sequence_duration
-    imaging_sequence_duration = 0
+    imaging_sequence_duration = 1
 
     global current_image_counter
     current_image_counter = 0
