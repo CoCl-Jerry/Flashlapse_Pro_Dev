@@ -1,10 +1,27 @@
 import time
 
+from PyQt5 import QtGui
+
 
 def init():
     # start of general definitions
     global current_date
     current_date = time.strftime("%m_%d_%Y")
+
+    global camera_error
+    camera_error = QtGui.QImage("../_image/camera_error.png")
+
+    global communication_error
+    communication_error = QtGui.QImage("../_image/communication_error.png")
+
+    global motor_error
+    motor_error = QtGui.QImage("../_image/motor_error.png")
+
+    global rangefinder_error
+    rangefinder_error = QtGui.QImage("../_image/rangefinder_error.png")
+
+    global soil_sensor_error
+    soil_sensor_error = QtGui.QImage("../_image/soil_sensor_error.png")
 
     # end of general definitions
 
@@ -77,3 +94,10 @@ def init():
     # start of error definitions
     global TOF_error
     TOF_error = False
+
+    global motor_error
+    motor_error = False
+
+    global camera_error
+    camera_error = False
+    # end of error definitions

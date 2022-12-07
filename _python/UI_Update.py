@@ -1,6 +1,15 @@
 import General
 from PyQt5.QtGui import QImage, QPixmap
 
+# start of error UI update
+def error_UI_update(self):
+    if General.camera_error:
+        self.imaging_preview_frame.setPixmap(QPixmap(General.camera_error_image))
+        General.camera_error = False
+
+
+# end of error UI update
+
 # start of TOF UI update
 def TOF_update(self):
     if not General.TOF_error:

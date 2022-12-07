@@ -75,4 +75,5 @@ class Snap(QThread):
                 camera._set_rotation(90 * General.imaging_rotation)
                 camera.capture("../_temp/snapshot.jpg")
         except Exception as e:
-            print(e)
+            print(e, "Camera failure, contact Jerry for support")
+            General.camera_error = True
