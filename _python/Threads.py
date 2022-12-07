@@ -66,5 +66,5 @@ class Snap(QThread):
         with PiCamera() as camera:
             camera.zoom = (General.AOI_X, General.AOI_Y, General.AOI_W, General.AOI_H)
             camera.resolution = (350, 350)
-            camera.set_rotation(90 * General.imaging_rotation)
+            camera._set_rotation(90 * General.imaging_rotation)
             camera.capture("../_temp/snapshot.jpg")
