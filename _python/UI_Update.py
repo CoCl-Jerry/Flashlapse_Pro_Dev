@@ -6,6 +6,9 @@ def error_UI_update(self):
     if General.camera_error:
         self.imaging_preview_frame.setPixmap(QPixmap(General.camera_error_image))
         General.camera_error = False
+    if General.communication_error:
+        self.imaging_preview_frame.setPixmap(QPixmap(General.communication_error_image))
+        General.communication_error = False
 
 
 # end of error UI update

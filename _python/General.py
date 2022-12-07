@@ -1,4 +1,5 @@
 import time
+import General
 import smbus  # type: ignore
 
 
@@ -30,6 +31,9 @@ def init():
     # start of error definitions
     global TOF_error
     TOF_error = False
+
+    global communication_error
+    communication_error = False
 
     global motor_error
     motor_error = False
@@ -117,5 +121,6 @@ def sendCMD(cont):
             bus.write_i2c_block_data(0x08, 0x5E, converted)
             break
         except Exception as e:
+            General.communication_error = True
             print(e, "communication failure,contact Jerry for support")
         pass
