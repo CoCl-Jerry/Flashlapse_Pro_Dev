@@ -134,7 +134,10 @@ def init():
     ambient_CO2 = []
 
     global SCD_time_points
-    SCD_time_points = [0]
+    SCD_time_points = []
+
+    global SCD_previous_time
+    SCD_previous_time = 0
 
     global SCD_initial_time
     SCD_initial_time = 0
