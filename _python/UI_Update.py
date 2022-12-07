@@ -66,7 +66,8 @@ def imaging_frame_toggle(self):
 
 
 def update_frame_snapshot(self, file):
-    self.imaging_preview_frame.setPixmap(QPixmap(QImage(file)))
+    if not General.camera_error:
+        self.imaging_preview_frame.setPixmap(QPixmap(QImage(file)))
 
 
 # end of imaging UI update

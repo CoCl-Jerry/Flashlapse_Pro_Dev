@@ -27,4 +27,6 @@ def snapshot(self):
     self.Snap_Thread.finished.connect(
         lambda: UI_Update.update_frame_snapshot(self, "../_temp/snapshot.jpg")
     )
+    self.Snap_Thread.finished.connect(lambda: UI_Update.error_UI_update(self))
+
     self.Snap_Thread.start()
