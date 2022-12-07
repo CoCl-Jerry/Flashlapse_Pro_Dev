@@ -1,6 +1,7 @@
 import General
+from PyQt5.QtGui import QImage, QPixmap
 
-# TOF label update
+# start of TOF UI update
 def TOF_update(self):
     if not General.TOF_error:
         self.motion_rangefinder_data_label.setText(
@@ -17,7 +18,49 @@ def TOF_update_pushButton_toggle(self):
     self.TOF_update_pushButton.setEnabled(not self.TOF_update_pushButton.isEnabled())
 
 
-# TOF_update complete
+#  end of TOF UI update
+
+# start of imaging UI update
+
+
+def imaging_validate_input(self):
+    General.full_storage_directory = (
+        General.default_storage_directory + "/" + General.imaging_sequence_title
+    )
+    self.imaging_storage_directory_label.setText(General.full_storage_directory)
+    if General.current_date not in General.imaging_sequence_title:
+        self.imaging_add_date_pushButton.setEnabled(True)
+    else:
+        self.imaging_add_date_pushButton.setEnabled(False)
+
+    if len(General.imaging_sequence_title) == 0:
+        self.imaging_add_date_pushButton.setEnabled(False)
+
+    General.imaging_capture_total = int(
+        General.imaging_sequence_duration / General.imaging_capture_interval
+    )
+
+    if General.imaging_capture_total > 0 and len(General.imaging_sequence_title) != 0:
+        self.imaging_start_timelapse_pushButton.setEnabled(True)
+    else:
+        self.imaging_start_timelapse_pushButton.setEnabled(False)
+    self.imaging_progress_Label.setText(
+        "Progress: "
+        + str(General.current_image_counter)
+        + "/"
+        + str(General.imaging_capture_total)
+    )
+
+
+def imaging_frame_toggle(self):
+    self.imaging_capture_frame.setEnabled(not self.imaging_capture_frame.isEnabled())
+
+
+def update_frame_snapshot(self, file):
+    self.main_image_Frame.setPixmap(QPixmap(QImage(file)))
+
+
+# end of imaging UI update
 
 # motion UI update
 def motion_frames_toggle(self):
@@ -60,30 +103,4 @@ def motion_dials_update(self):
     )
 
 
-def imaging_validate_input(self):
-    General.full_storage_directory = (
-        General.default_storage_directory + "/" + General.imaging_sequence_title
-    )
-    self.imaging_storage_directory_label.setText(General.full_storage_directory)
-    if General.current_date not in General.imaging_sequence_title:
-        self.imaging_add_date_pushButton.setEnabled(True)
-    else:
-        self.imaging_add_date_pushButton.setEnabled(False)
-
-    if len(General.imaging_sequence_title) == 0:
-        self.imaging_add_date_pushButton.setEnabled(False)
-
-    General.imaging_capture_total = int(
-        General.imaging_sequence_duration / General.imaging_capture_interval
-    )
-
-    if General.imaging_capture_total > 0 and len(General.imaging_sequence_title) != 0:
-        self.imaging_start_timelapse_pushButton.setEnabled(True)
-    else:
-        self.imaging_start_timelapse_pushButton.setEnabled(False)
-    self.imaging_progress_Label.setText(
-        "Progress: "
-        + str(General.current_image_counter)
-        + "/"
-        + str(General.imaging_capture_total)
-    )
+# end of motion UI update

@@ -1,6 +1,7 @@
 # load in sensors
 import board  # type: ignore
 import adafruit_vl53l4cd  # type: ignore
+from picamera import PiCamera  # type: ignore
 
 import General
 from PyQt5.QtCore import QThread, pyqtSignal
@@ -52,3 +53,18 @@ class Motion(QThread):
         except Exception as e:
             print(e, "TOF sensor failure, contact Jerry for support")
             General.TOF_error = True
+
+
+class Snap(QThread):
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):
+        with PiCamera() as camera:
+            camera.zoom = (General.AOI_X, General.AOI_Y, General.AOI_W, General.AOI_H)
+            camera.resolution = (350, 350)
+            camera.set_rotation(90 * General.imaging_rotation)
+            camera.capture("../_temp/snapshot.jpg")

@@ -30,6 +30,22 @@ def init():
     global default_storage_directory
     default_storage_directory = "/home/pi/Desktop"
 
+    global AOI_X
+    AOI_X = 0
+    global AOI_Y
+    AOI_Y = 0
+    global AOI_W
+    AOI_W = 1
+    global AOI_H
+    AOI_H = 1
+
+    global x_resolution
+    x_resolution = 2464
+    global y_resolution
+    y_resolution = 2464
+
+    global imaging_rotation
+    imaging_rotation = 2
     # end of imaging definitions
 
     # start of motor definitions

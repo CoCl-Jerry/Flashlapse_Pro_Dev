@@ -3,6 +3,7 @@ import UI_Update
 import Imaging
 import Sensors
 import Functions
+import Call_Thread
 
 # import Commands
 # import Threads
@@ -45,6 +46,18 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.imaging_select_directory_pushButton.clicked.connect(
             lambda: Imaging.imaging_select_directory_pushButton_clicked(self)
         )
+        self.imaging_snapshot_pushButton.clicked.connect(
+            lambda: Call_Thread.snapshot(self)
+        )
+
+        # self.startImaging_pushButton.clicked.connect(
+        #     lambda: Call_Thread.start_timelapse(self))
+        # self.preview_pushButton.clicked.connect(
+        #     lambda: Call_Thread.start_preview(self))
+        #
+        # self.rotate_pushButton.clicked.connect(
+        #     lambda: Functions.rotate_image(self))
+        #
 
         # self.x_resolution_spinBox.valueChanged.connect(
         #     lambda: Functions.camera_update(self))
@@ -112,16 +125,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         # self.coreReverse_pushButton.clicked.connect(
         #     lambda: Commands.reverse_motor(1, self))
         #
-        # self.snapshot_pushButton.clicked.connect(
-        #     lambda: Call_Thread.start_snapshot(self))
-        # self.startImaging_pushButton.clicked.connect(
-        #     lambda: Call_Thread.start_timelapse(self))
-        # self.preview_pushButton.clicked.connect(
-        #     lambda: Call_Thread.start_preview(self))
-        #
-        # self.rotate_pushButton.clicked.connect(
-        #     lambda: Functions.rotate_image(self))
-        #
+
         # self.confirmCycle_pushButton.clicked.connect(
         #     lambda: Call_Thread.start_cycle(self))
         # self.onCycle_spinBox.valueChanged.connect(

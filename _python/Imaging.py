@@ -31,3 +31,13 @@ def imaging_select_directory_pushButton_clicked(self):
     if len(temp) != 0:
         General.full_storage_directory = temp + "/" + General.imaging_sequence_title
     UI_Update.imaging_validate_input(self)
+
+
+def imaging_settings_update(self):
+    General.AOI_X = self.imaging_xAxis_horizontalSlider.sliderPosition() / 100
+    General.AOI_Y = self.imaging_xAxis_horizontalSlider.sliderPosition() / 100
+    General.AOI_W = self.imaging_yAxis_horizontalSlider.sliderPosition() / 100
+    General.AOI_H = self.imaging_yAxis_horizontalSlider.sliderPosition() / 100
+
+    General.x_resolution = self.imaging_x_resolution_spinBox.value()
+    General.y_resolution = self.imaging_y_resolution_spinBox.value()
