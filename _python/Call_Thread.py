@@ -64,4 +64,4 @@ def livefeed(self):
     self.Livefeed_Thread = Threads.Livefeed()
     self.Livefeed_Thread.started.connect(lambda: UI_Update.imaging_frame_toggle(self))
     self.Livefeed_Thread.finished.connect(lambda: UI_Update.imaging_frame_toggle(self))
-    self.livefeed_Thread.start()
+    self.Livefeed_Thread.start()
