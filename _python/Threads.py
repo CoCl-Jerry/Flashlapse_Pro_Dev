@@ -63,8 +63,16 @@ class Snap(QThread):
         self._running = False
 
     def run(self):
-        with PiCamera() as camera:
-            camera.zoom = (General.AOI_X, General.AOI_Y, General.AOI_W, General.AOI_H)
-            camera.resolution = (350, 350)
-            camera._set_rotation(90 * General.imaging_rotation)
-            camera.capture("../_temp/snapshot.jpg")
+        try:
+            with PiCamera() as camera:
+                camera.zoom = (
+                    General.AOI_X,
+                    General.AOI_Y,
+                    General.AOI_W,
+                    General.AOI_H,
+                )
+                camera.resolution = (350, 350)
+                camera._set_rotation(90 * General.imaging_rotation)
+                camera.capture("../_temp/snapshot.jpg")
+        except Exception as e:
+            print(e)

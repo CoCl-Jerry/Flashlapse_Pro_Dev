@@ -19,15 +19,12 @@ def motion(self):
 
 
 def snapshot(self):
-    try:
-        Imaging.imaging_settings_update(self)
-        self.Snap_Thread = Threads.Snap()
-        self.Snap_Thread.started.connect(lambda: UI_Update.imaging_frame_toggle(self))
-        self.Snap_Thread.finished.connect(lambda: UI_Update.imaging_frame_toggle(self))
-        self.Snap_Thread.finished.connect(
-            lambda: UI_Update.update_frame_snapshot(self, "../_temp/snapshot.jpg")
-        )
-        self.Snap_Thread.start()
 
-    except Exception as e:
-        print(e)
+    Imaging.imaging_settings_update(self)
+    self.Snap_Thread = Threads.Snap()
+    self.Snap_Thread.started.connect(lambda: UI_Update.imaging_frame_toggle(self))
+    self.Snap_Thread.finished.connect(lambda: UI_Update.imaging_frame_toggle(self))
+    self.Snap_Thread.finished.connect(
+        lambda: UI_Update.update_frame_snapshot(self, "../_temp/snapshot.jpg")
+    )
+    self.Snap_Thread.start()
