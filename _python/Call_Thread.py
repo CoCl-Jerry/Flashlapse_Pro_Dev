@@ -84,7 +84,7 @@ def timelapse(self):
             lambda: UI_Update.imaging_frame_toggle(self)
         )
         self.Timelapse_Thread.complete.connect(
-            lambda: UI_Update.update_preview_frame(self)
+            lambda: UI_Update.update_preview_frame(self, General.current_full_file_name)
         )
         self.Timelapse_Thread.countdown.connect(
             lambda: UI_Update.timelapse_countdown(self)
