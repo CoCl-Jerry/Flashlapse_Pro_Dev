@@ -503,7 +503,7 @@ class Ui_MainWindow(object):
         self.imaging_storage_directory_label.setText(_translate("MainWindow", "Sequence Title Required"))
         self.imaging_select_directory_pushButton.setText(_translate("MainWindow", "Select Storage Directory"))
         self.imaging_progress_Label.setText(_translate("MainWindow", "Progress: 0 / 5"))
-        self.imaging_countdown_label.setText(_translate("MainWindow", "Next Image: N/A s"))
+        self.imaging_countdown_label.setText(_translate("MainWindow", "Next Image: 0 s"))
         self.resolution_label_3.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Zoom Control</span></p></body></html>"))
         self.resolution_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Imaging Resolution</span></p></body></html>"))
         self.CoreCtr_label_6.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>"))

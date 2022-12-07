@@ -87,6 +87,9 @@ def timelapse_UI_update(self):
     else:
         self.imaging_start_timelapse_pushButton.setText("START TIMELAPSE")
         General.current_image_counter = 0
+        General.imaging_countdown_value = 0
+        timelapse_countdown(self)
+        imaging_validate_input(self)
 
 
 def timelapse_countdown(self):

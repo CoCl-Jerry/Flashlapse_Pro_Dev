@@ -287,7 +287,7 @@
          <item>
           <widget class="QLabel" name="imaging_countdown_label">
            <property name="text">
-            <string>Next Image: N/A s</string>
+            <string>Next Image: 0 s</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
