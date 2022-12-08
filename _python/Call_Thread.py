@@ -119,7 +119,9 @@ def ambient_sensors(self):
 
 def ambient_o2_sensor_calibration(self):
     self.o2_sensor_calibration_Thread = Threads.o2_sensor_calibration()
-    self.Ambient_Thread.started.connect(lambda: UI_Update.ambient_o2_frame_toggle(self))
-    self.Ambient_Thread.finished.connect(
+    self.o2_sensor_calibration_Thread.started.connect(
+        lambda: UI_Update.ambient_o2_frame_toggle(self)
+    )
+    self.o2_sensor_calibration_Thread.finished.connect(
         lambda: UI_Update.ambient_o2_frame_toggle(self)
     )
