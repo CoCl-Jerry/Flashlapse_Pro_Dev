@@ -133,11 +133,14 @@ def init():
     global ambient_CO2
     ambient_CO2 = []
 
-    global SCD_time_points
-    SCD_time_points = []
+    global ambient_o2
+    ambient_o2 = []
 
-    global SCD_previous_time
-    SCD_previous_time = 0
+    global ambient_sensor_time_points
+    ambient_sensor_time_points = []
+
+    global ambient_sensor_previous_time
+    ambient_sensor_previous_time = 0
 
     global ambient_temperature_offset
     ambient_temperature_offset = 0
@@ -145,11 +148,11 @@ def init():
     global ambient_humidity_offset
     ambient_humidity_offset = 0
 
-    global SCD_initial_time
-    SCD_initial_time = 0
+    global ambient_sensor_initial_time
+    ambient_sensor_initial_time = 0
 
-    global SCD_capture_interval
-    SCD_capture_interval = 5
+    global sensor_capture_interval
+    sensor_capture_interval = 5
     # end of sensor definitions
 
     # start of graph definitions
@@ -161,6 +164,9 @@ def init():
 
     global ambient_co2_graph_ref
     ambient_co2_graph_ref = ""
+
+    global ambient_o2_graph_ref
+    ambient_o2_graph_ref = ""
     # end of graph definitions
 
     # start of thread flag definitions

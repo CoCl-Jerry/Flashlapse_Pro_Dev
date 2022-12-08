@@ -105,9 +105,11 @@ def ambient_sensors(self):
         )
         self.Ambient_Thread.finished.connect(lambda: UI_Update.ambient_UI_update(self))
         self.Ambient_Thread.initialized.connect(
-            lambda: UI_Update.ambient_SCD_initialize(self)
+            lambda: UI_Update.ambient_sensor_initialize(self)
         )
-        self.Ambient_Thread.update.connect(lambda: UI_Update.ambient_SCD_update(self))
+        self.Ambient_Thread.ambient_sensor_update.connect(
+            lambda: UI_Update.ambient_sensor_update(self)
+        )
 
         General.ambient_thread_running = True
         self.Ambient_Thread.start()

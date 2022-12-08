@@ -173,16 +173,19 @@ def ambient_UI_update(self):
         self.ambient_temperture_value_label.setText("N/A °C")
 
 
-def ambient_SCD_initialize(self):
+def ambient_sensor_initialize(self):
     pen = mkPen(color=(197, 5, 12), width=2)
     General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
-        General.SCD_time_points, General.ambient_temperature, pen=pen
+        General.ambient_sensor_time_points, General.ambient_temperature, pen=pen
     )
     General.ambient_humidity_graph_ref = self.ambient_humidity_graphWidget.plot(
-        General.SCD_time_points, General.ambient_humidity, pen=pen
+        General.ambient_sensor_time_points, General.ambient_humidity, pen=pen
     )
     General.ambient_co2_graph_ref = self.ambient_co2_graphWidget.plot(
-        General.SCD_time_points, General.ambient_CO2, pen=pen
+        General.ambient_sensor_time_points, General.ambient_CO2, pen=pen
+    )
+    General.ambient_o2_graph_ref = self.ambient_o2_graphWidget.plot(
+        General.ambient_sensor_time_points, General.ambient_o2, pen=pen
     )
     amibient_update_labels(self)
 
@@ -192,19 +195,25 @@ def amibient_update_labels(self):
         str(General.ambient_temperature[-1]) + " °C"
     )
     self.ambient_humidity_value_label.setText(
-        str(General.ambient_humidity[-1]) + "%" + "rH"
+        str(General.ambient_humidity[-1]) + " %" + "rH"
     )
     self.ambient_co2_value_label.setText(str(General.ambient_CO2[-1]) + " ppm")
+    self.ambient_o2_value_label.setText(str(General.ambient_o2[-1]) + " Vol%")
 
 
-def ambient_SCD_update(self):
+def ambient_sensor_update(self):
     General.ambient_temperature_graph_ref.setData(
-        General.SCD_time_points, General.ambient_temperature
+        General.ambient_sensor_time_points, General.ambient_temperature
     )
     General.ambient_humidity_graph_ref.setData(
-        General.SCD_time_points, General.ambient_humidity
+        General.ambient_sensor_time_points, General.ambient_humidity
     )
-    General.ambient_co2_graph_ref.setData(General.SCD_time_points, General.ambient_CO2)
+    General.ambient_co2_graph_ref.setData(
+        General.ambient_sensor_time_points, General.ambient_CO2
+    )
+    General.ambient_o2_graph_ref.setData(
+        General.ambient_sensor_time_points, General.ambient_o2
+    )
     amibient_update_labels(self)
 
 
@@ -212,12 +221,14 @@ def ambient_sensor_reset(self):
     self.ambient_temperature_graphWidget.clear()
     self.ambient_humidity_graphWidget.clear()
     self.ambient_co2_graphWidget.clear()
+    self.ambient_o2_graphWidget.clear()
 
     General.ambient_temperature = []
     General.ambient_humidity = []
     General.ambient_CO2 = []
+    General.ambient_o2 = []
 
-    General.SCD_time_points = []
+    General.ambient_sensor_time_points = []
 
 
 # end of sensor UI update

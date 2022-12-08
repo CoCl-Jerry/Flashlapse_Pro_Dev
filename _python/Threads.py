@@ -5,6 +5,7 @@ import board  # type: ignore
 import adafruit_vl53l4cd  # type: ignore
 import adafruit_scd4x  # type: ignore
 from picamera import PiCamera  # type: ignore
+from DFRobot_EOxygenSensor import *
 
 import General
 from PyQt5.QtCore import QThread, pyqtSignal
@@ -185,7 +186,7 @@ class Timelapse(QThread):
 
 
 class Ambient(QThread):
-    update = pyqtSignal()
+    ambient_sensor_update = pyqtSignal()
     initialized = pyqtSignal()
 
     def __init__(self):
@@ -197,18 +198,23 @@ class Ambient(QThread):
     def run(self):
         scd4x = adafruit_scd4x.SCD4X(board.I2C())
         scd4x.start_periodic_measurement()
-        General.SCD_initial_time = perf_counter()
+
+        SEN0496 = DFRobot_EOxygenSensor_I2C(0x01, E_OXYGEN_ADDRESS_0)
+
+        General.ambient_sensor_initial_time = perf_counter()
 
         while General.ambient_thread_running:
             if (
-                perf_counter() - General.SCD_previous_time
-                > General.SCD_capture_interval
+                perf_counter() - General.ambient_sensor_previous_time
+                > General.sensor_capture_interval
             ):
                 if scd4x.data_ready:
-                    General.SCD_time_points.append(
-                        perf_counter() - General.SCD_initial_time
+                    General.ambient_sensor_time_points.append(
+                        perf_counter() - General.ambient_sensor_initial_time
                     )
-                    General.SCD_previous_time = General.SCD_time_points[-1]
+                    General.ambient_sensor_previous_time = (
+                        General.ambient_sensor_time_points[-1]
+                    )
                     General.ambient_temperature.append(
                         round(scd4x.temperature, 2) + General.ambient_temperature_offset
                     )
@@ -217,7 +223,11 @@ class Ambient(QThread):
                         + General.ambient_humidity_offset
                     )
                     General.ambient_CO2.append(scd4x.CO2)
+                    General.ambient_o2.append(
+                        round(SEN0496.read_oxygen_concentration(), 2)
+                    )
+
                     if len(General.ambient_temperature) == 1:
                         self.initialized.emit()
                     else:
-                        self.update.emit()
+                        self.ambient_sensor_update.emit()
