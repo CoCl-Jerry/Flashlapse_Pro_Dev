@@ -125,3 +125,4 @@ def ambient_o2_sensor_calibration(self):
     self.o2_sensor_calibration_Thread.finished.connect(
         lambda: UI_Update.ambient_o2_frame_toggle(self)
     )
+    self.o2_sensor_calibration_Thread.start()
