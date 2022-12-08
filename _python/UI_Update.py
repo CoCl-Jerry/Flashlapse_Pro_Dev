@@ -236,4 +236,8 @@ def ambient_sensor_reset(self):
     General.ambient_sensor_time_points = []
 
 
+def ambient_o2_frame_toggle(self):
+    self.ambient_o2_frame.setEnabled(not self.ambient_o2_frame.isEnabled())
+
+
 # end of sensor UI update

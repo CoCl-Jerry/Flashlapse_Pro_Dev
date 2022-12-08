@@ -153,6 +153,9 @@ def init():
 
     global sensor_capture_interval
     sensor_capture_interval = 5
+
+    global ambient_o2_sensor_calibration_mode
+    ambient_o2_sensor_calibration_mode = 0
     # end of sensor definitions
 
     # start of graph definitions

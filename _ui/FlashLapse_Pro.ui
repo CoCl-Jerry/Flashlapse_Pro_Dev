@@ -1287,7 +1287,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QFrame" name="frame_5">
+       <widget class="QFrame" name="ambient_o2_frame">
         <property name="geometry">
          <rect>
           <x>10</x>
