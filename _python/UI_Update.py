@@ -4,12 +4,22 @@ from pyqtgraph import mkPen  # type: ignore
 
 
 def init(self):
+    styles = {"color": "r", "font-size": "15px"}
+
     self.ambient_temperature_graphWidget.setBackground("#fbfbfb")
     self.ambient_temperature_graphWidget.showGrid(x=True, y=True)
-
-    styles = {"color": "r", "font-size": "15px"}
     self.ambient_temperature_graphWidget.setLabel("left", "Temperature (°C)", **styles)
     self.ambient_temperature_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    self.ambient_humidity_graphWidget.setBackground("#fbfbfb")
+    self.ambient_humidity_graphWidget.showGrid(x=True, y=True)
+    self.ambient_humidity_graphWidget.setLabel("left", "Temperature (°C)", **styles)
+    self.ambient_humidity_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    self.ambient_co2_graphWidget.setBackground("#fbfbfb")
+    self.ambient_co2_graphWidget.showGrid(x=True, y=True)
+    self.ambient_co2_graphWidget.setLabel("left", "Temperature (°C)", **styles)
+    self.ambient_co2_graphWidget.setLabel("bottom", "Time (s)", **styles)
 
 
 # start of error UI update
@@ -168,18 +178,33 @@ def ambient_SCD_initialize(self):
     General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
         General.SCD_time_points, General.ambient_temperature, pen=pen
     )
-    # General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
-    #     General.SCD_time_points, General.ambient_temperature, pen=pen
-    # )
+    General.ambient_humidity_graph_ref = self.ambient_humidity_graphWidget.plot(
+        General.SCD_time_points, General.ambient_humidity, pen=pen
+    )
+    General.ambient_co2_graph_ref = self.ambient_co2_graphWidget.plot(
+        General.SCD_time_points, General.ambient_CO2, pen=pen
+    )
+    amibient_update_labels(self)
+
+
+def amibient_update_labels(self):
+    self.ambient_temperture_value_label.setText(
+        str(General.ambient_temperature[-1]) + " °C"
+    )
+    self.ambient_humidity_value_label.setText(
+        str(General.ambient_humidity[-1]) + " %%rH"
+    )
+    self.ambient_co2_value_label.setText(str(General.ambient_CO2[-1]) + " ppm")
 
 
 def ambient_SCD_update(self):
     General.ambient_temperature_graph_ref.setData(
         General.SCD_time_points, General.ambient_temperature
     )
-    self.ambient_temperture_value_label.setText(
-        str(General.ambient_temperature[-1]) + " °C"
+    General.ambient_humidity_graph_ref.setData(
+        General.SCD_time_points, General.ambient_humidity
     )
+    General.ambient_co2_graph_ref.setData(General.SCD_time_points, General.ambient_CO2)
 
 
 def ambient_sensor_reset(self):

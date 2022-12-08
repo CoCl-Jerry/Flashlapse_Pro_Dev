@@ -152,6 +152,12 @@ def init():
     # start of graph definitions
     global ambient_temperature_graph_ref
     ambient_temperature_graph_ref = ""
+
+    global ambient_humidity_graph_ref
+    ambient_humidity_graph_ref = ""
+
+    global ambient_co2_graph_ref
+    ambient_co2_graph_ref = ""
     # end of graph definitions
 
     # start of thread flag definitions
