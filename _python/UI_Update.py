@@ -192,7 +192,7 @@ def amibient_update_labels(self):
         str(General.ambient_temperature[-1]) + " °C"
     )
     self.ambient_humidity_value_label.setText(
-        str(General.ambient_humidity[-1]) + " %%rH"
+        str(General.ambient_humidity[-1]) + " '%'rH"
     )
     self.ambient_co2_value_label.setText(str(General.ambient_CO2[-1]) + " ppm")
 

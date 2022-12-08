@@ -41,3 +41,12 @@ def ambient_temperature_offset(self):
     General.ambient_temperature_offset = (
         self.ambient_temperature_offset_doubleSpinBox.value()
     )
+
+
+def ambient_humidity_offset(self):
+    General.ambient_humidity_offset = self.ambient_humidity_offset_doubleSpinBox.value()
+
+
+def ambient_co2_calibration(self):
+    scd4x = adafruit_scd4x.SCD4X(board.I2C())
+    scd4x.force_calibration(self.ambient_co2_calibration_spinBox.value())

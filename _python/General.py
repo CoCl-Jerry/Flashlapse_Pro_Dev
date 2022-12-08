@@ -142,6 +142,9 @@ def init():
     global ambient_temperature_offset
     ambient_temperature_offset = 0
 
+    global ambient_humidity_offset
+    ambient_humidity_offset = 0
+
     global SCD_initial_time
     SCD_initial_time = 0
 

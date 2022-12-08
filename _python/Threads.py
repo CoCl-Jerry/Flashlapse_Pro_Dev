@@ -212,7 +212,10 @@ class Ambient(QThread):
                     General.ambient_temperature.append(
                         round(scd4x.temperature, 2) + General.ambient_temperature_offset
                     )
-                    General.ambient_humidity.append(scd4x.relative_humidity)
+                    General.ambient_humidity.append(
+                        (round(scd4x.relative_humidity), 2)
+                        + General.ambient_humidity_offset
+                    )
                     General.ambient_CO2.append(scd4x.CO2)
                     if len(General.ambient_temperature) == 1:
                         self.initialized.emit()

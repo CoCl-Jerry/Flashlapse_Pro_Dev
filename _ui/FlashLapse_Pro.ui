@@ -964,7 +964,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_11">
        <attribute name="title">
@@ -1012,19 +1012,6 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="4" rowspan="2">
-           <widget class="QLabel" name="label_6">
-            <property name="minimumSize">
-             <size>
-              <width>180</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Temperature Correction Offset:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
           <item row="0" column="5">
            <widget class="QDoubleSpinBox" name="ambient_temperature_offset_doubleSpinBox">
             <property name="minimum">
@@ -1035,6 +1022,19 @@
             </property>
            </widget>
           </item>
+          <item row="0" column="1" rowspan="2">
+           <widget class="QLabel" name="ambient_temperture_label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Current Reading:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="5">
            <widget class="QPushButton" name="ambient_temperature_offset_pushButton">
             <property name="text">
@@ -1042,8 +1042,15 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="1" rowspan="2">
-           <widget class="QLabel" name="ambient_temperture_label">
+          <item row="0" column="2" rowspan="2">
+           <widget class="QLabel" name="ambient_temperture_value_label">
+            <property name="text">
+             <string>N/A °C</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4" rowspan="2">
+           <widget class="QLabel" name="label_6">
             <property name="minimumSize">
              <size>
               <width>180</width>
@@ -1051,14 +1058,7 @@
              </size>
             </property>
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Current Temperature Reading:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" rowspan="2">
-           <widget class="QLabel" name="ambient_temperture_value_label">
-            <property name="text">
-             <string>N/A °C</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Temperature Correction Offset:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -1105,6 +1105,36 @@
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="5">
+           <widget class="QDoubleSpinBox" name="ambient_humidity_offset_doubleSpinBox">
+            <property name="minimum">
+             <double>-100.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>100.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" rowspan="2">
+           <widget class="QLabel" name="ambient_humidity_label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Current Reading:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
+           <widget class="QPushButton" name="ambient_humidity_offset_pushButton">
+            <property name="text">
+             <string>Confirm Offset</string>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="3" rowspan="2">
            <widget class="Line" name="line_4">
             <property name="orientation">
@@ -1116,42 +1146,12 @@
            <widget class="QLabel" name="label_7">
             <property name="minimumSize">
              <size>
-              <width>180</width>
+              <width>0</width>
               <height>0</height>
              </size>
             </property>
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Humidity Correction Offset:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="5">
-           <widget class="QDoubleSpinBox" name="ambient_humidity_offset_doubleSpinBox">
-            <property name="minimum">
-             <double>-100.000000000000000</double>
-            </property>
-            <property name="maximum">
-             <double>100.000000000000000</double>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="5">
-           <widget class="QPushButton" name="ambient_humidity_offset_pushButton">
-            <property name="text">
-             <string>Confirm Offset</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" rowspan="2">
-           <widget class="QLabel" name="ambient_humidity_label">
-            <property name="minimumSize">
-             <size>
-              <width>180</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Current Humidity Reading:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -1205,18 +1205,31 @@
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="3" rowspan="2">
-           <widget class="Line" name="line_6">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
+          <item row="0" column="1" rowspan="3">
+           <widget class="QLabel" name="ambient_co2_label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Current Reading:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="4" rowspan="2">
+          <item row="0" column="2" rowspan="3">
+           <widget class="QLabel" name="ambient_co2_value_label">
+            <property name="text">
+             <string>N/A ppm</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4" rowspan="3">
            <widget class="QLabel" name="label_9">
             <property name="minimumSize">
              <size>
-              <width>180</width>
+              <width>0</width>
               <height>0</height>
              </size>
             </property>
@@ -1225,37 +1238,34 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="5">
-           <widget class="QPushButton" name="ambient_co2_100calibration_pushButton">
-            <property name="text">
-             <string>100%</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1" rowspan="2">
-           <widget class="QLabel" name="ambient_co2_label">
-            <property name="minimumSize">
-             <size>
-              <width>180</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Current CO&lt;/span&gt;&lt;span style=&quot; font-weight:700; vertical-align:sub;&quot;&gt;2&lt;/span&gt;&lt;span style=&quot; font-weight:700;&quot;&gt; Reading:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" rowspan="2">
-           <widget class="QLabel" name="ambient_co2_value_label">
-            <property name="text">
-             <string>N/A ppm</string>
+          <item row="0" column="3" rowspan="3">
+           <widget class="Line" name="line_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
             </property>
            </widget>
           </item>
           <item row="0" column="5">
-           <widget class="QPushButton" name="ambient_co2_0calibration_pushButton">
+           <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>0%</string>
+             <string>Target ppm:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="6">
+           <widget class="QSpinBox" name="ambient_co2_calibration_spinBox">
+            <property name="minimum">
+             <number>400</number>
+            </property>
+            <property name="maximum">
+             <number>2000</number>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5" rowspan="2" colspan="2">
+           <widget class="QPushButton" name="ambient_co2_calibration_pushButton">
+            <property name="text">
+             <string>Calibrate</string>
             </property>
            </widget>
           </item>
