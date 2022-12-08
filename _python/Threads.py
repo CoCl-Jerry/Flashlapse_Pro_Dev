@@ -186,6 +186,7 @@ class Timelapse(QThread):
 
 class Ambient(QThread):
     update = pyqtSignal()
+    initialized = pyqtSignal()
 
     def __init__(self):
         QThread.__init__(self)
@@ -197,6 +198,7 @@ class Ambient(QThread):
         scd4x = adafruit_scd4x.SCD4X(board.I2C())
         scd4x.start_periodic_measurement()
         General.SCD_initial_time = perf_counter()
+
         while General.ambient_thread_running:
             if (
                 perf_counter() - General.SCD_previous_time
@@ -210,4 +212,7 @@ class Ambient(QThread):
                     General.ambient_temperature.append(scd4x.temperature)
                     General.ambient_humidity.append(scd4x.relative_humidity)
                     General.ambient_CO2.append(scd4x.CO2)
-                    self.update.emit()
+                    if len(General.ambient_temperature) == 1:
+                        self.initialized.emit()
+                    else:
+                        self.update.emit()

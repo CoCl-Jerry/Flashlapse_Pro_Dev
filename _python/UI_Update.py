@@ -163,11 +163,14 @@ def ambient_UI_update(self):
         self.ambient_temperture_value_label.setText("N/A °C")
 
 
-def ambient_temperature_start(self):
+def ambient_SCD_initialize(self):
     pen = mkPen(color=(197, 5, 12), width=2)
     General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
         General.SCD_time_points, General.ambient_temperature, pen=pen
     )
+    # General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
+    #     General.SCD_time_points, General.ambient_temperature, pen=pen
+    # )
 
 
 def ambient_SCD_update(self):
