@@ -241,14 +241,11 @@ class o2_sensor_calibration(QThread):
         self._running = False
 
     def run(self):
-        print("calibration started")
         SEN0496 = DFRobot_EOxygenSensor_I2C(0x01, E_OXYGEN_ADDRESS_0)
         if General.ambient_o2_sensor_calibration_mode == 0:
-            if SEN0496.clear_calibration() == 1:
-                print("clear calibration success!\n")
+            SEN0496.clear_calibration()
         elif General.ambient_o2_sensor_calibration_mode == 1:
-            if SEN0496.calibration_20_9() == 1:
-                print("20.9 calibration success!\n")
+            SEN0496.calibration_20_9()
+
         elif General.ambient_o2_sensor_calibration_mode == 2:
-            if SEN0496.calibration_99_5() == 1:
-                print("99.5 calibration success!\n")
+            SEN0496.calibration_99_5()
