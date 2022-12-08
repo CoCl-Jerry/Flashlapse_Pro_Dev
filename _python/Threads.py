@@ -211,7 +211,9 @@ class Ambient(QThread):
                         perf_counter() - General.SCD_initial_time
                     )
                     General.SCD_previous_time = General.SCD_time_points[-1]
-                    General.ambient_temperature.append(round(scd4x.temperature, 2))
+                    General.ambient_temperature.append(
+                        round(scd4x.temperature, 2) + General.ambient_temperature_offset
+                    )
                     General.ambient_humidity.append(scd4x.relative_humidity)
                     General.ambient_CO2.append(scd4x.CO2)
                     if len(General.ambient_temperature) == 1:
