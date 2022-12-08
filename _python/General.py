@@ -139,6 +139,9 @@ def init():
     global SCD_previous_time
     SCD_previous_time = 0
 
+    global ambient_temperature_offset
+    ambient_temperature_offset = 0
+
     global SCD_initial_time
     SCD_initial_time = 0
 
