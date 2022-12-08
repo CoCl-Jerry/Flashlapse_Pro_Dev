@@ -52,6 +52,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.imaging_preview_pushButton.clicked.connect(
             lambda: Call_Thread.preview(self)
         )
+        self.imaging_rotate_pushButton.clicked.connect(
+            lambda: Imaging.imaging_rotate_image_pushButton_clicked(self)
+        )
         self.imaging_live_feed_pushButton.clicked.connect(
             lambda: Call_Thread.livefeed(self)
         )
