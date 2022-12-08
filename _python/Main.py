@@ -108,6 +108,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.start_ambient_sensors_pushButton.clicked.connect(
             lambda: Call_Thread.ambient_sensors(self)
         )
+
         # end of sensor activities
 
         # Call_Thread.sensor_init(self)

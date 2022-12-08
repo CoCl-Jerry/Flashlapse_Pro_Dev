@@ -157,9 +157,10 @@ def motion_dials_update(self):
 # start of sensor UI update
 def ambient_UI_update(self):
     if General.ambient_thread_running:
-        self.imaging_start_timelapse_pushButton.setText("Stop Ambient Sensors")
+        self.start_ambient_sensors_pushButton.setText("Stop Ambient Sensors")
     else:
-        self.imaging_start_timelapse_pushButton.setText("Start Ambient Sensors")
+        self.start_ambient_sensors_pushButton.setText("Start Ambient Sensors")
+        self.ambient_temperture_value_label.setText("N/A °C")
 
 
 def ambient_temperature_start(self):
@@ -172,6 +173,9 @@ def ambient_temperature_start(self):
 def ambient_SCD_update(self):
     General.ambient_temperature_graph_ref.setData(
         General.SCD_time_points, General.ambient_temperature
+    )
+    self.ambient_temperture_value_label.setText(
+        str(General.ambient_temperature[-1]) + " °C"
     )
 
 

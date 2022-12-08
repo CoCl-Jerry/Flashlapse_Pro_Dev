@@ -976,9 +976,75 @@
           <x>10</x>
           <y>10</y>
           <width>581</width>
-          <height>451</height>
+          <height>361</height>
          </rect>
         </property>
+       </widget>
+       <widget class="QFrame" name="frame">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>380</y>
+          <width>581</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QWidget" name="gridLayoutWidget_4">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>10</y>
+           <width>561</width>
+           <height>61</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="3" rowspan="2">
+           <widget class="Line" name="line">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4" rowspan="2">
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Temperature Correction Offset:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <widget class="QDoubleSpinBox" name="ambient_offset_doubleSpinBox"/>
+          </item>
+          <item row="1" column="5">
+           <widget class="QPushButton" name="ambient_offset_pushButton">
+            <property name="text">
+             <string>Confirm Offset</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" rowspan="2">
+           <widget class="QLabel" name="ambient_temperture_label">
+            <property name="text">
+             <string>Current Reading:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2" rowspan="2">
+           <widget class="QLabel" name="ambient_temperture_value_label">
+            <property name="text">
+             <string>N/A °C</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_10">
@@ -1090,17 +1156,17 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QWidget" name="verticalLayoutWidget_4">
+    <widget class="QWidget" name="gridLayoutWidget_5">
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>5</y>
+       <y>10</y>
        <width>161</width>
-       <height>118</height>
+       <height>171</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_17">
-      <item>
+     <layout class="QGridLayout" name="gridLayout_5">
+      <item row="0" column="0" colspan="2">
        <widget class="QPushButton" name="imaging_snapshot_pushButton">
         <property name="enabled">
          <bool>true</bool>
@@ -1113,7 +1179,26 @@
         </property>
        </widget>
       </item>
-      <item>
+      <item row="4" column="0" colspan="2">
+       <widget class="QPushButton" name="imaging_start_timelapse_pushButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string/>
+        </property>
+        <property name="text">
+         <string>START TIMELAPSE</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
        <widget class="QPushButton" name="imaging_preview_pushButton">
         <property name="toolTip">
          <string>Takes a image with current settings</string>
@@ -1123,34 +1208,30 @@
         </property>
        </widget>
       </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <item>
-         <widget class="QPushButton" name="imaging_live_feed_pushButton">
-          <property name="text">
-           <string>Live Feed</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QSpinBox" name="imaging_live_feed_spinBox">
-          <property name="suffix">
-           <string> s</string>
-          </property>
-          <property name="minimum">
-           <number>1</number>
-          </property>
-          <property name="maximum">
-           <number>600</number>
-          </property>
-          <property name="value">
-           <number>5</number>
-          </property>
-         </widget>
-        </item>
-       </layout>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="imaging_live_feed_pushButton">
+        <property name="text">
+         <string>Live Feed</string>
+        </property>
+       </widget>
       </item>
-      <item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="imaging_live_feed_spinBox">
+        <property name="suffix">
+         <string> s</string>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>600</number>
+        </property>
+        <property name="value">
+         <number>5</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
        <widget class="QPushButton" name="imaging_rotate_pushButton">
         <property name="enabled">
          <bool>true</bool>
@@ -1164,25 +1245,6 @@
        </widget>
       </item>
      </layout>
-    </widget>
-    <widget class="QPushButton" name="imaging_start_timelapse_pushButton">
-     <property name="enabled">
-      <bool>false</bool>
-     </property>
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>120</y>
-       <width>161</width>
-       <height>61</height>
-      </rect>
-     </property>
-     <property name="toolTip">
-      <string/>
-     </property>
-     <property name="text">
-      <string>START TIMELAPSE</string>
-     </property>
     </widget>
    </widget>
    <widget class="QFrame" name="Capture_frame_2">
@@ -1208,15 +1270,52 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>151</width>
+       <width>141</width>
        <height>171</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
+      <item row="0" column="0" colspan="2">
        <widget class="QPushButton" name="start_ambient_sensors_pushButton">
         <property name="text">
          <string>Start Ambient Sensors</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="spinBox">
+        <property name="suffix">
+         <string> s</string>
+        </property>
+        <property name="prefix">
+         <string/>
+        </property>
+        <property name="minimum">
+         <number>5</number>
+        </property>
+        <property name="maximum">
+         <number>999</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Reset Sensors</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Sensor Interval:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Start Soil Sensors</string>
         </property>
        </widget>
       </item>
