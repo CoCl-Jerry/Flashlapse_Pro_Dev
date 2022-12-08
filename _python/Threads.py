@@ -197,6 +197,8 @@ class Ambient(QThread):
     def run(self):
         scd4x = adafruit_scd4x.SCD4X(board.I2C())
         scd4x.start_periodic_measurement()
+        while not scd4x.data_ready:
+            pass
         General.SCD_initial_time = perf_counter()
 
         while General.ambient_thread_running:
