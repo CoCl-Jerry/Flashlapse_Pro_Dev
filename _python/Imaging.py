@@ -1,5 +1,6 @@
 import General
 import UI_Update
+import Call_Thread
 from PyQt5.QtWidgets import QFileDialog
 
 
@@ -70,3 +71,8 @@ def imaging_AOI_slider_changed(self):
     self.imaging_yAxis_label.setText(
         "AXIS B: " + str(self.imaging_yAxis_horizontalSlider.sliderPosition() / 100)
     )
+
+
+def imaging_rotate_image_pushButton_clicked(self):
+    General.imaging_rotation = (General.imaging_rotation + 1) % 4
+    Call_Thread.snapshot(self)

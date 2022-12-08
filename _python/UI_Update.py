@@ -205,6 +205,7 @@ def ambient_SCD_update(self):
         General.SCD_time_points, General.ambient_humidity
     )
     General.ambient_co2_graph_ref.setData(General.SCD_time_points, General.ambient_CO2)
+    amibient_update_labels(self)
 
 
 def ambient_sensor_reset(self):
