@@ -13,13 +13,18 @@ def init(self):
 
     self.ambient_humidity_graphWidget.setBackground("#fbfbfb")
     self.ambient_humidity_graphWidget.showGrid(x=True, y=True)
-    self.ambient_humidity_graphWidget.setLabel("left", "Temperature (°C)", **styles)
+    self.ambient_humidity_graphWidget.setLabel("left", "Humidity (%)", **styles)
     self.ambient_humidity_graphWidget.setLabel("bottom", "Time (s)", **styles)
 
     self.ambient_co2_graphWidget.setBackground("#fbfbfb")
     self.ambient_co2_graphWidget.showGrid(x=True, y=True)
-    self.ambient_co2_graphWidget.setLabel("left", "Temperature (°C)", **styles)
+    self.ambient_co2_graphWidget.setLabel("left", "Carbon Dioxide (PPM)", **styles)
     self.ambient_co2_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    self.ambient_o2_graphWidget.setBackground("#fbfbfb")
+    self.ambient_o2_graphWidget.showGrid(x=True, y=True)
+    self.ambient_o2_graphWidget.setLabel("left", "Oxygen (%)", **styles)
+    self.ambient_o2_graphWidget.setLabel("bottom", "Time (s)", **styles)
 
 
 # start of error UI update

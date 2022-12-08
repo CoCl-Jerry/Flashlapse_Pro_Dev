@@ -124,6 +124,17 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
             lambda: Sensors.ambient_co2_calibration(self)
         )
 
+        self.ambient_o2_reset_calibration_pushButton.clicked.connect(
+            lambda: Sensors.ambient_o2_calibration(0)
+        )
+
+        self.ambient_o2_21_calibration_pushButton.clicked.connect(
+            lambda: Sensors.ambient_o2_calibration(1)
+        )
+
+        self.ambient_o2_100_calibration_pushButton.clicked.connect(
+            lambda: Sensors.ambient_o2_calibration(2)
+        )
         # end of sensor activities
 
         # Call_Thread.sensor_init(self)

@@ -2,6 +2,7 @@
 import board  # type: ignore
 import adafruit_vl53l4cd  # type: ignore
 import adafruit_scd4x  # type: ignore
+from DFRobot_EOxygenSensor import *
 
 import General
 import UI_Update
@@ -50,3 +51,16 @@ def ambient_humidity_offset(self):
 def ambient_co2_calibration(self):
     scd4x = adafruit_scd4x.SCD4X(board.I2C())
     scd4x.force_calibration(self.ambient_co2_calibration_spinBox.value())
+
+
+def ambient_o2_calibration(mode):
+    with DFRobot_EOxygenSensor_I2C(0x01, E_OXYGEN_ADDRESS_0) as SEN0496:
+        if mode == 0:
+            if SEN0496.oxygen.clear_calibration() == 1:
+                print("calibration reset success!\n")
+        elif mode == 1:
+            if SEN0496.calibration_20_9() == 1:
+                print("20.9 calibration success!\n")
+        elif mode == 2:
+            if SEN0496.calibration_99_5() == 1:
+                print("99.5 calibration success!\n")
