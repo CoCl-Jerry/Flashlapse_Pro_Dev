@@ -1,4 +1,4 @@
-def crc16(data: str, poly: int = 0x18005) -> str:
+def crc16(data: str, poly: int = 0xA001) -> str:
     # convert the hexadecimal string to a bytes object
     data = bytes.fromhex(data)
     # initialize the CRC to 0
