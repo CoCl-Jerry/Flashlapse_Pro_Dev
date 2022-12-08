@@ -54,13 +54,14 @@ def ambient_co2_calibration(self):
 
 
 def ambient_o2_calibration(mode):
-    with DFRobot_EOxygenSensor_I2C(0x01, E_OXYGEN_ADDRESS_0) as SEN0496:
-        if mode == 0:
-            if SEN0496.oxygen.clear_calibration() == 1:
-                print("calibration reset success!\n")
-        elif mode == 1:
-            if SEN0496.calibration_20_9() == 1:
-                print("20.9 calibration success!\n")
-        elif mode == 2:
-            if SEN0496.calibration_99_5() == 1:
-                print("99.5 calibration success!\n")
+
+    SEN0496 = DFRobot_EOxygenSensor_I2C(0x01, E_OXYGEN_ADDRESS_0)
+    if mode == 0:
+        if SEN0496.oxygen.clear_calibration() == 1:
+            print("calibration reset success!\n")
+    elif mode == 1:
+        if SEN0496.calibration_20_9() == 1:
+            print("20.9 calibration success!\n")
+    elif mode == 2:
+        if SEN0496.calibration_99_5() == 1:
+            print("99.5 calibration success!\n")
