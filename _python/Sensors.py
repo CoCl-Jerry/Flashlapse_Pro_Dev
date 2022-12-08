@@ -39,5 +39,5 @@ def TOF_range(self):
 
 def ambient_temperature_offset(self):
     scd4x = adafruit_scd4x.SCD4X(board.I2C())
-    scd4x.temperature_offset(self.ambient_temperature_offset_doubleSpinBox.value())
+    scd4x.temperature_offset: self.ambient_temperature_offset_doubleSpinBox.value()
     scd4x.persist_settings()
