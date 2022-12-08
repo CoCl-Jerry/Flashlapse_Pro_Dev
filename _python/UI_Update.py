@@ -182,4 +182,16 @@ def ambient_SCD_update(self):
     )
 
 
+def ambient_sensor_reset(self):
+    self.ambient_temperature_graphWidget.clear()
+    self.ambient_humidity_graphWidget.clear()
+    self.ambient_co2_graphWidget.clear()
+
+    General.ambient_temperature = []
+    General.ambient_humidity = []
+    General.ambient_CO2 = []
+
+    General.SCD_time_points = []
+
+
 # end of sensor UI update
