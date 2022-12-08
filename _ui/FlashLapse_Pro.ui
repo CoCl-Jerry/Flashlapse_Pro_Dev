@@ -1020,10 +1020,17 @@
            </widget>
           </item>
           <item row="0" column="5">
-           <widget class="QDoubleSpinBox" name="ambient_offset_doubleSpinBox"/>
+           <widget class="QDoubleSpinBox" name="ambient_temperature_offset_doubleSpinBox">
+            <property name="minimum">
+             <double>-100.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>100.000000000000000</double>
+            </property>
+           </widget>
           </item>
           <item row="1" column="5">
-           <widget class="QPushButton" name="ambient_offset_pushButton">
+           <widget class="QPushButton" name="ambient_temperature_offset_pushButton">
             <property name="text">
              <string>Confirm Offset</string>
             </property>
