@@ -238,6 +238,7 @@ def ambient_sensor_reset(self):
 
 def ambient_o2_frame_toggle(self):
     self.ambient_o2_frame.setEnabled(not self.ambient_o2_frame.isEnabled())
+    print("toggle")
 
 
 # end of sensor UI update
