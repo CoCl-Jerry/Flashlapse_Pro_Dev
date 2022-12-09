@@ -3,12 +3,13 @@ import UI_Update
 import Call_Thread
 from PyQt5.QtWidgets import QFileDialog
 
-
+# ---------------------------------------------------------------------------- #
 def imaging_sequence_title_changed(self):
     General.imaging_sequence_title = self.imaging_sequence_title_lineEdit.text()
     UI_Update.imaging_validate_input(self)
 
 
+# ---------------------------------------------------------------------------- #
 def imaging_add_date(self):
     General.imaging_sequence_title = (
         General.imaging_sequence_title + "_" + General.current_date
@@ -17,16 +18,19 @@ def imaging_add_date(self):
     UI_Update.imaging_validate_input(self)
 
 
+# ---------------------------------------------------------------------------- #
 def imaging_capture_interval_changed(self):
     General.imaging_capture_interval = self.imaging_capture_interval_spinBox.value()
     UI_Update.imaging_validate_input(self)
 
 
+# ---------------------------------------------------------------------------- #
 def imaging_sequence_duration_changed(self):
     General.imaging_sequence_duration = self.imaging_sequence_duration_spinBox.value()
     UI_Update.imaging_validate_input(self)
 
 
+# ---------------------------------------------------------------------------- #
 def imaging_select_directory_pushButton_clicked(self):
     temp = str(QFileDialog.getExistingDirectory(self, "Select Directory", "/media/pi"))
     if len(temp) != 0:
@@ -34,6 +38,7 @@ def imaging_select_directory_pushButton_clicked(self):
     UI_Update.imaging_validate_input(self)
 
 
+# ---------------------------------------------------------------------------- #
 def imaging_settings_update(self):
     General.AOI_X = self.imaging_xAxis_horizontalSlider.sliderPosition() / 100
     General.AOI_Y = self.imaging_xAxis_horizontalSlider.sliderPosition() / 100
@@ -64,15 +69,7 @@ def imaging_settings_update(self):
     self.imaging_progress_bar.setMaximum(General.imaging_capture_total)
 
 
-def imaging_AOI_slider_changed(self):
-    self.imaging_xAxis_label.setText(
-        "AXIS A: " + str(self.imaging_xAxis_horizontalSlider.sliderPosition() / 100)
-    )
-    self.imaging_yAxis_label.setText(
-        "AXIS B: " + str(self.imaging_yAxis_horizontalSlider.sliderPosition() / 100)
-    )
-
-
+# ---------------------------------------------------------------------------- #
 def imaging_rotate_image_pushButton_clicked(self):
     General.imaging_rotation = (General.imaging_rotation + 1) % 4
     Call_Thread.snapshot(self)

@@ -2,8 +2,11 @@ import General
 from PyQt5.QtGui import QImage, QPixmap
 from pyqtgraph import mkPen  # type: ignore
 
-
-def init(self):
+# ---------------------------------------------------------------------------- #
+#                             graph initialization                             #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+def graph_init(self):
     styles = {"color": "r", "font-size": "15px"}
 
     self.ambient_temperature_graphWidget.setBackground("#fbfbfb")
@@ -32,7 +35,10 @@ def init(self):
     self.soil_temperature_graphWidget.setLabel("bottom", "Time (s)", **styles)
 
 
-# start of error UI update
+# ---------------------------------------------------------------------------- #
+#                                error UI update                               #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def error_UI_update(self):
     if General.camera_error:
         self.imaging_preview_frame.setPixmap(QPixmap(General.camera_error_image))
@@ -42,9 +48,10 @@ def error_UI_update(self):
         General.communication_error = False
 
 
-# end of error UI update
-
-# start of TOF UI update
+# ---------------------------------------------------------------------------- #
+#                               motion UI update                               #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def TOF_update(self):
     if not General.TOF_error:
         self.motion_rangefinder_data_label.setText(
@@ -57,15 +64,60 @@ def TOF_update(self):
         self.motion_rangefinder_data_label.setText("Range Finder Error")
 
 
+# ---------------------------------------------------------------------------- #
 def TOF_update_pushButton_toggle(self):
     self.TOF_update_pushButton.setEnabled(not self.TOF_update_pushButton.isEnabled())
 
 
-#  end of TOF UI update
+# ---------------------------------------------------------------------------- #
+def motion_frames_toggle(self):
+    self.motion_control_frame.setEnabled(not self.motion_control_frame.isEnabled())
+    self.motion_slider_frame.setEnabled(not self.motion_slider_frame.isEnabled())
+    self.motion_settings_frame.setEnabled(not self.motion_settings_frame.isEnabled())
 
-# start of imaging UI update
+
+# ---------------------------------------------------------------------------- #
+def motion_target_position_setting_update(self):
+    self.motion_target_position_setting_label.setText(
+        str(int(General.target_position)) + " mm"
+    )
+
+    self.motion_position_verticalSlider.blockSignals(True)
+    self.motion_new_position_spinBox.blockSignals(True)
+
+    self.motion_position_verticalSlider.setValue(General.target_position)
+    self.motion_new_position_spinBox.setValue(General.target_position)
+
+    self.motion_new_position_spinBox.blockSignals(False)
+    self.motion_position_verticalSlider.blockSignals(False)
 
 
+# ---------------------------------------------------------------------------- #
+def motion_slider_value_changed(self):
+    General.target_position = self.motion_position_verticalSlider.value()
+    motion_target_position_setting_update(self)
+
+
+# ---------------------------------------------------------------------------- #
+def motion_spinbox_value_changed(self):
+    General.target_position = self.motion_new_position_spinBox.value()
+    motion_target_position_setting_update(self)
+
+
+# ---------------------------------------------------------------------------- #
+def motion_dials_update(self):
+    self.motion_speed_dial_value_label.setText(
+        "Speed Level: " + str(self.motion_speed_dial.value())
+    )
+    self.motion_torque_dial_value_label.setText(
+        "Torque Level: " + str(self.motion_torque_dial.value())
+    )
+
+
+# ---------------------------------------------------------------------------- #
+#                               imaging UI update                              #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def imaging_validate_input(self):
     General.full_storage_directory = (
         General.default_storage_directory + "/" + General.imaging_sequence_title
@@ -96,10 +148,12 @@ def imaging_validate_input(self):
     self.imaging_progress_bar.setValue(General.current_image_counter)
 
 
+# ---------------------------------------------------------------------------- #
 def imaging_frame_toggle(self):
     self.imaging_capture_frame.setEnabled(not self.imaging_capture_frame.isEnabled())
 
 
+# ---------------------------------------------------------------------------- #
 def update_preview_frame(self, file):
     if not General.camera_error:
         self.imaging_progress_Label.setText(
@@ -112,6 +166,7 @@ def update_preview_frame(self, file):
         self.imaging_preview_frame.setPixmap(QPixmap(QImage(file)))
 
 
+# ---------------------------------------------------------------------------- #
 def timelapse_UI_update(self):
     if General.timelapse_thread_running:
         self.imaging_start_timelapse_pushButton.setText("END TIMELAPSE")
@@ -123,58 +178,27 @@ def timelapse_UI_update(self):
         imaging_validate_input(self)
 
 
+# ---------------------------------------------------------------------------- #
 def timelapse_countdown(self):
     self.imaging_countdown_label.setText(
         "Next Image: " + str(General.imaging_countdown_value) + " s"
     )
 
 
-# end of imaging UI update
-
-# motion UI update
-def motion_frames_toggle(self):
-    self.motion_control_frame.setEnabled(not self.motion_control_frame.isEnabled())
-    self.motion_slider_frame.setEnabled(not self.motion_slider_frame.isEnabled())
-    self.motion_settings_frame.setEnabled(not self.motion_settings_frame.isEnabled())
-
-
-def motion_target_position_setting_update(self):
-    self.motion_target_position_setting_label.setText(
-        str(int(General.target_position)) + " mm"
+# ---------------------------------------------------------------------------- #
+def imaging_AOI_slider_changed(self):
+    self.imaging_xAxis_label.setText(
+        "AXIS A: " + str(self.imaging_xAxis_horizontalSlider.sliderPosition() / 100)
     )
-
-    self.motion_position_verticalSlider.blockSignals(True)
-    self.motion_new_position_spinBox.blockSignals(True)
-
-    self.motion_position_verticalSlider.setValue(General.target_position)
-    self.motion_new_position_spinBox.setValue(General.target_position)
-
-    self.motion_new_position_spinBox.blockSignals(False)
-    self.motion_position_verticalSlider.blockSignals(False)
-
-
-def motion_slider_value_changed(self):
-    General.target_position = self.motion_position_verticalSlider.value()
-    motion_target_position_setting_update(self)
-
-
-def motion_spinbox_value_changed(self):
-    General.target_position = self.motion_new_position_spinBox.value()
-    motion_target_position_setting_update(self)
-
-
-def motion_dials_update(self):
-    self.motion_speed_dial_value_label.setText(
-        "Speed Level: " + str(self.motion_speed_dial.value())
-    )
-    self.motion_torque_dial_value_label.setText(
-        "Torque Level: " + str(self.motion_torque_dial.value())
+    self.imaging_yAxis_label.setText(
+        "AXIS B: " + str(self.imaging_yAxis_horizontalSlider.sliderPosition() / 100)
     )
 
 
-# end of motion UI update
-
-# start of sensor UI update
+# ---------------------------------------------------------------------------- #
+#                           ambient sensor UI update                           #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def ambient_UI_update(self):
     if General.ambient_thread_running:
         self.start_ambient_sensors_pushButton.setText("Stop Ambient Sensors")
@@ -183,14 +207,7 @@ def ambient_UI_update(self):
         self.ambient_temperture_value_label.setText("N/A °C")
 
 
-def soil_UI_update(self):
-    if General.soil_thread_running:
-        self.start_soil_sensors_pushButton.setText("Stop Soil Sensors")
-    else:
-        self.start_soil_sensors_pushButton.setText("Start Soil Sensors")
-        self.soil_temperture_value_label.setText("N/A °C")
-
-
+# ---------------------------------------------------------------------------- #
 def ambient_sensor_initialize(self):
     pen = mkPen(color=(197, 5, 12), width=2)
     General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
@@ -208,15 +225,7 @@ def ambient_sensor_initialize(self):
     amibient_update_labels(self)
 
 
-def soil_sensor_initialize(self):
-    pen = mkPen(color=(197, 5, 12), width=2)
-    General.soil_temperature_graph_ref = self.soil_temperature_graphWidget.plot(
-        General.soil_sensor_time_points, General.soil_temperature, pen=pen
-    )
-
-    amibient_update_labels(self)
-
-
+# ---------------------------------------------------------------------------- #
 def amibient_update_labels(self):
     self.ambient_temperture_value_label.setText(
         str(General.ambient_temperature[-1]) + " °C"
@@ -228,6 +237,7 @@ def amibient_update_labels(self):
     self.ambient_o2_value_label.setText(str(General.ambient_o2[-1]) + " Vol%")
 
 
+# ---------------------------------------------------------------------------- #
 def ambient_sensor_update(self):
     General.ambient_temperature_graph_ref.setData(
         General.ambient_sensor_time_points, General.ambient_temperature
@@ -244,6 +254,7 @@ def ambient_sensor_update(self):
     amibient_update_labels(self)
 
 
+# ---------------------------------------------------------------------------- #
 def ambient_sensor_reset(self):
     self.ambient_temperature_graphWidget.clear()
     self.ambient_humidity_graphWidget.clear()
@@ -258,10 +269,34 @@ def ambient_sensor_reset(self):
     General.ambient_sensor_time_points = []
 
 
+# ---------------------------------------------------------------------------- #
 def ambient_o2_frame_toggle(self):
     self.ambient_o2_frame.setEnabled(not self.ambient_o2_frame.isEnabled())
 
 
+# ---------------------------------------------------------------------------- #
+#                             soil sensor UI update                            #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+def soil_UI_update(self):
+    if General.soil_thread_running:
+        self.start_soil_sensors_pushButton.setText("Stop Soil Sensors")
+    else:
+        self.start_soil_sensors_pushButton.setText("Start Soil Sensors")
+        self.soil_temperture_value_label.setText("N/A °C")
+
+
+# ---------------------------------------------------------------------------- #
+def soil_sensor_initialize(self):
+    pen = mkPen(color=(197, 5, 12), width=2)
+    General.soil_temperature_graph_ref = self.soil_temperature_graphWidget.plot(
+        General.soil_sensor_time_points, General.soil_temperature, pen=pen
+    )
+
+    amibient_update_labels(self)
+
+
+# ---------------------------------------------------------------------------- #
 def soil_sensor_update(self):
     General.soil_temperature_graph_ref.setData(
         General.soil_sensor_time_points, General.soil_temperature
@@ -269,8 +304,6 @@ def soil_sensor_update(self):
     soil_update_labels(self)
 
 
+# ---------------------------------------------------------------------------- #
 def soil_update_labels(self):
     self.soil_temperture_value_label.setText(str(General.soil_temperature[-1]) + " °C")
-
-
-# end of sensor UI update

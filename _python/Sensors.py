@@ -8,7 +8,7 @@ import General
 import UI_Update
 import Call_Thread
 
-
+# ---------------------------------------------------------------------------- #
 def init(self):
     # start of sensor tests and initialization
 
@@ -17,6 +17,10 @@ def init(self):
     pass
 
 
+# ---------------------------------------------------------------------------- #
+#                             TOF sensor functions                             #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def TOF_range(self):
     UI_Update.TOF_update_pushButton_toggle(self)
     try:
@@ -39,26 +43,37 @@ def TOF_range(self):
     UI_Update.TOF_update_pushButton_toggle(self)
 
 
+# ---------------------------------------------------------------------------- #
+#                           ambient sensor functions                           #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def ambient_temperature_offset(self):
     General.ambient_temperature_offset = (
         self.ambient_temperature_offset_doubleSpinBox.value()
     )
 
 
+# ---------------------------------------------------------------------------- #
 def ambient_humidity_offset(self):
     General.ambient_humidity_offset = self.ambient_humidity_offset_doubleSpinBox.value()
 
 
+# ---------------------------------------------------------------------------- #
 def ambient_co2_calibration(self):
     scd4x = adafruit_scd4x.SCD4X(board.I2C())
     scd4x.force_calibration(self.ambient_co2_calibration_spinBox.value())
 
 
+# ---------------------------------------------------------------------------- #
 def ambient_o2_calibration(self, mode):
     General.ambient_o2_sensor_calibration_mode = mode
     Call_Thread.ambient_o2_sensor_calibration(self)
 
 
+# ---------------------------------------------------------------------------- #
+#                             soil sensor functions                            #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def hexListConvert(data: str):
 
     hex_bytes = bytes.fromhex(data)  # Takes a hex string and turns it into a byte array
@@ -67,6 +82,7 @@ def hexListConvert(data: str):
     return hex_list
 
 
+# ---------------------------------------------------------------------------- #
 def crc16_generator_hex(data: list[int]) -> str:
     data = bytearray(data)
     crc = 0xFFFF
@@ -87,6 +103,7 @@ def crc16_generator_hex(data: list[int]) -> str:
     return crc_to_send
 
 
+# ---------------------------------------------------------------------------- #
 def extractor(hex_string):
     length = len(hex_string.strip())
     FDN = 6  # first disposable number of bits
@@ -124,4 +141,5 @@ def extractor(hex_string):
         dec_ = int(bytes_segment.hex(), 16)
         obj[keyValues[i]] = dec_
         dataList.append(dec_)
+    # obj["Time"] = datetime.now().strftime("%H:%M:%S")
     return obj

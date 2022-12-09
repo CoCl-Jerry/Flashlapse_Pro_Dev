@@ -3,7 +3,7 @@ import UI_Update
 import Call_Thread
 import Communication
 
-
+# ---------------------------------------------------------------------------- #
 def postion_increment(self, direction):
     if (
         direction
@@ -30,6 +30,7 @@ def postion_increment(self, direction):
     build_motion_cmd(self)
 
 
+# ---------------------------------------------------------------------------- #
 def move_to_position(self):
     Call_Thread.motion(self)
     if General.target_position > General.current_position:
@@ -39,6 +40,7 @@ def move_to_position(self):
     build_motion_cmd(self)
 
 
+# ---------------------------------------------------------------------------- #
 def build_motion_cmd(self):
     cmd = (
         "2~1~"
@@ -53,6 +55,7 @@ def build_motion_cmd(self):
     Communication.sendCMD(cmd)
 
 
+# ---------------------------------------------------------------------------- #
 def disable_motor():
     General.motion_thread_running = False
     build_cmd = "2~0~1"

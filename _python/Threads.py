@@ -12,7 +12,10 @@ import Sensors
 from PyQt5.QtCore import QThread, pyqtSignal
 from time import sleep, perf_counter
 
-
+# ---------------------------------------------------------------------------- #
+#                              threads for motion                              #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 class Motion(QThread):
     stop_motor = pyqtSignal()
     sensor_read = pyqtSignal()
@@ -61,6 +64,10 @@ class Motion(QThread):
             General.TOF_error = True
 
 
+# ---------------------------------------------------------------------------- #
+#                              thread for imaging                              #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 class Snap(QThread):
     def __init__(self):
         QThread.__init__(self)
@@ -85,6 +92,7 @@ class Snap(QThread):
             General.camera_error = True
 
 
+# ---------------------------------------------------------------------------- #
 class Preview(QThread):
     def __init__(self):
         QThread.__init__(self)
@@ -113,6 +121,7 @@ class Preview(QThread):
             General.camera_error = True
 
 
+# ---------------------------------------------------------------------------- #
 class Livefeed(QThread):
     def __init__(self):
         QThread.__init__(self)
@@ -138,6 +147,7 @@ class Livefeed(QThread):
             General.camera_error = True
 
 
+# ---------------------------------------------------------------------------- #
 class Timelapse(QThread):
     imaging = pyqtSignal()
     complete = pyqtSignal()
@@ -186,6 +196,10 @@ class Timelapse(QThread):
         General.timelapse_thread_running = False
 
 
+# ---------------------------------------------------------------------------- #
+#                          threads for ambient sensors                         #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 class Ambient(QThread):
     ambient_sensor_update = pyqtSignal()
     initialized = pyqtSignal()
@@ -234,6 +248,7 @@ class Ambient(QThread):
                         self.ambient_sensor_update.emit()
 
 
+# ---------------------------------------------------------------------------- #
 class o2_sensor_calibration(QThread):
     def __init__(self):
         QThread.__init__(self)
@@ -252,6 +267,10 @@ class o2_sensor_calibration(QThread):
             SEN0496.calibration_99_5()
 
 
+# ---------------------------------------------------------------------------- #
+#                           threads for soil sensors                           #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 class Soil(QThread):
     soil_sensor_update = pyqtSignal()
     initialized = pyqtSignal()
@@ -280,42 +299,3 @@ class Soil(QThread):
                 self.initialized.emit()
             else:
                 self.soil_sensor_update.emit()
-
-            # output = Sensors.hexListConvert(line.hex())
-            # print(int(str(output[4]) + str(output[5])))
-
-        # scd4x = adafruit_scd4x.SCD4X(board.I2C())
-        # scd4x.start_periodic_measurement()
-
-        # SEN0496 = DFRobot_EOxygenSensor_I2C(0x01, E_OXYGEN_ADDRESS_0)
-
-        # General.ambient_sensor_initial_time = perf_counter()
-
-        # while General.ambient_thread_running:
-        #     if (
-        #         perf_counter() - General.ambient_sensor_previous_time
-        #         > General.sensor_capture_interval
-        #     ):
-        #         if scd4x.data_ready:
-        #             General.ambient_sensor_time_points.append(
-        #                 perf_counter() - General.ambient_sensor_initial_time
-        #             )
-        #             General.ambient_sensor_previous_time = (
-        #                 General.ambient_sensor_time_points[-1]
-        #             )
-        #             General.ambient_temperature.append(
-        #                 round(scd4x.temperature, 2) + General.ambient_temperature_offset
-        #             )
-        #             General.ambient_humidity.append(
-        #                 round(scd4x.relative_humidity, 2)
-        #                 + General.ambient_humidity_offset
-        #             )
-        #             General.ambient_CO2.append(scd4x.CO2)
-        #             General.ambient_o2.append(
-        #                 round(SEN0496.read_oxygen_concentration(), 2)
-        #             )
-
-        #             if len(General.ambient_temperature) == 1:
-        #                 self.initialized.emit()
-        #             else:
-        #                 self.ambient_sensor_update.emit()

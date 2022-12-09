@@ -6,8 +6,10 @@ import Imaging
 
 import os
 
-
-# call thread for motion control
+# ---------------------------------------------------------------------------- #
+#                            call thread for motion                            #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def motion(self):
     self.Motion_Thread = Threads.Motion()
     self.Motion_Thread.stop_motor.connect(lambda: Motion.disable_motor())
@@ -19,6 +21,10 @@ def motion(self):
     self.Motion_Thread.start()
 
 
+# ---------------------------------------------------------------------------- #
+#                            call thread for imaging                           #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def snapshot(self):
 
     Imaging.imaging_settings_update(self)
@@ -33,6 +39,7 @@ def snapshot(self):
     self.Snap_Thread.start()
 
 
+# ---------------------------------------------------------------------------- #
 def preview(self):
 
     Imaging.imaging_settings_update(self)
@@ -58,6 +65,7 @@ def preview(self):
     self.Preview_Thread.start()
 
 
+# ---------------------------------------------------------------------------- #
 def livefeed(self):
     Imaging.imaging_settings_update(self)
     self.Livefeed_Thread = Threads.Livefeed()
@@ -66,6 +74,7 @@ def livefeed(self):
     self.Livefeed_Thread.start()
 
 
+# ---------------------------------------------------------------------------- #
 def timelapse(self):
 
     if not General.timelapse_thread_running:
@@ -96,6 +105,10 @@ def timelapse(self):
         UI_Update.timelapse_UI_update(self)
 
 
+# ---------------------------------------------------------------------------- #
+#                        call thread for ambient sensors                       #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def ambient_sensors(self):
     if not General.ambient_thread_running:
         self.Ambient_Thread = Threads.Ambient()
@@ -117,6 +130,7 @@ def ambient_sensors(self):
         General.ambient_thread_running = False
 
 
+# ---------------------------------------------------------------------------- #
 def ambient_o2_sensor_calibration(self):
     self.o2_sensor_calibration_Thread = Threads.o2_sensor_calibration()
     self.o2_sensor_calibration_Thread.started.connect(
@@ -128,6 +142,10 @@ def ambient_o2_sensor_calibration(self):
     self.o2_sensor_calibration_Thread.start()
 
 
+# ---------------------------------------------------------------------------- #
+#                          call thread for soil sensor                         #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
 def soil_sensors(self):
     if not General.ambient_thread_running:
         self.Soil_Thread = Threads.Soil()

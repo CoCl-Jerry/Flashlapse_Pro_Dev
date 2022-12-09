@@ -1,7 +1,7 @@
 import General
 import smbus  # type: ignore
 
-
+# ------------------ for sending i2c commands to the arduino ----------------- #
 def sendCMD(cont):
     print("sending command...\n" + cont)
     temp = cont + "\n"

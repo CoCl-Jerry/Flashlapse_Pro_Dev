@@ -4,7 +4,10 @@ import serial  # type: ignore
 
 
 def init():
-    # start of general definitions
+
+    # ---------------------------------------------------------------------------- #
+    #                         start of general declarations                        #
+    # ---------------------------------------------------------------------------- #
     global current_date
     current_date = time.strftime("%m_%d_%Y")
 
@@ -18,49 +21,63 @@ def init():
         timeout=1,
     )
 
-    global soil_sensor_request
-    soil_sensor_request = bytes([0x01, 0x03, 0x02, 0x00, 0x00, 0x07, 0x05, 0xB0])
+    # ---------------------------------------------------------------------------- #
+    #                       start of thread flag declarations                      #
+    # ---------------------------------------------------------------------------- #
+    global motion_thread_running
+    motion_thread_running = False
 
-    global soil_data
-    soil_data = ""
-    # end of general definitions
+    global timelapse_thread_running
+    timelapse_thread_running = False
 
-    # start of error definitions
+    global ambient_thread_running
+    ambient_thread_running = False
+
+    global soil_thread_running
+    soil_thread_running = False
+
+    # ---------------------------------------------------------------------------- #
+    #                       start of error flag declarations                       #
+    # ---------------------------------------------------------------------------- #
     global TOF_error
     TOF_error = False
 
     global communication_error
     communication_error = False
 
-    global communication_error_image
-    communication_error_image = QtGui.QImage("../_image/communication_error.png")
-
     global motor_error
     motor_error = False
-
-    global motor_error_image
-    motor_error_image = QtGui.QImage("../_image/motor_error.png")
 
     global camera_error
     camera_error = False
 
-    global camera_error_image
-    camera_error_image = QtGui.QImage("../_image/camera_error.png")
-
     global rangefinder_error
     rangefinder_error = False
-
-    global rangefinder_error_image
-    rangefinder_error_image = QtGui.QImage("../_image/rangefinder_error.png")
 
     global soil_sensor_error
     soil_sensor_error = False
 
+    # ---------------------------------------------------------------------------- #
+    #                       start of error image declarations                      #
+    # ---------------------------------------------------------------------------- #
+    global communication_error_image
+    communication_error_image = QtGui.QImage("../_image/communication_error.png")
+
+    global motor_error_image
+    motor_error_image = QtGui.QImage("../_image/motor_error.png")
+
+    global camera_error_image
+    camera_error_image = QtGui.QImage("../_image/camera_error.png")
+
+    global rangefinder_error_image
+    rangefinder_error_image = QtGui.QImage("../_image/rangefinder_error.png")
+
     global soil_sensor_error_image
     soil_sensor_error_image = QtGui.QImage("../_image/soil_sensor_error.png")
-    # end of error definitions
 
-    # start of imaging definitions
+    # ---------------------------------------------------------------------------- #
+    #                         start of imaging declarations                        #
+    # ---------------------------------------------------------------------------- #
     global imaging_capture_total
     imaging_capture_total = 5
 
@@ -114,9 +131,9 @@ def init():
     global live_duration
     live_duration = 5
 
-    # end of imaging definitions
-
-    # start of motor definitions
+    # ---------------------------------------------------------------------------- #
+    #                         start of motion declarations                         #
+    # ---------------------------------------------------------------------------- #
     global current_speed
     current_speed = 2
 
@@ -138,14 +155,20 @@ def init():
     global min_position
     min_position = 65
 
-    # end of motor definitions
+    # ---------------------------------------------------------------------------- #
+    #                     start of general sensor declarations                     #
+    # ---------------------------------------------------------------------------- #
+    global sensor_capture_interval
+    sensor_capture_interval = 5
 
-    # start of sensor definitions
+    # ---------------------------------------------------------------------------- #
+    #                     start of ambient sensor declarations                     #
+    # ---------------------------------------------------------------------------- #
+    global ambient_sensor_time_points
+    ambient_sensor_time_points = []
+
     global ambient_temperature
     ambient_temperature = []
-
-    global soil_temperature
-    soil_temperature = []
 
     global ambient_humidity
     ambient_humidity = []
@@ -156,11 +179,8 @@ def init():
     global ambient_o2
     ambient_o2 = []
 
-    global ambient_sensor_time_points
-    ambient_sensor_time_points = []
-
-    global soil_sensor_time_points
-    soil_sensor_time_points = []
+    global ambient_sensor_initial_time
+    ambient_sensor_initial_time = 0
 
     global ambient_sensor_previous_time
     ambient_sensor_previous_time = 0
@@ -171,20 +191,31 @@ def init():
     global ambient_humidity_offset
     ambient_humidity_offset = 0
 
-    global ambient_sensor_initial_time
-    ambient_sensor_initial_time = 0
+    global ambient_o2_sensor_calibration_mode
+    ambient_o2_sensor_calibration_mode = 0
+
+    # ---------------------------------------------------------------------------- #
+    #                       start of soil sensor declarations                      #
+    # ---------------------------------------------------------------------------- #
+
+    global soil_sensor_request
+    soil_sensor_request = bytes([0x01, 0x03, 0x02, 0x00, 0x00, 0x07, 0x05, 0xB0])
+
+    global soil_data
+    soil_data = ""
+
+    global soil_sensor_time_points
+    soil_sensor_time_points = []
+
+    global soil_temperature
+    soil_temperature = []
 
     global soil_sensor_initial_time
     soil_sensor_initial_time = 0
 
-    global sensor_capture_interval
-    sensor_capture_interval = 5
-
-    global ambient_o2_sensor_calibration_mode
-    ambient_o2_sensor_calibration_mode = 0
-    # end of sensor definitions
-
-    # start of graph definitions
+    # ---------------------------------------------------------------------------- #
+    #                     start of graph reference declarations                    #
+    # ---------------------------------------------------------------------------- #
     global ambient_temperature_graph_ref
     ambient_temperature_graph_ref = ""
 
@@ -199,17 +230,3 @@ def init():
 
     global soil_temperature_graph_ref
     soil_temperature_graph_ref = ""
-    # end of graph definitions
-
-    # start of thread flag definitions
-    global motion_thread_running
-    motion_thread_running = False
-
-    global timelapse_thread_running
-    timelapse_thread_running = False
-
-    global ambient_thread_running
-    ambient_thread_running = False
-
-    global soil_thread_running
-    soil_thread_running = False
