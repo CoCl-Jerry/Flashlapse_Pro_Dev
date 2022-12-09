@@ -144,6 +144,6 @@ def soil_sensors(self):
         # )
 
         General.soil_thread_running = True
-        self.soil_Thread.start()
+        self.Soil_Thread.start()
     else:
         General.soil_thread_running = False
