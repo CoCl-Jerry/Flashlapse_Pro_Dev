@@ -26,6 +26,11 @@ def init(self):
     self.ambient_o2_graphWidget.setLabel("left", "Oxygen (%)", **styles)
     self.ambient_o2_graphWidget.setLabel("bottom", "Time (s)", **styles)
 
+    self.soil_temperature_graphWidget.setBackground("#fbfbfb")
+    self.soil_temperature_graphWidget.showGrid(x=True, y=True)
+    self.soil_temperature_graphWidget.setLabel("left", "Oxygen (%)", **styles)
+    self.soil_temperature_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
 
 # start of error UI update
 def error_UI_update(self):

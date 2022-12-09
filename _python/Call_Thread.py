@@ -139,9 +139,9 @@ def soil_sensors(self):
         # self.Soil_Thread.initialized.connect(
         #     lambda: UI_Update.ambient_sensor_initialize(self)
         # )
-        # self.Soil_Thread.ambient_sensor_update.connect(
-        #     lambda: UI_Update.ambient_sensor_update(self)
-        # )
+        self.Soil_Thread.soil_sensor_update.connect(
+            lambda: UI_Update.soil_sensor_update(self)
+        )
 
         General.soil_thread_running = True
         self.Soil_Thread.start()

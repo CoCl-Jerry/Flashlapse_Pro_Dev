@@ -20,6 +20,9 @@ def init():
 
     global soil_sensor_request
     soil_sensor_request = bytes([0x01, 0x03, 0x02, 0x00, 0x00, 0x07, 0x05, 0xB0])
+
+    global soil_data
+    soil_data = ""
     # end of general definitions
 
     # start of error definitions
@@ -170,6 +173,9 @@ def init():
 
     global ambient_sensor_initial_time
     ambient_sensor_initial_time = 0
+
+    global soil_sensor_initial_time
+    soil_sensor_initial_time = 0
 
     global sensor_capture_interval
     sensor_capture_interval = 5
