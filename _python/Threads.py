@@ -287,7 +287,6 @@ class Soil(QThread):
         line = []
 
         while General.soil_thread_running:
-            print(perf_counter() - General.soil_sensor_previous_time)
             if (
                 perf_counter() - General.soil_sensor_previous_time
                 > General.sensor_capture_interval
@@ -301,6 +300,7 @@ class Soil(QThread):
                     perf_counter() - General.soil_sensor_initial_time
                 )
                 General.soil_sensor_previous_time = General.soil_sensor_time_stamp[-1]
+                print(General.soil_sensor_time_stamp[-1])
 
                 General.soil_temperature.append(
                     General.soil_data["TemperatureValue"] / 100
