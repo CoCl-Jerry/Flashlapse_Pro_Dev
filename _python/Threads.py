@@ -254,7 +254,7 @@ class o2_sensor_calibration(QThread):
 
 class Soil(QThread):
     soil_sensor_update = pyqtSignal()
-    # initialized = pyqtSignal()
+    initialized = pyqtSignal()
 
     def __init__(self):
         QThread.__init__(self)
@@ -276,7 +276,10 @@ class Soil(QThread):
             General.ser.flushInput()
             General.soil_data = Sensors.extractor(line.hex())
             General.soil_temperature.append(General.soil_data["TemperatureValue"] / 100)
-            self.soil_sensor_update.emit()
+            if len(General.soil_sensor_time_points) == 1:
+                self.initialized.emit()
+            else:
+                self.soil_sensor_update.emit()
 
             # output = Sensors.hexListConvert(line.hex())
             # print(int(str(output[4]) + str(output[5])))

@@ -208,6 +208,15 @@ def ambient_sensor_initialize(self):
     amibient_update_labels(self)
 
 
+def soil_sensor_initialize(self):
+    pen = mkPen(color=(197, 5, 12), width=2)
+    General.soil_temperature_graph_ref = self.soil_temperature_graphWidget.plot(
+        General.soil_sensor_time_points, General.soil_temperature, pen=pen
+    )
+
+    amibient_update_labels(self)
+
+
 def amibient_update_labels(self):
     self.ambient_temperture_value_label.setText(
         str(General.ambient_temperature[-1]) + " °C"

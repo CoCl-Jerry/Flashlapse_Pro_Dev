@@ -136,9 +136,9 @@ def soil_sensors(self):
         #     lambda: UI_Update.ambient_sensor_reset(self)
         # )
         self.Soil_Thread.finished.connect(lambda: UI_Update.soil_UI_update(self))
-        # self.Soil_Thread.initialized.connect(
-        #     lambda: UI_Update.ambient_sensor_initialize(self)
-        # )
+        self.Soil_Thread.initialized.connect(
+            lambda: UI_Update.soil_sensor_initialize(self)
+        )
         self.Soil_Thread.soil_sensor_update.connect(
             lambda: UI_Update.soil_sensor_update(self)
         )
