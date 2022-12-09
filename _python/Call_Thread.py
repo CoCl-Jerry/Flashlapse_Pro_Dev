@@ -147,12 +147,9 @@ def ambient_o2_sensor_calibration(self):
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
 def soil_sensors(self):
-    if not General.ambient_thread_running:
+    if not General.soil_thread_running:
         self.Soil_Thread = Threads.Soil()
         self.Soil_Thread.started.connect(lambda: UI_Update.soil_UI_update(self))
-        # self.Soil_Thread.started.connect(
-        #     lambda: UI_Update.ambient_sensor_reset(self)
-        # )
         self.Soil_Thread.finished.connect(lambda: UI_Update.soil_UI_update(self))
         self.Soil_Thread.initialized.connect(
             lambda: UI_Update.soil_sensor_initialize(self)

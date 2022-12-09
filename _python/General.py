@@ -164,8 +164,8 @@ def init():
     # ---------------------------------------------------------------------------- #
     #                     start of ambient sensor declarations                     #
     # ---------------------------------------------------------------------------- #
-    global ambient_sensor_time_points
-    ambient_sensor_time_points = []
+    global ambient_sensor_time_stamp
+    ambient_sensor_time_stamp = []
 
     global ambient_temperature
     ambient_temperature = []
@@ -204,14 +204,17 @@ def init():
     global soil_data
     soil_data = ""
 
-    global soil_sensor_time_points
-    soil_sensor_time_points = []
+    global soil_sensor_time_stamp
+    soil_sensor_time_stamp = []
 
     global soil_temperature
     soil_temperature = []
 
     global soil_sensor_initial_time
     soil_sensor_initial_time = 0
+
+    global soil_sensor_previous_time
+    soil_sensor_previous_time = 0
 
     # ---------------------------------------------------------------------------- #
     #                     start of graph reference declarations                    #

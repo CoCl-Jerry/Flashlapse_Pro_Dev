@@ -211,16 +211,16 @@ def ambient_UI_update(self):
 def ambient_sensor_initialize(self):
     pen = mkPen(color=(197, 5, 12), width=2)
     General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
-        General.ambient_sensor_time_points, General.ambient_temperature, pen=pen
+        General.ambient_sensor_time_stamp, General.ambient_temperature, pen=pen
     )
     General.ambient_humidity_graph_ref = self.ambient_humidity_graphWidget.plot(
-        General.ambient_sensor_time_points, General.ambient_humidity, pen=pen
+        General.ambient_sensor_time_stamp, General.ambient_humidity, pen=pen
     )
     General.ambient_co2_graph_ref = self.ambient_co2_graphWidget.plot(
-        General.ambient_sensor_time_points, General.ambient_CO2, pen=pen
+        General.ambient_sensor_time_stamp, General.ambient_CO2, pen=pen
     )
     General.ambient_o2_graph_ref = self.ambient_o2_graphWidget.plot(
-        General.ambient_sensor_time_points, General.ambient_o2, pen=pen
+        General.ambient_sensor_time_stamp, General.ambient_o2, pen=pen
     )
     amibient_update_labels(self)
 
@@ -240,16 +240,16 @@ def amibient_update_labels(self):
 # ---------------------------------------------------------------------------- #
 def ambient_sensor_update(self):
     General.ambient_temperature_graph_ref.setData(
-        General.ambient_sensor_time_points, General.ambient_temperature
+        General.ambient_sensor_time_stamp, General.ambient_temperature
     )
     General.ambient_humidity_graph_ref.setData(
-        General.ambient_sensor_time_points, General.ambient_humidity
+        General.ambient_sensor_time_stamp, General.ambient_humidity
     )
     General.ambient_co2_graph_ref.setData(
-        General.ambient_sensor_time_points, General.ambient_CO2
+        General.ambient_sensor_time_stamp, General.ambient_CO2
     )
     General.ambient_o2_graph_ref.setData(
-        General.ambient_sensor_time_points, General.ambient_o2
+        General.ambient_sensor_time_stamp, General.ambient_o2
     )
     amibient_update_labels(self)
 
@@ -266,7 +266,7 @@ def ambient_sensor_reset(self):
     General.ambient_CO2 = []
     General.ambient_o2 = []
 
-    General.ambient_sensor_time_points = []
+    General.ambient_sensor_time_stamp = []
 
 
 # ---------------------------------------------------------------------------- #
@@ -290,7 +290,7 @@ def soil_UI_update(self):
 def soil_sensor_initialize(self):
     pen = mkPen(color=(197, 5, 12), width=2)
     General.soil_temperature_graph_ref = self.soil_temperature_graphWidget.plot(
-        General.soil_sensor_time_points, General.soil_temperature, pen=pen
+        General.soil_sensor_time_stamp, General.soil_temperature, pen=pen
     )
 
     amibient_update_labels(self)
@@ -299,7 +299,7 @@ def soil_sensor_initialize(self):
 # ---------------------------------------------------------------------------- #
 def soil_sensor_update(self):
     General.soil_temperature_graph_ref.setData(
-        General.soil_sensor_time_points, General.soil_temperature
+        General.soil_sensor_time_stamp, General.soil_temperature
     )
     soil_update_labels(self)
 

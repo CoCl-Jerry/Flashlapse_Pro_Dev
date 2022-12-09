@@ -224,11 +224,11 @@ class Ambient(QThread):
                 > General.sensor_capture_interval
             ):
                 if scd4x.data_ready:
-                    General.ambient_sensor_time_points.append(
+                    General.ambient_sensor_time_stamp.append(
                         perf_counter() - General.ambient_sensor_initial_time
                     )
                     General.ambient_sensor_previous_time = (
-                        General.ambient_sensor_time_points[-1]
+                        General.ambient_sensor_time_stamp[-1]
                     )
                     General.ambient_temperature.append(
                         round(scd4x.temperature, 2) + General.ambient_temperature_offset
@@ -286,16 +286,25 @@ class Soil(QThread):
 
         line = []
 
-        while True and General.soil_thread_running:
-            General.ser.write(General.soil_sensor_request)
-            line = General.ser.readline()
-            General.soil_sensor_time_points.append(
-                perf_counter() - General.soil_sensor_initial_time
-            )
-            General.ser.flushInput()
-            General.soil_data = Sensors.extractor(line.hex())
-            General.soil_temperature.append(General.soil_data["TemperatureValue"] / 100)
-            if len(General.soil_sensor_time_points) == 1:
-                self.initialized.emit()
-            else:
-                self.soil_sensor_update.emit()
+        while General.soil_thread_running:
+            if (
+                perf_counter() - General.soil_sensor_previous_time
+                > General.sensor_capture_interval
+            ):
+                General.ser.write(General.soil_sensor_request)
+                line = General.ser.readline()
+
+                General.ser.flushInput()
+                General.soil_data = Sensors.extractor(line.hex())
+                General.soil_sensor_time_stamp.append(
+                    perf_counter() - General.soil_sensor_initial_time
+                )
+                General.soil_sensor_previous_time = General.soil_sensor_time_stamp[-1]
+
+                General.soil_temperature.append(
+                    General.soil_data["TemperatureValue"] / 100
+                )
+                if len(General.soil_sensor_time_stamp) == 1:
+                    self.initialized.emit()
+                else:
+                    self.soil_sensor_update.emit()
