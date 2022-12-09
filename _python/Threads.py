@@ -287,6 +287,7 @@ class Soil(QThread):
         line = []
 
         while General.soil_thread_running:
+            print(perf_counter() - General.soil_sensor_previous_time)
             if (
                 perf_counter() - General.soil_sensor_previous_time
                 > General.sensor_capture_interval
