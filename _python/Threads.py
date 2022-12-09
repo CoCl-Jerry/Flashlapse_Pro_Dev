@@ -8,6 +8,7 @@ from picamera import PiCamera  # type: ignore
 from DFRobot_EOxygenSensor import *
 
 import General
+import Sensors
 from PyQt5.QtCore import QThread, pyqtSignal
 from time import sleep, perf_counter
 
@@ -268,8 +269,11 @@ class Soil(QThread):
             General.ser.write(General.soil_sensor_request)
             line = General.ser.readline()
             General.ser.flushInput()
-            print(line.hex())
-            time.sleep(2)
+            temp = Sensors.extractor(line.hex())
+            print(temp["TemperatureValue"])
+
+            # output = Sensors.hexListConvert(line.hex())
+            # print(int(str(output[4]) + str(output[5])))
 
         # scd4x = adafruit_scd4x.SCD4X(board.I2C())
         # scd4x.start_periodic_measurement()

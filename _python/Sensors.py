@@ -57,3 +57,71 @@ def ambient_co2_calibration(self):
 def ambient_o2_calibration(self, mode):
     General.ambient_o2_sensor_calibration_mode = mode
     Call_Thread.ambient_o2_sensor_calibration(self)
+
+
+def hexListConvert(data: str):
+
+    hex_bytes = bytes.fromhex(data)  # Takes a hex string and turns it into a byte array
+    #  print(hex_bytes)  # Output: b'\xde\xad\xbe\xef'
+    hex_list = list(hex_bytes)
+    return hex_list
+
+
+def crc16_generator_hex(data: list[int]) -> str:
+    data = bytearray(data)
+    crc = 0xFFFF
+
+    # Calculate CRC-16 checksum for data packet
+    for b in data:
+        crc ^= b
+        for _ in range(0, 8):
+            bcarry = crc & 0x0001
+            crc >>= 1
+            if bcarry:
+                crc ^= 0xA001
+    msb = crc >> 0x08 & 0xFF
+    lsb = crc & 0xFF
+    crc_to_send = [hex(lsb), hex(msb)]
+    print(crc_to_send)
+
+    return crc_to_send
+
+
+def extractor(hex_string):
+    length = len(hex_string.strip())
+    FDN = 6  # first disposable number of bits
+    LDN = 4  # last disposable number of bits
+    data_segment_bits = 4  # all bits for the data including the first bit
+    data_area_len = length - (FDN + LDN)
+    first_data_bit_index = length - (data_area_len + LDN)
+    loop_num = int(data_area_len / data_segment_bits)
+
+    # '''
+    # INDEX) [DATA KEY]: following response frame format
+    # 0) Temperature value
+    # 1) Water content
+    # 2) EC value
+    # 3) PH value
+    # 4) nitrogen content
+    # 5) phosphorus value
+    # 6) Potassium value
+    # '''
+    keyValues = [
+        "TemperatureValue",
+        "WaterContent",
+        "ECValue",
+        "PHValue",
+        "NitrogenContent",
+        "PhosphorusValue",
+        "PotassiumValue",
+    ]
+    dataList = []
+    obj = {}
+    for i in range(loop_num):
+        s_indx = first_data_bit_index + (data_segment_bits * i)
+        str_segment = hex_string[s_indx : s_indx + data_segment_bits]
+        bytes_segment = bytes.fromhex(str_segment)
+        dec_ = int(bytes_segment.hex(), 16)
+        obj[keyValues[i]] = dec_
+        dataList.append(dec_)
+    return obj

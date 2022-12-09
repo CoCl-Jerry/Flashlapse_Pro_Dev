@@ -33,13 +33,12 @@ def crc16_generator_hex(data: list[int]) -> str:
     return crc_to_send
 
 
-def hexListConvert(data):
-    hex_bytes = bytes.fromhex(data)
+def hexListConvert(data: str):
 
-    print(hex_bytes)  # Output: b'\xde\xad\xbe\xef'
-
+    hex_bytes = bytes.fromhex(data)  # Takes a hex string and turns it into a byte array
+    #  print(hex_bytes)  # Output: b'\xde\xad\xbe\xef'
     hex_list = list(hex_bytes)
-    print(hex_list)  # Output: [222, 173, 190, 239]
+    print(hex_list)
 
     return hex_list
 
@@ -49,9 +48,10 @@ if __name__ == "__main__":
     temp_list = hexListConvert(data)
     highbit = hex(temp_list.pop())
     lowbit = hex(temp_list.pop())
-    print("L:", lowbit, "H:", highbit)
+    # print("L:", lowbit, "H:", highbit)
     crc_list = crc16_generator_hex(temp_list)
     if (highbit == crc_list[1]) and (lowbit == crc_list[0]):
-        print("True")
+        pass
+        # print("True")
     # if crc16_generator_hex(hexListConvert(data)) == hex(0x8C0B):
     #     print("True")
