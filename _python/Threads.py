@@ -288,8 +288,11 @@ class Soil(QThread):
 
         while General.soil_thread_running:
             if (
-                perf_counter() - General.soil_sensor_previous_time
+                perf_counter()
+                - General.soil_sensor_initial_time
+                - General.soil_sensor_previous_time
                 > General.sensor_capture_interval
+                or len(General.soil_sensor_time_stamp) == 0
             ):
                 General.ser.write(General.soil_sensor_request)
                 line = General.ser.readline()
