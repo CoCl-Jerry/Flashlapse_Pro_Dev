@@ -249,3 +249,60 @@ class o2_sensor_calibration(QThread):
 
         elif General.ambient_o2_sensor_calibration_mode == 2:
             SEN0496.calibration_99_5()
+
+
+class Soil(QThread):
+    # ambient_sensor_update = pyqtSignal()
+    # initialized = pyqtSignal()
+
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):
+        line = []
+
+        while True and General.soil_thread_running:
+            General.ser.write(General.soil_sensor_request)
+            line = General.ser.readline()
+            General.ser.flushInput()
+            print(line.hex())
+            time.sleep(2)
+
+        # scd4x = adafruit_scd4x.SCD4X(board.I2C())
+        # scd4x.start_periodic_measurement()
+
+        # SEN0496 = DFRobot_EOxygenSensor_I2C(0x01, E_OXYGEN_ADDRESS_0)
+
+        # General.ambient_sensor_initial_time = perf_counter()
+
+        # while General.ambient_thread_running:
+        #     if (
+        #         perf_counter() - General.ambient_sensor_previous_time
+        #         > General.sensor_capture_interval
+        #     ):
+        #         if scd4x.data_ready:
+        #             General.ambient_sensor_time_points.append(
+        #                 perf_counter() - General.ambient_sensor_initial_time
+        #             )
+        #             General.ambient_sensor_previous_time = (
+        #                 General.ambient_sensor_time_points[-1]
+        #             )
+        #             General.ambient_temperature.append(
+        #                 round(scd4x.temperature, 2) + General.ambient_temperature_offset
+        #             )
+        #             General.ambient_humidity.append(
+        #                 round(scd4x.relative_humidity, 2)
+        #                 + General.ambient_humidity_offset
+        #             )
+        #             General.ambient_CO2.append(scd4x.CO2)
+        #             General.ambient_o2.append(
+        #                 round(SEN0496.read_oxygen_concentration(), 2)
+        #             )
+
+        #             if len(General.ambient_temperature) == 1:
+        #                 self.initialized.emit()
+        #             else:
+        #                 self.ambient_sensor_update.emit()

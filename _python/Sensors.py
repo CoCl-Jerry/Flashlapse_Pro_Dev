@@ -57,4 +57,3 @@ def ambient_co2_calibration(self):
 def ambient_o2_calibration(self, mode):
     General.ambient_o2_sensor_calibration_mode = mode
     Call_Thread.ambient_o2_sensor_calibration(self)
-    print("sensor calibrating...")

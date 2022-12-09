@@ -178,6 +178,14 @@ def ambient_UI_update(self):
         self.ambient_temperture_value_label.setText("N/A °C")
 
 
+def soil_UI_update(self):
+    if General.soil_thread_running:
+        self.start_soil_sensors_pushButton.setText("Stop Soil Sensors")
+    else:
+        self.start_soil_sensors_pushButton.setText("Start Soil Sensors")
+        self.soil_temperture_value_label.setText("N/A °C")
+
+
 def ambient_sensor_initialize(self):
     pen = mkPen(color=(197, 5, 12), width=2)
     General.ambient_temperature_graph_ref = self.ambient_temperature_graphWidget.plot(
@@ -238,7 +246,17 @@ def ambient_sensor_reset(self):
 
 def ambient_o2_frame_toggle(self):
     self.ambient_o2_frame.setEnabled(not self.ambient_o2_frame.isEnabled())
-    print("toggle")
+
+
+def soil_sensor_update(self):
+    General.soil_temperature_graph_ref.setData(
+        General.soil_sensor_time_points, General.soil_temperature
+    )
+    soil_update_labels(self)
+
+
+def soil_update_labels(self):
+    self.soil_temperture_value_label.setText(str(General.soil_temperature[-1]) + " °C")
 
 
 # end of sensor UI update

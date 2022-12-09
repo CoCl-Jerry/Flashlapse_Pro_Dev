@@ -107,7 +107,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         )
         # end of motor activities
 
-        # start of sensor activities
+        # start of ambient sensor activities
         self.start_ambient_sensors_pushButton.clicked.connect(
             lambda: Call_Thread.ambient_sensors(self)
         )
@@ -135,7 +135,14 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.ambient_o2_100_calibration_pushButton.clicked.connect(
             lambda: Sensors.ambient_o2_calibration(self, 2)
         )
-        # end of sensor activities
+        # end of ambient sensor activities
+
+        # start of soil sensor activities
+        self.start_soil_sensors_pushButton.clicked.connect(
+            lambda: Call_Thread.soil_sensors(self)
+        )
+
+        # end of soil sensor activities
 
         # Call_Thread.sensor_init(self)
         # Commands.init()

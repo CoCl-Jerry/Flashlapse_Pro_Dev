@@ -1,11 +1,25 @@
 import time
 from PyQt5 import QtGui
+import serial  # type: ignore
 
 
 def init():
     # start of general definitions
     global current_date
     current_date = time.strftime("%m_%d_%Y")
+
+    global ser
+    ser = serial.Serial(
+        port="/dev/ttyS0",
+        baudrate=4800,
+        parity=serial.PARITY_NONE,
+        stopbits=serial.STOPBITS_ONE,
+        bytesize=serial.EIGHTBITS,
+        timeout=1,
+    )
+
+    global soil_sensor_request
+    soil_sensor_request = bytes([0x01, 0x03, 0x02, 0x00, 0x00, 0x07, 0x05, 0xB0])
     # end of general definitions
 
     # start of error definitions
@@ -127,6 +141,9 @@ def init():
     global ambient_temperature
     ambient_temperature = []
 
+    global soil_temperature
+    soil_temperature = []
+
     global ambient_humidity
     ambient_humidity = []
 
@@ -138,6 +155,9 @@ def init():
 
     global ambient_sensor_time_points
     ambient_sensor_time_points = []
+
+    global soil_sensor_time_points
+    soil_sensor_time_points = []
 
     global ambient_sensor_previous_time
     ambient_sensor_previous_time = 0
@@ -170,6 +190,9 @@ def init():
 
     global ambient_o2_graph_ref
     ambient_o2_graph_ref = ""
+
+    global soil_temperature_graph_ref
+    soil_temperature_graph_ref = ""
     # end of graph definitions
 
     # start of thread flag definitions
@@ -181,3 +204,6 @@ def init():
 
     global ambient_thread_running
     ambient_thread_running = False
+
+    global soil_thread_running
+    soil_thread_running = False
