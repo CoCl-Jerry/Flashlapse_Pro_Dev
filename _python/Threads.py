@@ -309,10 +309,9 @@ class Soil(QThread):
                     hex(soil_sensor_processed_data.pop()),
                 ]
                 reference_crc = Sensors.crc16_generator_hex(soil_sensor_processed_data)
-                print(reference_crc[0])
-                print(sensor_crc[0])
-                print(reference_crc[1])
-                print(sensor_crc[1])
+                print(reference_crc)
+                print(sensor_crc)
+
                 if (
                     reference_crc[0] == sensor_crc[0]
                     and reference_crc[1] == sensor_crc[1]
