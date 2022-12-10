@@ -216,16 +216,19 @@ class Ambient(QThread):
 
         SEN0496 = DFRobot_EOxygenSensor_I2C(0x01, E_OXYGEN_ADDRESS_0)
 
-        General.ambient_sensor_initial_time = perf_counter()
+        General.ambient_sensor_initial_time = round(perf_counter(), 2)
 
         while General.ambient_thread_running:
             if (
-                perf_counter() - General.ambient_sensor_previous_time
+                perf_counter()
+                - General.ambient_sensor_initial_time
+                - General.ambient_sensor_previous_time
                 > General.sensor_capture_interval
+                or len(General.ambient_sensor_time_stamp) == 0
             ):
                 if scd4x.data_ready:
                     General.ambient_sensor_time_stamp.append(
-                        perf_counter() - General.ambient_sensor_initial_time
+                        round(perf_counter(), 2) - General.ambient_sensor_initial_time
                     )
                     General.ambient_sensor_previous_time = (
                         General.ambient_sensor_time_stamp[-1]
@@ -242,7 +245,7 @@ class Ambient(QThread):
                         round(SEN0496.read_oxygen_concentration(), 2)
                     )
 
-                    if len(General.ambient_temperature) == 1:
+                    if len(General.ambient_sensor_time_stamp) == 1:
                         self.initialized.emit()
                     else:
                         self.ambient_sensor_update.emit()
@@ -282,37 +285,35 @@ class Soil(QThread):
         self._running = False
 
     def run(self):
-        General.soil_sensor_initial_time = perf_counter()
+        General.soil_sensor_initial_time = round(perf_counter(), 2)
 
-        line = []
+        data = []
 
         while General.soil_thread_running:
-            print(
-                perf_counter()
-                - General.soil_sensor_initial_time
-                - General.soil_sensor_previous_time
-            )
             if (
                 perf_counter()
                 - General.soil_sensor_initial_time
                 - General.soil_sensor_previous_time
                 > General.sensor_capture_interval
                 or len(General.soil_sensor_time_stamp) == 0
+                or General.soil_sensor_crc16_check
             ):
-                General.ser.write(General.soil_sensor_request)
-                line = General.ser.readline()
-
                 General.ser.flushInput()
-                General.soil_data = Sensors.extractor(line.hex())
-                General.soil_sensor_time_stamp.append(
-                    perf_counter() - General.soil_sensor_initial_time
-                )
-                General.soil_sensor_previous_time = General.soil_sensor_time_stamp[-1]
+                General.ser.write(General.soil_sensor_request)
+                data = Sensors.hexListConvert(General.ser.readline().hex())
+                print(data)
 
-                General.soil_temperature.append(
-                    General.soil_data["TemperatureValue"] / 100
-                )
-                if len(General.soil_sensor_time_stamp) == 1:
-                    self.initialized.emit()
-                else:
-                    self.soil_sensor_update.emit()
+                # General.soil_data = Sensors.extractor(line.hex())
+
+                # General.soil_sensor_time_stamp.append(
+                #     round(perf_counter(), 2) - General.soil_sensor_initial_time
+                # )
+                # General.soil_sensor_previous_time = General.soil_sensor_time_stamp[-1]
+
+                # General.soil_temperature.append(
+                #     General.soil_data["TemperatureValue"] / 100
+                # )
+                # if len(General.soil_sensor_time_stamp) == 1:
+                #     self.initialized.emit()
+                # else:
+                #     self.soil_sensor_update.emit()

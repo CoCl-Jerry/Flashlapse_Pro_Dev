@@ -216,6 +216,9 @@ def init():
     global soil_sensor_previous_time
     soil_sensor_previous_time = 0
 
+    global soil_sensor_crc16_check
+    soil_sensor_crc16_check = True
+
     # ---------------------------------------------------------------------------- #
     #                     start of graph reference declarations                    #
     # ---------------------------------------------------------------------------- #

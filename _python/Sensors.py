@@ -107,7 +107,7 @@ def crc16_generator_hex(data: list[int]) -> str:
 def extractor(hex_string):
     length = len(hex_string.strip())
     FDN = 6  # first disposable number of bits
-    LDN = 4  # last disposable number of bits
+    LDN = 0  # last disposable number of bits
     data_segment_bits = 4  # all bits for the data including the first bit
     data_area_len = length - (FDN + LDN)
     first_data_bit_index = length - (data_area_len + LDN)
@@ -128,9 +128,10 @@ def extractor(hex_string):
         "WaterContent",
         "ECValue",
         "PHValue",
-        "NitrogenContent",
+        "NitrogenValue",
         "PhosphorusValue",
         "PotassiumValue",
+        "CRC16",
     ]
     dataList = []
     obj = {}
@@ -141,5 +142,15 @@ def extractor(hex_string):
         dec_ = int(bytes_segment.hex(), 16)
         obj[keyValues[i]] = dec_
         dataList.append(dec_)
-    # obj["Time"] = datetime.now().strftime("%H:%M:%S")
     return obj
+
+
+# ---------------------------------------------------------------------------- #
+def hexListConvert(data: str):
+
+    hex_bytes = bytes.fromhex(data)  # Takes a hex string and turns it into a byte array
+    #  print(hex_bytes)  # Output: b'\xde\xad\xbe\xef'
+    hex_list = list(hex_bytes)
+    print(hex_list)
+
+    return hex_list
