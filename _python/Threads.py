@@ -301,7 +301,9 @@ class Soil(QThread):
                 General.ser.flushInput()
                 General.ser.write(General.soil_sensor_request)
                 data = Sensors.hexListConvert(General.ser.readline().hex())
-                print(data)
+                Sensor_crc = [hex(data.pop()), hex(data.pop())]
+                print(Sensor_crc)
+                print(Sensors.crc16(data))
 
                 # General.soil_data = Sensors.extractor(line.hex())
 
