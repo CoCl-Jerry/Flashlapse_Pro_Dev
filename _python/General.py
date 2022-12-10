@@ -11,8 +11,8 @@ def init():
     global current_date
     current_date = time.strftime("%m_%d_%Y")
 
-    global ser
-    ser = serial.Serial(
+    global serial_reference
+    serial_reference = serial.Serial(
         port="/dev/ttyS0",
         baudrate=4800,
         parity=serial.PARITY_NONE,

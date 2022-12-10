@@ -299,9 +299,11 @@ class Soil(QThread):
                 or not General.soil_sensor_crc16_check
             ):
                 try:
-                    General.ser.write(General.soil_sensor_request)
-                    General.ser.flushInput()
-                    soil_sensor_raw_data = General.ser.readline().hex()
+                    with General.serial_reference as ser:
+                        ser.write(General.soil_sensor_request)
+                        ser.flushInput()
+                        soil_sensor_raw_data = General.ser.readline().hex()
+
                     soil_sensor_processed_data = Sensors.hexListConvert(
                         soil_sensor_raw_data
                     )
