@@ -303,7 +303,7 @@ class Soil(QThread):
                 data = Sensors.hexListConvert(General.ser.readline().hex())
                 Sensor_crc = [hex(data.pop()), hex(data.pop())]
                 print(Sensor_crc)
-                print(Sensors.crc16(data))
+                print(Sensors.crc16_generator_hex(data))
 
                 # General.soil_data = Sensors.extractor(line.hex())
 
