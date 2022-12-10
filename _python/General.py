@@ -11,15 +11,15 @@ def init():
     global current_date
     current_date = time.strftime("%m_%d_%Y")
 
-    # global serial_reference
-    # serial_reference = serial.Serial(
-    #     port="/dev/ttyUSB0",
-    #     baudrate=4800,
-    #     parity=serial.PARITY_NONE,
-    #     stopbits=serial.STOPBITS_ONE,
-    #     bytesize=serial.EIGHTBITS,
-    #     timeout=1,
-    # )
+    global serial_reference
+    serial_reference = serial.Serial(
+        port="/dev/ttyUSB0",
+        baudrate=4800,
+        parity=serial.PARITY_NONE,
+        stopbits=serial.STOPBITS_ONE,
+        bytesize=serial.EIGHTBITS,
+        timeout=1,
+    )
 
     # ---------------------------------------------------------------------------- #
     #                       start of thread flag declarations                      #
