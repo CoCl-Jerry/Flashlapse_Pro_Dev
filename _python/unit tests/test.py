@@ -30,8 +30,8 @@ while True:
         timeout=1,
     )
     ser.write(bt)
-    line = ser.readline()
     ser.flushInput()
+    line = ser.readline()
+    ser.close()
     print(line.hex())
     time.sleep(2)
-    ser.close()
