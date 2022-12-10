@@ -17,3 +17,7 @@ def sendCMD(cont):
             General.communication_error = True
             print(e, "communication failure,contact Jerry for support")
         pass
+
+
+def reset_arduino():
+    sendCMD(0)

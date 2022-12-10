@@ -4,6 +4,7 @@ import Imaging
 import Sensors
 import Motion
 import Call_Thread
+import Communication
 
 # import Commands
 # import Threads
@@ -28,6 +29,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         General.init()
         UI_Update.graph_init(self)
         Sensors.init(self)
+        Communication.reset_arduino()
 
         # ---------------------------------------------------------------------------- #
         #                          start of imaging activities                         #
