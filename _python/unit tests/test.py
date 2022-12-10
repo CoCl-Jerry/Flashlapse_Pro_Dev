@@ -1,6 +1,14 @@
 import time
 import serial
 
+# ser = serial.Serial(
+#     port="/dev/ttyS0",
+#     baudrate=4800,
+#     parity=serial.PARITY_NONE,
+#     stopbits=serial.STOPBITS_ONE,
+#     bytesize=serial.EIGHTBITS,
+#     timeout=1,
+# )
 
 # ser = serial.Serial(
 #     port="/dev/ttyUSB0",
@@ -22,7 +30,7 @@ line = []
 
 while True:
     ser = serial.Serial(
-        port="/dev/ttyS0",
+        port="/dev/ttyUSB0",
         baudrate=4800,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
@@ -32,6 +40,6 @@ while True:
     ser.write(bt)
     ser.flushInput()
     line = ser.readline()
-    # ser.close()
+    ser.close()
     print(line.hex())
     time.sleep(2)
