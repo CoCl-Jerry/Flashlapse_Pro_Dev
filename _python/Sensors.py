@@ -161,7 +161,7 @@ def crc16_generator_hex(data: list[int]) -> str:
                 crc ^= 0xA001
     msb = crc >> 0x08 & 0xFF
     lsb = crc & 0xFF
-    crc_to_send = [hex(lsb), hex(msb)]
+    crc_to_send = [hex(msb), hex(lsb)]
 
     return crc_to_send
 
