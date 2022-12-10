@@ -32,6 +32,6 @@ while True:
     ser.write(bt)
     ser.flushInput()
     line = ser.readline()
-    ser.close()
+    # ser.close()
     print(line.hex())
     time.sleep(2)
