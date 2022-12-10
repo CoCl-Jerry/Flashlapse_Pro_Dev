@@ -299,20 +299,20 @@ class Soil(QThread):
                 or len(General.soil_sensor_time_stamp) == 0
                 or not General.soil_sensor_crc16_check
             ):
+                ser = serial.Serial(
+                    port="/dev/ttyUSB0",
+                    baudrate=4800,
+                    parity=serial.PARITY_NONE,
+                    stopbits=serial.STOPBITS_ONE,
+                    bytesize=serial.EIGHTBITS,
+                    timeout=1,
+                )
                 try:
-                    ser = serial.Serial(
-                        port="/dev/ttyUSB0",
-                        baudrate=4800,
-                        parity=serial.PARITY_NONE,
-                        stopbits=serial.STOPBITS_ONE,
-                        bytesize=serial.EIGHTBITS,
-                        timeout=1,
-                    )
 
                     ser.write(General.soil_sensor_request)
-                    ser.flushInput()
+                    # ser.flushInput()
                     soil_sensor_raw_data = ser.readline().hex()
-                    ser.close()
+                    # ser.close()
 
                     soil_sensor_processed_data = Sensors.hexListConvert(
                         soil_sensor_raw_data
