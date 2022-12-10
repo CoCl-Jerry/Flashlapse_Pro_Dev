@@ -201,9 +201,6 @@ def init():
     global soil_sensor_request
     soil_sensor_request = bytes([0x01, 0x03, 0x02, 0x00, 0x00, 0x07, 0x05, 0xB0])
 
-    global soil_data
-    soil_data = ""
-
     global soil_sensor_time_stamp
     soil_sensor_time_stamp = []
 

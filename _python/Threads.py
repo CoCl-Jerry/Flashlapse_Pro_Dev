@@ -286,8 +286,8 @@ class Soil(QThread):
 
     def run(self):
         General.soil_sensor_initial_time = round(perf_counter(), 2)
-
-        data = []
+        soil_sensor_raw_data = []
+        soil_sensor_processed_data = []
 
         while General.soil_thread_running:
             if (
@@ -296,26 +296,43 @@ class Soil(QThread):
                 - General.soil_sensor_previous_time
                 > General.sensor_capture_interval
                 or len(General.soil_sensor_time_stamp) == 0
-                or General.soil_sensor_crc16_check
+                or not General.soil_sensor_crc16_check
             ):
                 General.ser.flushInput()
                 General.ser.write(General.soil_sensor_request)
-                data = Sensors.hexListConvert(General.ser.readline().hex())
-                Sensor_crc = [hex(data.pop()), hex(data.pop())]
-                print(Sensor_crc)
-                print(Sensors.crc16_generator_hex(data))
+                soil_sensor_raw_data = General.ser.readline().hex()
+                soil_sensor_processed_data = Sensors.hexListConvert(
+                    soil_sensor_raw_data
+                )
+                sensor_crc = [
+                    hex(soil_sensor_processed_data.pop()),
+                    hex(soil_sensor_processed_data.pop()),
+                ]
+                reference_crc = Sensors.crc16_generator_hex(soil_sensor_processed_data)
+                print(reference_crc[0])
+                print(sensor_crc[0])
+                print(reference_crc[1])
+                print(sensor_crc[1])
+                if (
+                    reference_crc[0] == sensor_crc[0]
+                    and reference_crc[1] == sensor_crc[1]
+                ):
+                    Sensors.soil_sensor_data_processor(
+                        Sensors.extractor(soil_sensor_raw_data)
+                    )
+                    General.soil_sensor_time_stamp.append(
+                        round(perf_counter(), 2) - General.soil_sensor_initial_time
+                    )
+                    General.soil_sensor_previous_time = General.soil_sensor_time_stamp[
+                        -1
+                    ]
+                    General.soil_sensor_crc16_check = True
+                    if len(General.soil_sensor_time_stamp) == 1:
+                        self.initialized.emit()
+                    else:
+                        self.soil_sensor_update.emit()
 
-                # General.soil_data = Sensors.extractor(line.hex())
-
-                # General.soil_sensor_time_stamp.append(
-                #     round(perf_counter(), 2) - General.soil_sensor_initial_time
-                # )
-                # General.soil_sensor_previous_time = General.soil_sensor_time_stamp[-1]
-
-                # General.soil_temperature.append(
-                #     General.soil_data["TemperatureValue"] / 100
-                # )
-                # if len(General.soil_sensor_time_stamp) == 1:
-                #     self.initialized.emit()
-                # else:
-                #     self.soil_sensor_update.emit()
+                else:
+                    General.soil_sensor_crc16_check = False
+                    print("CRC16 check failed, retrying...")
+                    continue
