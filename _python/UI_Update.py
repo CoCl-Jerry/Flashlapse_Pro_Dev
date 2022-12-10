@@ -378,10 +378,12 @@ def soil_sensor_update(self):
 def soil_update_labels(self):
     self.soil_temperature_value_label.setText(str(General.soil_temperature[-1]) + " °C")
     self.soil_water_content_value_label.setText(
-        str(General.soil_water_content[-1]) + " °C"
+        str(General.soil_water_content[-1]) + " °%"
     )
-    self.soil_EC_value_label.setText(str(General.soil_EC[-1]) + " °C")
-    self.soil_pH_value_label.setText(str(General.soil_pH[-1]) + " °C")
-    self.soil_nitrogen_value_label.setText(str(General.soil_nitrogen[-1]) + " °C")
-    self.soil_phosphorus_value_label.setText(str(General.soil_phosphorus[-1]) + " °C")
-    self.soil_potassium_value_label.setText(str(General.soil_potassium[-1]) + " °C")
+    self.soil_EC_value_label.setText(str(General.soil_EC[-1]) + " μS/cm")
+    self.soil_pH_value_label.setText(str(General.soil_pH[-1]))
+    self.soil_nitrogen_value_label.setText(str(General.soil_nitrogen[-1]) + " mg/kg")
+    self.soil_phosphorus_value_label.setText(
+        str(General.soil_phosphorus[-1]) + " mg/kg"
+    )
+    self.soil_potassium_value_label.setText(str(General.soil_potassium[-1]) + " mg/kg")

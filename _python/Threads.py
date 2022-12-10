@@ -298,19 +298,26 @@ class Soil(QThread):
                 or len(General.soil_sensor_time_stamp) == 0
                 or not General.soil_sensor_crc16_check
             ):
-                General.ser.flushInput()
-                General.ser.write(General.soil_sensor_request)
-                soil_sensor_raw_data = General.ser.readline().hex()
-                soil_sensor_processed_data = Sensors.hexListConvert(
-                    soil_sensor_raw_data
-                )
-                sensor_crc = [
-                    hex(soil_sensor_processed_data.pop()),
-                    hex(soil_sensor_processed_data.pop()),
-                ]
-                reference_crc = Sensors.crc16_generator_hex(soil_sensor_processed_data)
-                print(reference_crc)
-                print(sensor_crc)
+                try:
+                    General.ser.write(General.soil_sensor_request)
+                    General.ser.flushInput()
+                    soil_sensor_raw_data = General.ser.readline().hex()
+                    soil_sensor_processed_data = Sensors.hexListConvert(
+                        soil_sensor_raw_data
+                    )
+                    sensor_crc = [
+                        hex(soil_sensor_processed_data.pop()),
+                        hex(soil_sensor_processed_data.pop()),
+                    ]
+                    reference_crc = Sensors.crc16_generator_hex(
+                        soil_sensor_processed_data
+                    )
+                    print(reference_crc)
+                    print(sensor_crc)
+                except Exception as e:
+                    print(e, "Soil sensor error, retrying...")
+                    General.soil_sensor_crc16_check = False
+                    break
 
                 if (
                     reference_crc[0] == sensor_crc[0]
