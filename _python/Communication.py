@@ -20,4 +20,4 @@ def sendCMD(cont):
 
 
 def reset_arduino():
-    sendCMD(0)
+    sendCMD("0")
