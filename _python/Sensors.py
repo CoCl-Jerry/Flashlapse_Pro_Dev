@@ -104,38 +104,6 @@ def crc16_generator_hex(data: list[int]) -> str:
 
 
 # ---------------------------------------------------------------------------- #
-def extractor(hex_string):
-    length = len(hex_string.strip())
-    FDN = 6  # first disposable number of bits
-    LDN = 4  # last disposable number of bits
-    data_segment_bits = 4  # all bits for the data including the first bit
-    data_area_len = length - (FDN + LDN)
-    first_data_bit_index = length - (data_area_len + LDN)
-    loop_num = int(data_area_len / data_segment_bits)
-
-    keyValues = [
-        "TemperatureValue",
-        "WaterContent",
-        "ECValue",
-        "PHValue",
-        "NitrogenValue",
-        "PhosphorusValue",
-        "PotassiumValue",
-        "CRC16",
-    ]
-    dataList = []
-    obj = {}
-    for i in range(loop_num):
-        s_indx = first_data_bit_index + (data_segment_bits * i)
-        str_segment = hex_string[s_indx : s_indx + data_segment_bits]
-        bytes_segment = bytes.fromhex(str_segment)
-        dec_ = int(bytes_segment.hex(), 16)
-        obj[keyValues[i]] = dec_
-        dataList.append(dec_)
-    return obj
-
-
-# ---------------------------------------------------------------------------- #
 def hexListConvert(data: str):
 
     hex_bytes = bytes.fromhex(data)  # Takes a hex string and turns it into a byte array
@@ -167,5 +135,42 @@ def crc16_generator_hex(data: list[int]) -> str:
 
 
 # ---------------------------------------------------------------------------- #
+def extractor(hex_string):
+    length = len(hex_string.strip())
+    FDN = 6  # first disposable number of bits
+    LDN = 4  # last disposable number of bits
+    data_segment_bits = 4  # all bits for the data including the first bit
+    data_area_len = length - (FDN + LDN)
+    first_data_bit_index = length - (data_area_len + LDN)
+    loop_num = int(data_area_len / data_segment_bits)
+
+    keyValues = [
+        "TemperatureValue",
+        "WaterContentValue",
+        "ECValue",
+        "PHValue",
+        "NitrogenValue",
+        "PhosphorusValue",
+        "PotassiumValue",
+    ]
+    dataList = []
+    obj = {}
+    for i in range(loop_num):
+        s_indx = first_data_bit_index + (data_segment_bits * i)
+        str_segment = hex_string[s_indx : s_indx + data_segment_bits]
+        bytes_segment = bytes.fromhex(str_segment)
+        dec_ = int(bytes_segment.hex(), 16)
+        obj[keyValues[i]] = dec_
+        dataList.append(dec_)
+    return obj
+
+
+# ---------------------------------------------------------------------------- #
 def soil_sensor_data_processor(data):
     General.soil_temperature.append(data["TemperatureValue"] / 100)
+    General.soil_water_content.append(data["WaterContentValue"] / 100)
+    General.soil_EC.append(data["ECValue"])
+    General.soil_pH.append(data["PHValue"] / 10)
+    General.soil_nitrogen.append(data["NitrogenValue"])
+    General.soil_phosphorus.append(data["PhosphorusValue"])
+    General.soil_potassium.append(data["PotassiumValue"])

@@ -207,6 +207,24 @@ def init():
     global soil_temperature
     soil_temperature = []
 
+    global soil_water_content
+    soil_water_content = []
+
+    global soil_EC
+    soil_EC = []
+
+    global soil_pH
+    soil_pH = []
+
+    global soil_nitrogen
+    soil_nitrogen = []
+
+    global soil_phosphorus
+    soil_phosphorus = []
+
+    global soil_potassium
+    soil_potassium = []
+
     global soil_sensor_initial_time
     soil_sensor_initial_time = 0
 
@@ -233,3 +251,21 @@ def init():
 
     global soil_temperature_graph_ref
     soil_temperature_graph_ref = ""
+
+    global soil_water_content_graph_ref
+    soil_water_content_graph_ref = ""
+
+    global soil_EC_graph_ref
+    soil_EC_graph_ref = ""
+
+    global soil_pH_graph_ref
+    soil_pH_graph_ref = ""
+
+    global soil_nitrogen_graph_ref
+    soil_nitrogen_graph_ref = ""
+
+    global soil_phosphorus_graph_ref
+    soil_phosphorus_graph_ref = ""
+
+    global soil_potassium_graph_ref
+    soil_potassium_graph_ref = ""

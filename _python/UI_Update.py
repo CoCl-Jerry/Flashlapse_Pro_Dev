@@ -34,6 +34,38 @@ def graph_init(self):
     self.soil_temperature_graphWidget.setLabel("left", "Oxygen (%)", **styles)
     self.soil_temperature_graphWidget.setLabel("bottom", "Time (s)", **styles)
 
+    self.soil_water_content_graphWidget.setBackground("#fbfbfb")
+    self.soil_water_content_graphWidget.showGrid(x=True, y=True)
+    self.soil_water_content_graphWidget.setLabel("left", "Water Content (%)", **styles)
+    self.soil_water_content_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    self.soil_EC_graphWidget.setBackground("#fbfbfb")
+    self.soil_EC_graphWidget.showGrid(x=True, y=True)
+    self.soil_EC_graphWidget.setLabel(
+        "left", "Electrical Conductivity (μS/cm)", **styles
+    )
+    self.soil_EC_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    self.soil_pH_graphWidget.setBackground("#fbfbfb")
+    self.soil_pH_graphWidget.showGrid(x=True, y=True)
+    self.soil_pH_graphWidget.setLabel("left", "pH", **styles)
+    self.soil_pH_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    self.soil_nitrogen_graphWidget.setBackground("#fbfbfb")
+    self.soil_nitrogen_graphWidget.showGrid(x=True, y=True)
+    self.soil_nitrogen_graphWidget.setLabel("left", "Nitrogen (mg/kg)", **styles)
+    self.soil_nitrogen_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    self.soil_phosphorus_graphWidget.setBackground("#fbfbfb")
+    self.soil_phosphorus_graphWidget.showGrid(x=True, y=True)
+    self.soil_phosphorus_graphWidget.setLabel("left", "Phosphorus (mg/kg)", **styles)
+    self.soil_phosphorus_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    self.soil_potassium_graphWidget.setBackground("#fbfbfb")
+    self.soil_potassium_graphWidget.showGrid(x=True, y=True)
+    self.soil_potassium_graphWidget.setLabel("left", "Potassium (mg/kg)", **styles)
+    self.soil_potassium_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
 
 # ---------------------------------------------------------------------------- #
 #                                error UI update                               #
@@ -284,6 +316,12 @@ def soil_UI_update(self):
     else:
         self.start_soil_sensors_pushButton.setText("Start Soil Sensors")
         self.soil_temperture_value_label.setText("N/A °C")
+        self.soil_water_content_value_label.setText("N/A %")
+        self.soil_EC_value_label.setText("N/A μS/cm")
+        self.soil_pH_value_label.setText("N/A")
+        self.soil_nitrogen_value_label.setText("N/A mg/kg")
+        self.soil_phosphorus_value_label.setText("N/A mg/kg")
+        self.soil_potassium_value_label.setText("N/A mg/kg")
 
 
 # ---------------------------------------------------------------------------- #
@@ -292,8 +330,26 @@ def soil_sensor_initialize(self):
     General.soil_temperature_graph_ref = self.soil_temperature_graphWidget.plot(
         General.soil_sensor_time_stamp, General.soil_temperature, pen=pen
     )
+    General.soil_water_content_graph_ref = self.soil_water_content_graphWidget.plot(
+        General.soil_sensor_time_stamp, General.soil_water_content, pen=pen
+    )
+    General.soil_EC_graph_ref = self.soil_EC_graphWidget.plot(
+        General.soil_sensor_time_stamp, General.soil_EC, pen=pen
+    )
+    General.soil_pH_graph_ref = self.soil_pH_graphWidget.plot(
+        General.soil_sensor_time_stamp, General.soil_pH, pen=pen
+    )
+    General.soil_nitrogen_graph_ref = self.soil_nitrogen_graphWidget.plot(
+        General.soil_sensor_time_stamp, General.soil_nitrogen, pen=pen
+    )
+    General.soil_phosphorus_graph_ref = self.soil_phosphorus_graphWidget.plot(
+        General.soil_sensor_time_stamp, General.soil_phosphorus, pen=pen
+    )
+    General.soil_potassium_graph_ref = self.soil_potassium_graphWidget.plot(
+        General.soil_sensor_time_stamp, General.soil_potassium, pen=pen
+    )
 
-    amibient_update_labels(self)
+    soil_update_labels(self)
 
 
 # ---------------------------------------------------------------------------- #
@@ -301,9 +357,31 @@ def soil_sensor_update(self):
     General.soil_temperature_graph_ref.setData(
         General.soil_sensor_time_stamp, General.soil_temperature
     )
+    General.soil_water_content_graph_ref.setData(
+        General.soil_sensor_time_stamp, General.soil_water_content
+    )
+    General.soil_EC_graph_ref.setData(General.soil_sensor_time_stamp, General.soil_EC)
+    General.soil_pH_graph_ref.setData(General.soil_sensor_time_stamp, General.soil_pH)
+    General.soil_nitrogen_graph_ref.setData(
+        General.soil_sensor_time_stamp, General.soil_nitrogen
+    )
+    General.soil_phosphorus_graph_ref.setData(
+        General.soil_sensor_time_stamp, General.soil_phosphorus
+    )
+    General.soil_potassium_graph_ref.setData(
+        General.soil_sensor_time_stamp, General.soil_potassium
+    )
     soil_update_labels(self)
 
 
 # ---------------------------------------------------------------------------- #
 def soil_update_labels(self):
     self.soil_temperture_value_label.setText(str(General.soil_temperature[-1]) + " °C")
+    self.soil_water_content_value_label.setText(
+        str(General.soil_water_content[-1]) + " °C"
+    )
+    self.soil_EC_value_label.setText(str(General.soil_EC[-1]) + " °C")
+    self.soil_pH_value_label.setText(str(General.soil_pH[-1]) + " °C")
+    self.soil_nitrogen_value_label.setText(str(General.soil_nitrogen[-1]) + " °C")
+    self.soil_phosphorus_value_label.setText(str(General.soil_phosphorus[-1]) + " °C")
+    self.soil_potassium_value_label.setText(str(General.soil_potassium[-1]) + " °C")
