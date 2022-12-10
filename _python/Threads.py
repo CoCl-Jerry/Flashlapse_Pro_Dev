@@ -6,6 +6,7 @@ import adafruit_vl53l4cd  # type: ignore
 import adafruit_scd4x  # type: ignore
 from picamera import PiCamera  # type: ignore
 from DFRobot_EOxygenSensor import *
+import serial  # type: ignore
 
 import General
 import Sensors
@@ -299,11 +300,19 @@ class Soil(QThread):
                 or not General.soil_sensor_crc16_check
             ):
                 try:
+                    ser = serial.Serial(
+                        port="/dev/ttyUSB0",
+                        baudrate=4800,
+                        parity=serial.PARITY_NONE,
+                        stopbits=serial.STOPBITS_ONE,
+                        bytesize=serial.EIGHTBITS,
+                        timeout=1,
+                    )
 
-                    General.serial_reference.write(General.soil_sensor_request)
-                    General.serial_reference.flushInput()
-                    soil_sensor_raw_data = General.serial_reference.readline().hex()
-                    General.serial_reference.close()
+                    ser.write(General.soil_sensor_request)
+                    ser.flushInput()
+                    soil_sensor_raw_data = ser.readline().hex()
+                    ser.close()
 
                     soil_sensor_processed_data = Sensors.hexListConvert(
                         soil_sensor_raw_data
