@@ -1517,7 +1517,7 @@
           <item row="0" column="2" rowspan="2">
            <widget class="QLabel" name="ambient_humidity_value_label">
             <property name="text">
-             <string>N/A %rH</string>
+             <string>N/A %</string>
             </property>
            </widget>
           </item>
