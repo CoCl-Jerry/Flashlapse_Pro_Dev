@@ -191,7 +191,7 @@ def sensor_export_data(self):
                 self,
                 "Save CSV File",
                 General.default_storage_directory
-                + "/ambient_sensor_data"
+                + "/ambient_sensor_data_"
                 + General.current_date
                 + ".csv",
                 "CSV Files (*.csv)",
@@ -210,6 +210,46 @@ def sensor_export_data(self):
                 with open(file_name, "w", newline="") as csvfile:
                     writer = csv.writer(csvfile)
                     writer.writerow(["Time", "Temperature", "Humidity", "CO2", "O2"])
+                    writer.writerows(export)
+                UI_Update.export_UI_update(self, 1)
+        elif self.mainwindow_tabWidget.currentIndex() == 4:
+            file_name, _ = QFileDialog.getSaveFileName(
+                self,
+                "Save CSV File",
+                General.default_storage_directory
+                + "/soil_sensor_data_"
+                + General.current_date
+                + ".csv",
+                "CSV Files (*.csv)",
+                options=options,
+            )
+            if file_name:
+                export = list(
+                    zip(
+                        General.soil_sensor_time_stamp,
+                        General.soil_temperature,
+                        General.soil_water_content,
+                        General.soil_EC,
+                        General.soil_pH,
+                        General.soil_nitrogen,
+                        General.soil_phosphorus,
+                        General.soil_potassium,
+                    )
+                )
+                with open(file_name, "w", newline="") as csvfile:
+                    writer = csv.writer(csvfile)
+                    writer.writerow(
+                        [
+                            "Time",
+                            "Temperature",
+                            "Water Content",
+                            "EC",
+                            "pH",
+                            "Nitrogen",
+                            "Phosphorus",
+                            "Potassium",
+                        ]
+                    )
                     writer.writerows(export)
                 UI_Update.export_UI_update(self, 1)
     except Exception as e:
