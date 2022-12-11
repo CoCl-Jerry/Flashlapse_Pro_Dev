@@ -1114,9 +1114,9 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.mainwindow_tabWidget.setCurrentIndex(0)
-        self.ambient_sensors_tabWidget.setCurrentIndex(0)
-        self.soil_sensors_tabWidget.setCurrentIndex(0)
+        self.mainwindow_tabWidget.setCurrentIndex(4)
+        self.ambient_sensors_tabWidget.setCurrentIndex(3)
+        self.soil_sensors_tabWidget.setCurrentIndex(6)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -1187,11 +1187,13 @@ class Ui_MainWindow(object):
         self.ambient_temperture_value_label.setText(_translate("MainWindow", "N/A °C"))
         self.label_6.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Correction Offset:</span></p></body></html>"))
         self.ambient_sensors_tabWidget.setTabText(self.ambient_sensors_tabWidget.indexOf(self.tab_11), _translate("MainWindow", "Temperature"))
+        self.ambient_humidity_offset_doubleSpinBox.setSuffix(_translate("MainWindow", " %"))
         self.ambient_humidity_label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Current Reading:</span></p></body></html>"))
         self.ambient_humidity_offset_pushButton.setText(_translate("MainWindow", "Confirm Offset"))
-        self.ambient_humidity_value_label.setText(_translate("MainWindow", "N/A %rH"))
+        self.ambient_humidity_value_label.setText(_translate("MainWindow", "N/A %"))
         self.label_7.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Correction Offset:</span></p></body></html>"))
         self.ambient_sensors_tabWidget.setTabText(self.ambient_sensors_tabWidget.indexOf(self.tab_10), _translate("MainWindow", "Humidity"))
+        self.ambient_co2_calibration_spinBox.setSuffix(_translate("MainWindow", " ppm"))
         self.label_9.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">CO</span><span style=\" font-weight:700; vertical-align:sub;\">2</span><span style=\" font-weight:700;\"> Calibration</span><span style=\" font-weight:700;\">:</span></p></body></html>"))
         self.label_4.setText(_translate("MainWindow", "Target ppm:"))
         self.ambient_co2_value_label.setText(_translate("MainWindow", "N/A ppm"))
