@@ -496,7 +496,7 @@ def soil_sensor_update(self):
 def soil_update_labels(self):
     self.soil_temperature_value_label.setText(str(General.soil_temperature[-1]) + " °C")
     self.soil_water_content_value_label.setText(
-        str(General.soil_water_content[-1]) + " °%"
+        str(General.soil_water_content[-1]) + " %"
     )
     self.soil_EC_value_label.setText(str(General.soil_EC[-1]) + " μS/cm")
     self.soil_pH_value_label.setText(str(General.soil_pH[-1]))
