@@ -29,7 +29,7 @@ class Lighting_Cycle(QThread):
         self._running = False
 
     def run(self):
-        while true:
+        while True:
             for x in range(General.lighting_cycle_daytime_value * 60):
                 self.countdown.emit()
                 General.lighting_cycle_countdown_value = (
