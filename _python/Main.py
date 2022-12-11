@@ -36,32 +36,32 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         #                         start of lighting activities                         #
         # ---------------------------------------------------------------------------- #
         self.lighting_brightness_horizontalSlider.valueChanged.connect(
-            UI_Update.lighting_slider_changed
+            UI_Update.lighting_slider_changed(self)
         )
 
         self.lighting_red_horizontalSlider.valueChanged.connect(
-            UI_Update.lighting_slider_changed
+            UI_Update.lighting_slider_changed(self)
         )
 
         self.lighting_green_horizontalSlider.valueChanged.connect(
-            UI_Update.lighting_slider_changed
+            UI_Update.lighting_slider_changed(self)
         )
 
         self.lighting_blue_horizontalSlider.valueChanged.connect(
-            UI_Update.lighting_slider_changed
+            UI_Update.lighting_slider_changed(self)
         )
 
         self.lighting_brightness_spinBox.valueChanged.connect(
-            UI_Update.lighting_spinbox_changed
+            UI_Update.lighting_spinbox_changed(self)
         )
         self.lighting_red_spinBox.valueChanged.connect(
-            UI_Update.lighting_spinbox_changed
+            UI_Update.lighting_spinbox_changed(self)
         )
         self.lighting_green_spinBox.valueChanged.connect(
-            UI_Update.lighting_spinbox_changed
+            UI_Update.lighting_spinbox_changed(self)
         )
         self.lighting_blue_spinBox.valueChanged.connect(
-            UI_Update.lighting_spinbox_changed
+            UI_Update.lighting_spinbox_changed(self)
         )
 
         self.lighting_confirm_pushButton.clicked.connect(Lighting.lighting_confirm)
