@@ -29,25 +29,25 @@ class Lighting_Cycle(QThread):
         self._running = False
 
     def run(self):
-
-        for x in range(General.lighting_cycle_daytime_value * 60):
-            self.countdown.emit()
-            General.lighting_cycle_countdown_value = (
-                General.lighting_cycle_daytime_value * 60 - x
-            )
-            sleep(1)
-            if not General.lighting_cycle_thread_running:
-                return
-        self.nighttime.emit()
-        for x in range(General.lighting_cycle_nighttime_value * 60):
-            self.countdown.emit()
-            General.lighting_cycle_nighttime_value = (
-                General.lighting_cycle_nighttime_value * 60 - x
-            )
-            sleep(1)
-            if not General.lighting_cycle_thread_running:
-                return
-        self.daytime.emit()
+        while true:
+            for x in range(General.lighting_cycle_daytime_value * 60):
+                self.countdown.emit()
+                General.lighting_cycle_countdown_value = (
+                    General.lighting_cycle_daytime_value * 60 - x
+                )
+                sleep(1)
+                if not General.lighting_cycle_thread_running:
+                    return
+            self.nighttime.emit()
+            for x in range(General.lighting_cycle_nighttime_value * 60):
+                self.countdown.emit()
+                General.lighting_cycle_nighttime_value = (
+                    General.lighting_cycle_nighttime_value * 60 - x
+                )
+                sleep(1)
+                if not General.lighting_cycle_thread_running:
+                    return
+            self.daytime.emit()
 
 
 # ---------------------------------------------------------------------------- #
