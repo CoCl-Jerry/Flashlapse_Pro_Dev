@@ -77,6 +77,12 @@ def ambient_co2_calibration(self):
 
 
 # ---------------------------------------------------------------------------- #
+def ambient_reset_calibration(self):
+    scd4x = adafruit_scd4x.SCD4X(board.I2C())
+    scd4x.factory_reset()
+
+
+# ---------------------------------------------------------------------------- #
 def ambient_o2_calibration(self, mode):
     General.ambient_o2_sensor_calibration_mode = mode
     Call_Thread.ambient_o2_sensor_calibration(self)

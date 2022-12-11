@@ -908,6 +908,9 @@
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="4" column="0">
          <widget class="QSpinBox" name="motion_increment_spinBox">
+          <property name="toolTip">
+           <string>Soil sensor platform motion increment</string>
+          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -959,6 +962,9 @@
             <height>50</height>
            </size>
           </property>
+          <property name="toolTip">
+           <string>Move the soil sensor platform up by an increment</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -984,6 +990,9 @@
             <width>0</width>
             <height>50</height>
            </size>
+          </property>
+          <property name="toolTip">
+           <string>Move the soil sensor platform down by an increment</string>
           </property>
           <property name="text">
            <string/>
@@ -1289,6 +1298,9 @@
         <height>171</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>Emergency Stop</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -1371,6 +1383,9 @@
           </item>
           <item row="0" column="5">
            <widget class="QDoubleSpinBox" name="ambient_temperature_offset_doubleSpinBox">
+            <property name="suffix">
+             <string> °C</string>
+            </property>
             <property name="minimum">
              <double>-100.000000000000000</double>
             </property>
@@ -1502,7 +1517,7 @@
           <item row="0" column="2" rowspan="2">
            <widget class="QLabel" name="ambient_humidity_value_label">
             <property name="text">
-             <string>N/A °C</string>
+             <string>N/A %rH</string>
             </property>
            </widget>
           </item>
@@ -1562,23 +1577,13 @@
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_7">
-          <item row="0" column="1" rowspan="3">
-           <widget class="QLabel" name="ambient_co2_label">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
+          <item row="0" column="6" rowspan="2">
+           <widget class="QSpinBox" name="ambient_co2_calibration_spinBox">
+            <property name="minimum">
+             <number>400</number>
             </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Current Reading:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2" rowspan="3">
-           <widget class="QLabel" name="ambient_co2_value_label">
-            <property name="text">
-             <string>N/A ppm</string>
+            <property name="maximum">
+             <number>2000</number>
             </property>
            </widget>
           </item>
@@ -1595,34 +1600,51 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="3" rowspan="3">
-           <widget class="Line" name="line_6">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="5">
+          <item row="0" column="5" rowspan="2">
            <widget class="QLabel" name="label_4">
             <property name="text">
              <string>Target ppm:</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="6">
-           <widget class="QSpinBox" name="ambient_co2_calibration_spinBox">
-            <property name="minimum">
-             <number>400</number>
-            </property>
-            <property name="maximum">
-             <number>2000</number>
+          <item row="0" column="2" rowspan="3">
+           <widget class="QLabel" name="ambient_co2_value_label">
+            <property name="text">
+             <string>N/A ppm</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="5" rowspan="2" colspan="2">
+          <item row="2" column="5" colspan="2">
            <widget class="QPushButton" name="ambient_co2_calibration_pushButton">
             <property name="text">
              <string>Calibrate</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="7" rowspan="3">
+           <widget class="QPushButton" name="ambient_co2_reset_calibration_pushButton">
+            <property name="text">
+             <string>Reset Calibration</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1" rowspan="3">
+           <widget class="QLabel" name="ambient_co2_label">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Current Reading:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3" rowspan="3">
+           <widget class="Line" name="line_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
             </property>
            </widget>
           </item>
@@ -2510,7 +2532,7 @@
          <bool>true</bool>
         </property>
         <property name="toolTip">
-         <string>Takes a quick snapshot</string>
+         <string>Takes a quick 350px x 350px snapshot</string>
         </property>
         <property name="text">
          <string>SNAPSHOT</string>
@@ -2529,7 +2551,7 @@
          </sizepolicy>
         </property>
         <property name="toolTip">
-         <string/>
+         <string>Start/stop a timelapse sequence with current settings</string>
         </property>
         <property name="text">
          <string>START TIMELAPSE</string>
@@ -2539,7 +2561,7 @@
       <item row="1" column="0" colspan="2">
        <widget class="QPushButton" name="imaging_preview_pushButton">
         <property name="toolTip">
-         <string>Takes a image with current settings</string>
+         <string>Takes a image with current settings and open the image</string>
         </property>
         <property name="text">
          <string>PREVIEW</string>
@@ -2552,7 +2574,7 @@
          <bool>true</bool>
         </property>
         <property name="toolTip">
-         <string>Rotate image 90 degrees</string>
+         <string>Rotate the image by 90 degrees and take a snapshot</string>
         </property>
         <property name="text">
          <string>ROTATE IMAGE</string>
@@ -2561,6 +2583,9 @@
       </item>
       <item row="3" column="0">
        <widget class="QSpinBox" name="imaging_live_feed_spinBox">
+        <property name="toolTip">
+         <string>Duration for the live feed</string>
+        </property>
         <property name="suffix">
          <string> s</string>
         </property>
@@ -2577,6 +2602,9 @@
       </item>
       <item row="3" column="1">
        <widget class="QPushButton" name="imaging_live_feed_pushButton">
+        <property name="toolTip">
+         <string>Start a live feed from the camera</string>
+        </property>
         <property name="text">
          <string>Live Feed</string>
         </property>
@@ -2615,6 +2643,9 @@
      <layout class="QGridLayout" name="gridLayout">
       <item row="4" column="0">
        <widget class="QPushButton" name="sensor_set_interval_pushButton">
+        <property name="toolTip">
+         <string>Confirm sensor data gathering interval</string>
+        </property>
         <property name="text">
          <string>Set Sensor Interval</string>
         </property>
@@ -2631,6 +2662,9 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="toolTip">
+         <string>Start collecting data from ambient sensors</string>
+        </property>
         <property name="text">
          <string>Start Ambient Sensors</string>
         </property>
@@ -2638,6 +2672,9 @@
       </item>
       <item row="5" column="0">
        <widget class="QSpinBox" name="sensor_set_interval_spinBox">
+        <property name="toolTip">
+         <string>Set data gathering interval</string>
+        </property>
         <property name="suffix">
          <string> s</string>
         </property>
@@ -2663,6 +2700,9 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="toolTip">
+         <string>Start collecting data from soil sensor</string>
+        </property>
         <property name="text">
          <string>Start Soil Sensors</string>
         </property>
@@ -2672,6 +2712,9 @@
        <widget class="QPushButton" name="sensor_export_data_pushButton">
         <property name="enabled">
          <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>Export data as a .csv file</string>
         </property>
         <property name="text">
          <string>No Data to Export</string>
