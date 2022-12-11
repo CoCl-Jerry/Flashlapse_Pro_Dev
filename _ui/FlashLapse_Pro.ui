@@ -67,7 +67,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QTabWidget" name="main_window_tabWidget">
+   <widget class="QTabWidget" name="mainwindow_tabWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
