@@ -77,13 +77,13 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>LIGHTING</string>
      </attribute>
-     <widget class="QFrame" name="frame_12">
+     <widget class="QFrame" name="lighting_control_frame">
       <property name="geometry">
        <rect>
         <x>10</x>

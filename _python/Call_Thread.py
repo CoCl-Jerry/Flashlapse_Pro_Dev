@@ -30,10 +30,10 @@ def lighting_cycle(self):
             lambda: UI_Update.lighting_cycle_update(self)
         )
         self.Lighting_Cycle_Thread.nighttime.connect(
-            lambda: Lighting.lighting_cycle_nighttime(self)
+            lambda: Lighting.lighting_cycle_nighttime()
         )
         self.Lighting_Cycle_Thread.daytime.connect(
-            lambda: Lighting.lighting_cycle_daytime(self)
+            lambda: Lighting.lighting_cycle_daytime()
         )
         self.Lighting_Cycle_Thread.countdown.connect(
             lambda: UI_Update.lighting_cycle_countdown(self)
