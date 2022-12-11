@@ -78,6 +78,7 @@ def ambient_co2_calibration(self):
 
 # ---------------------------------------------------------------------------- #
 def ambient_reset_calibration(self):
+    print("resetting calibration")
     scd4x = adafruit_scd4x.SCD4X(board.I2C())
     scd4x.factory_reset()
 
