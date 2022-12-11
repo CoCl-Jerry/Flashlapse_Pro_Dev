@@ -26,6 +26,7 @@ def lighting_reset(self):
     UI_Update.lighting_update(self)
 
 
+# ---------------------------------------------------------------------------- #
 def lighting_adaptive_IR():
     Communication.sendCMD("3~" + str(General.lighting_adaptive_IR))
 

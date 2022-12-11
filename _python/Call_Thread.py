@@ -124,6 +124,7 @@ def timelapse(self):
         self.Timelapse_Thread.finished.connect(
             lambda: UI_Update.timelapse_UI_update(self)
         )
+        self.Timelapse_Thread.finished.connect(lambda: UI_Update.error_UI_update(self))
         self.Timelapse_Thread.imaging.connect(
             lambda: UI_Update.imaging_frame_toggle(self)
         )

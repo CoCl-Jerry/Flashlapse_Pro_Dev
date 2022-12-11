@@ -197,10 +197,13 @@ class Timelapse(QThread):
         self._running = False
 
     def run(self):
-        if not os.path.isdir(General.full_storage_directory):
-            original_umask = os.umask(0)
-            os.mkdir(General.full_storage_directory, mode=0o777)
-            os.umask(original_umask)
+        try:
+            if not os.path.isdir(General.full_storage_directory):
+                original_umask = os.umask(0)
+                os.mkdir(General.full_storage_directory, mode=0o777)
+                os.umask(original_umask)
+        except Exception as e:
+            print(e, "folder already exsists")
         for i in range(General.imaging_capture_total):
             General.current_image_counter = i + 1
             General.current_full_file_name = General.full_file_name % (i + 1)

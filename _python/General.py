@@ -13,7 +13,7 @@ def init():
 
     global serial_reference
     serial_reference = serial.Serial(
-        port="/dev/ttyUSB0",
+        port="/dev/ttyUSB_RS485",
         baudrate=2400,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
