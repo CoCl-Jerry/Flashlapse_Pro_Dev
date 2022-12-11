@@ -36,19 +36,19 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         #                         start of lighting activities                         #
         # ---------------------------------------------------------------------------- #
         self.lighting_brightness_horizontalSlider.valueChanged.connect(
-            UI_Update.lighting_slider_changed(self)
+            UI_Update.lighting_horizontalSlider_changed(self)
         )
 
         self.lighting_red_horizontalSlider.valueChanged.connect(
-            UI_Update.lighting_slider_changed(self)
+            UI_Update.lighting_horizontalSlider_changed(self)
         )
 
         self.lighting_green_horizontalSlider.valueChanged.connect(
-            UI_Update.lighting_slider_changed(self)
+            UI_Update.lighting_horizontalSlider_changed(self)
         )
 
         self.lighting_blue_horizontalSlider.valueChanged.connect(
-            UI_Update.lighting_slider_changed(self)
+            UI_Update.lighting_horizontalSlider_changed(self)
         )
 
         self.lighting_brightness_spinBox.valueChanged.connect(
@@ -103,13 +103,13 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
             lambda: Call_Thread.timelapse(self)
         )
         self.imaging_xAxis_horizontalSlider.valueChanged.connect(
-            lambda: UI_Update.imaging_AOI_slider_changed(self)
+            lambda: UI_Update.imaging_AOI_horizontalSlider_changed(self)
         )
         self.imaging_xAxis_horizontalSlider.sliderReleased.connect(
             lambda: Call_Thread.snapshot(self)
         )
         self.imaging_yAxis_horizontalSlider.valueChanged.connect(
-            lambda: UI_Update.imaging_AOI_slider_changed(self)
+            lambda: UI_Update.imaging_AOI_horizontalSlider_changed(self)
         )
         self.imaging_yAxis_horizontalSlider.sliderReleased.connect(
             lambda: Call_Thread.snapshot(self)
