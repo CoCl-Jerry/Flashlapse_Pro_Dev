@@ -472,23 +472,7 @@ def soil_sensor_initialize(self):
 
 # ---------------------------------------------------------------------------- #
 def soil_sensor_update(self):
-    General.soil_temperature_graph_ref.setData(
-        General.soil_sensor_time_stamp, General.soil_temperature
-    )
-    General.soil_water_content_graph_ref.setData(
-        General.soil_sensor_time_stamp, General.soil_water_content
-    )
-    General.soil_EC_graph_ref.setData(General.soil_sensor_time_stamp, General.soil_EC)
-    General.soil_pH_graph_ref.setData(General.soil_sensor_time_stamp, General.soil_pH)
-    General.soil_nitrogen_graph_ref.setData(
-        General.soil_sensor_time_stamp, General.soil_nitrogen
-    )
-    General.soil_phosphorus_graph_ref.setData(
-        General.soil_sensor_time_stamp, General.soil_phosphorus
-    )
-    General.soil_potassium_graph_ref.setData(
-        General.soil_sensor_time_stamp, General.soil_potassium
-    )
+    soil_sensors_tab_update(self)
     soil_update_labels(self)
 
 
@@ -526,6 +510,38 @@ def soil_sensor_reset(self):
     General.soil_potassium = []
 
     General.soil_sensor_time_stamp = []
+
+
+# ---------------------------------------------------------------------------- #
+def soil_sensors_tab_update(self):
+    if self.mainwindow_tabWidget.currentIndex() == 0:
+        General.soil_temperature_graph_ref.setData(
+            General.soil_sensor_time_stamp, General.soil_temperature
+        )
+    elif self.mainwindow_tabWidget.currentIndex() == 1:
+        General.soil_water_content_graph_ref.setData(
+            General.soil_sensor_time_stamp, General.soil_water_content
+        )
+    elif self.mainwindow_tabWidget.currentIndex() == 2:
+        General.soil_EC_graph_ref.setData(
+            General.soil_sensor_time_stamp, General.soil_EC
+        )
+    elif self.mainwindow_tabWidget.currentIndex() == 3:
+        General.soil_pH_graph_ref.setData(
+            General.soil_sensor_time_stamp, General.soil_pH
+        )
+    elif self.mainwindow_tabWidget.currentIndex() == 4:
+        General.soil_nitrogen_graph_ref.setData(
+            General.soil_sensor_time_stamp, General.soil_nitrogen
+        )
+    elif self.mainwindow_tabWidget.currentIndex() == 5:
+        General.soil_phosphorus_graph_ref.setData(
+            General.soil_sensor_time_stamp, General.soil_phosphorus
+        )
+    elif self.mainwindow_tabWidget.currentIndex() == 6:
+        General.soil_potassium_graph_ref.setData(
+            General.soil_sensor_time_stamp, General.soil_potassium
+        )
 
 
 # ---------------------------------------------------------------------------- #
