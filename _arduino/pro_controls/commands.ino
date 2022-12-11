@@ -6,20 +6,7 @@ void exeCMD() {
       while (1) {}
       break;
 
-    case 2:
-      switch (commands[1]) {
-        case 0:
-          motorStatus();
-          break;
-        case 1:
-          setMotor();
-          break;
-        default:
-          break;
-      }
-      break;
-
-    case 3:
+    case 1:
       switch (commands[1]) {
         case 0:
           stripClear();
@@ -36,6 +23,19 @@ void exeCMD() {
           break;
         case 4:
           brightnessUpdate();
+          break;
+        default:
+          break;
+      }
+      break;
+
+    case 2:
+      switch (commands[1]) {
+        case 0:
+          motorStatus();
+          break;
+        case 1:
+          setMotor();
           break;
         default:
           break;

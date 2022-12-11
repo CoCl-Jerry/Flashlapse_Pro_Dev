@@ -76,6 +76,21 @@ def init():
     soil_sensor_error_image = QtGui.QImage("../_image/soil_sensor_error.png")
 
     # ---------------------------------------------------------------------------- #
+    #                        start of lighting declarations                        #
+    # ---------------------------------------------------------------------------- #
+    global lighting_brightness
+    lighting_brightness = 100
+
+    global lighting_red
+    lighting_red = 0
+
+    global lighting_green
+    lighting_green = 0
+
+    global lighting_blue
+    lighting_blue = 0
+
+    # ---------------------------------------------------------------------------- #
     #                         start of imaging declarations                        #
     # ---------------------------------------------------------------------------- #
     global imaging_capture_total

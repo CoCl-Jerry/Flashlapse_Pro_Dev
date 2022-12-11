@@ -4,7 +4,7 @@ void stripUpdate() {
       strip.setPixelColor(i, int(commands[4]), int(commands[5]), int(commands[6]));
     }
   }
-  strip.setBrightness(int(commands[8]));
+  strip.setBrightness(int(commands[7]));
 }
 
 void brightnessUpdate() {

@@ -5,6 +5,7 @@ import Sensors
 import Motion
 import Call_Thread
 import Communication
+import Lighting
 
 # import Commands
 # import Threads
@@ -31,6 +32,40 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         Sensors.init(self)
         Communication.reset_arduino()
 
+        # ---------------------------------------------------------------------------- #
+        #                         start of lighting activities                         #
+        # ---------------------------------------------------------------------------- #
+        self.lighting_brightness_horizontalSlider.valueChanged.connect(
+            UI_Update.lighting_slider_changed
+        )
+
+        self.lighting_red_horizontalSlider.valueChanged.connect(
+            UI_Update.lighting_slider_changed
+        )
+
+        self.lighting_green_horizontalSlider.valueChanged.connect(
+            UI_Update.lighting_slider_changed
+        )
+
+        self.lighting_blue_horizontalSlider.valueChanged.connect(
+            UI_Update.lighting_slider_changed
+        )
+
+        self.lighting_brightness_spinBox.valueChanged.connect(
+            UI_Update.lighting_spinbox_changed
+        )
+        self.lighting_red_spinBox.valueChanged.connect(
+            UI_Update.lighting_spinbox_changed
+        )
+        self.lighting_green_spinBox.valueChanged.connect(
+            UI_Update.lighting_spinbox_changed
+        )
+        self.lighting_blue_spinBox.valueChanged.connect(
+            UI_Update.lighting_spinbox_changed
+        )
+
+        self.lighting_confirm_pushButton.clicked.connect(Lighting.lighting_confirm)
+        self.lighting_reset_pushButton.clicked.connect(Lighting.lighting_reset)
         # ---------------------------------------------------------------------------- #
         #                          start of imaging activities                         #
         # ---------------------------------------------------------------------------- #

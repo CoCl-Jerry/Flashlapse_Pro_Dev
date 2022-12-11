@@ -81,6 +81,85 @@ def error_UI_update(self):
 
 
 # ---------------------------------------------------------------------------- #
+#                              lighting UI update                              #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+def lighting_slider_changed(self):
+    self.lighting_brightness_spinBox.blockSignals(True)
+    self.lighting_red_spinBox.blockSignals(True)
+    self.lighting_green_spinBox.blockSignals(True)
+    self.lighting_blue_spinBox.blockSignals(True)
+
+    General.lighting_brightness = self.lighting_brightness_slider.value()
+    General.lighting_red = self.lighting_red_slider.value()
+    General.lighting_green = self.lighting_green_slider.value()
+    General.lighting_blue = self.lighting_blue_slider.value()
+
+    self.lighting_brightness_spinBox.setValue(General.lighting_brightness)
+    self.lighting_red_spinBox.setValue(General.lighting_red)
+    self.lighting_green_spinBox.setValue(General.lighting_green)
+    self.lighting_blue_spinBox.setValue(General.lighting_blue)
+
+    self.lighting_brightness_spinBox.blockSignals(False)
+    self.lighting_red_spinBox.blockSignals(False)
+    self.lighting_green_spinBox.blockSignals(False)
+    self.lighting_blue_spinBox.blockSignals(False)
+
+
+# ---------------------------------------------------------------------------- #
+def lighting_spinbox_changed(self):
+    self.lighting_brightness_slider.blockSignals(True)
+    self.lighting_red_slider.blockSignals(True)
+    self.lighting_green_slider.blockSignals(True)
+    self.lighting_blue_slider.blockSignals(True)
+
+    General.lighting_brightness = self.lighting_brightness_spinBox.value()
+    General.lighting_red = self.lighting_red_spinBox.value()
+    General.lighting_green = self.lighting_green_spinBox.value()
+    General.lighting_blue = self.lighting_blue_spinBox.value()
+
+    self.lighting_brightness_slider.setValue(General.lighting_brightness)
+    self.lighting_red_slider.setValue(General.lighting_red)
+    self.lighting_green_slider.setValue(General.lighting_green)
+    self.lighting_blue_slider.setValue(General.lighting_blue)
+
+    self.lighting_brightness_slider.blockSignals(False)
+    self.lighting_red_slider.blockSignals(False)
+    self.lighting_green_slider.blockSignals(False)
+    self.lighting_blue_slider.blockSignals(False)
+
+
+# ---------------------------------------------------------------------------- #
+def lighting_update(self):
+    self.lighting_brightness_slider.blockSignals(True)
+    self.lighting_red_slider.blockSignals(True)
+    self.lighting_green_slider.blockSignals(True)
+    self.lighting_blue_slider.blockSignals(True)
+    self.lighting_brightness_spinBox.blockSignals(True)
+    self.lighting_red_spinBox.blockSignals(True)
+    self.lighting_green_spinBox.blockSignals(True)
+    self.lighting_blue_spinBox.blockSignals(True)
+
+    self.lighting_brightness_slider.setValue(General.lighting_brightness)
+    self.lighting_red_slider.setValue(General.lighting_red)
+    self.lighting_green_slider.setValue(General.lighting_green)
+    self.lighting_blue_slider.setValue(General.lighting_blue)
+    self.lighting_brightness_spinBox.setValue(General.lighting_brightness)
+    self.lighting_red_spinBox.setValue(General.lighting_red)
+    self.lighting_green_spinBox.setValue(General.lighting_green)
+    self.lighting_blue_spinBox.setValue(General.lighting_blue)
+
+    self.lighting_brightness_slider.blockSignals(False)
+    self.lighting_red_slider.blockSignals(False)
+    self.lighting_green_slider.blockSignals(False)
+    self.lighting_blue_slider.blockSignals(False)
+    self.lighting_brightness_spinBox.blockSignals(False)
+    self.lighting_red_spinBox.blockSignals(False)
+    self.lighting_green_spinBox.blockSignals(False)
+    self.lighting_blue_spinBox.blockSignals(False)
+
+
+# ---------------------------------------------------------------------------- #
 #                               motion UI update                               #
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
