@@ -74,6 +74,14 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.lighting_adaptive_IR_pushButton.clicked.connect(
             lambda: UI_Update.lighting_adaptive_IR_toggle(self)
         )
+
+        self.lighting_adaptive_IR_pushButton.clicked.connect(
+            lambda: UI_Update.lighting_adaptive_IR_toggle(self)
+        )
+
+        self.lighting_start_cycle_pushButton.clicked.connect(
+            lambda: Call_Thread.lighting_cycle(self)
+        )
         # ---------------------------------------------------------------------------- #
         #                          start of imaging activities                         #
         # ---------------------------------------------------------------------------- #

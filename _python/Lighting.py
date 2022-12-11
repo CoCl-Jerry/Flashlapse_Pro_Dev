@@ -70,3 +70,12 @@ def build_lighting_cmd(mode):
             + str(General.lighting_brightness)
         )
     Communication.sendCMD(cmd)
+
+
+def lighting_cycle_nighttime():
+    Communication.sendCMD("1~4~0")
+
+
+def lighting_cycle_daytime():
+    Communication.sendCMD("1~4~" + str(General.lighting_brightness))
+    Communication.sendCMD("1~4~" + str(General.lighting_brightness))

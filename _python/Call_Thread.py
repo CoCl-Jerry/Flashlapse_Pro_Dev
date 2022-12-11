@@ -3,8 +3,46 @@ import UI_Update
 import General
 import Motion
 import Imaging
+import Lighting
 
 import os
+
+
+# ---------------------------------------------------------------------------- #
+#                           call thread for lighting                           #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+
+
+def lighting_cycle(self):
+    if not General.lighting_cycle_thread_running:
+        General.lighting_cycle_daytime_value = (
+            self.lighting_daytime_duration_spinBox.value()
+        )
+        General.lighting_cycle_nighttime_value = (
+            self.lighting_nighttime_duration_spinBox.value()
+        )
+        self.Lighting_Cycle_Thread = Threads.Lighting_Cycle()
+        self.Lighting_Cycle_Thread.started.connect(
+            lambda: UI_Update.lighting_cycle_update(self)
+        )
+        self.Lighting_Cycle_Thread.finished.connect(
+            lambda: UI_Update.lighting_cycle_update(self)
+        )
+        self.Lighting_Cycle_Thread.nighttime.connect(
+            lambda: Lighting.lighting_cycle_nighttime(self)
+        )
+        self.Lighting_Cycle_Thread.daytime.connect(
+            lambda: Lighting.lighting_cycle_daytime(self)
+        )
+        self.Lighting_Cycle_Thread.countdown.connect(
+            lambda: UI_Update.lighting_cycle_countdown(self)
+        )
+        General.lighting_cycle_thread_running = True
+        self.Lighting_Cycle_Thread.start()
+    else:
+        General.lighting_cycle_thread_running = False
+
 
 # ---------------------------------------------------------------------------- #
 #                            call thread for motion                            #

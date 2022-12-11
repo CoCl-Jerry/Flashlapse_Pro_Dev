@@ -91,7 +91,19 @@ def init():
     lighting_blue = 0
 
     global lighting_adaptive_IR
-    lighting_adaptive_IR = False
+    lighting_adaptive_IR = 0
+
+    global lighting_cycle_countdown_value
+    lighting_cycle_countdown_value = 0
+
+    global lighting_cycle_daytime_value
+    lighting_cycle_daytime_value = 1
+
+    global lighting_cycle_nighttime_value
+    lighting_cycle_nighttime_value = 1
+
+    global lighting_cycle_thread_running
+    lighting_cycle_thread_running = False
 
     # ---------------------------------------------------------------------------- #
     #                         start of imaging declarations                        #

@@ -180,6 +180,25 @@ def lighting_adaptive_IR_toggle(self):
 
 
 # ---------------------------------------------------------------------------- #
+def lighting_cycle_update(self):
+    if General.lighting_cycle_thread_running:
+        self.lighting_start_cycle_pushButton.setText("Stop Cycle")
+        self.lighting_control_frame.setEnabled(False)
+    else:
+        self.lighting_start_cycle_pushButton.setText("Start Cycle")
+        self.lighting_control_frame.setEnabled(True)
+        General.lighting_cycle_countdown_value = 0
+        lighting_cycle_countdown(self)
+
+
+# ---------------------------------------------------------------------------- #
+def lighting_cycle_countdown(self):
+    self.lighting_cycle_countdown_value_label.setText(
+        str(General.lighting_cycle_countdown_value) + " s"
+    )
+
+
+# ---------------------------------------------------------------------------- #
 #                               motion UI update                               #
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
