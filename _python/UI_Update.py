@@ -1,4 +1,5 @@
 import General
+import Lighting
 from PyQt5.QtGui import QImage, QPixmap
 from pyqtgraph import mkPen  # type: ignore
 
@@ -135,6 +136,7 @@ def lighting_update(self):
     lighting_horizontalSlider_unblock_signals(self)
 
 
+# ---------------------------------------------------------------------------- #
 def lighting_spinbox_block_signals(self):
     self.lighting_brightness_spinBox.blockSignals(True)
     self.lighting_red_spinBox.blockSignals(True)
@@ -142,6 +144,7 @@ def lighting_spinbox_block_signals(self):
     self.lighting_blue_spinBox.blockSignals(True)
 
 
+# ---------------------------------------------------------------------------- #
 def lighting_spinbox_unblock_signals(self):
     self.lighting_brightness_spinBox.blockSignals(False)
     self.lighting_red_spinBox.blockSignals(False)
@@ -149,6 +152,7 @@ def lighting_spinbox_unblock_signals(self):
     self.lighting_blue_spinBox.blockSignals(False)
 
 
+# ---------------------------------------------------------------------------- #
 def lighting_horizontalSlider_block_signals(self):
     self.lighting_brightness_horizontalSlider.blockSignals(True)
     self.lighting_red_horizontalSlider.blockSignals(True)
@@ -156,11 +160,23 @@ def lighting_horizontalSlider_block_signals(self):
     self.lighting_blue_horizontalSlider.blockSignals(True)
 
 
+# ---------------------------------------------------------------------------- #
 def lighting_horizontalSlider_unblock_signals(self):
     self.lighting_brightness_horizontalSlider.blockSignals(False)
     self.lighting_red_horizontalSlider.blockSignals(False)
     self.lighting_green_horizontalSlider.blockSignals(False)
     self.lighting_blue_horizontalSlider.blockSignals(False)
+
+
+# ---------------------------------------------------------------------------- #
+def lighting_adaptive_IR_toggle(self):
+    if not General.lighting_adaptive_IR:
+        self.lighting_adaptive_IR_pushButton.setText("Adaptive IR: OFF")
+        General.lighting_adaptive_IR = 1
+    else:
+        self.lighting_adaptive_IR_pushButton.setText("Adaptive IR: ON")
+        General.lighting_adaptive_IR = 0
+    Lighting.lighting_adaptive_IR()
 
 
 # ---------------------------------------------------------------------------- #

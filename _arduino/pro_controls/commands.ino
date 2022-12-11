@@ -38,7 +38,7 @@ void exeCMD() {
       }
       break;
 
-    case 4:
+    case 3:
       switch (commands[1]) {
         case 0:
           infraOff();

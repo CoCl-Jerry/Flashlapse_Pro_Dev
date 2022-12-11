@@ -90,6 +90,9 @@ def init():
     global lighting_blue
     lighting_blue = 0
 
+    global lighting_adaptive_IR
+    lighting_adaptive_IR = False
+
     # ---------------------------------------------------------------------------- #
     #                         start of imaging declarations                        #
     # ---------------------------------------------------------------------------- #
