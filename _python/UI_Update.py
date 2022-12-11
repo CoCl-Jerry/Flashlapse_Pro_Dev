@@ -508,6 +508,27 @@ def soil_update_labels(self):
 
 
 # ---------------------------------------------------------------------------- #
+def soil_sensor_reset(self):
+    self.soil_temperature_graphWidget.clear()
+    self.soil_water_content_graphWidget.clear()
+    self.soil_EC_graphWidget.clear()
+    self.soil_pH_graphWidget.clear()
+    self.soil_nitrogen_graphWidget.clear()
+    self.soil_phosphorus_graphWidget.clear()
+    self.soil_potassium_graphWidget.clear()
+
+    General.soil_temperature = []
+    General.soil_water_content = []
+    General.soil_EC = []
+    General.soil_pH = []
+    General.soil_nitrogen = []
+    General.soil_phosphorus = []
+    General.soil_potassium = []
+
+    General.soil_sensor_time_stamp = []
+
+
+# ---------------------------------------------------------------------------- #
 #                             data export UI update                            #
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
