@@ -523,3 +523,12 @@ def mainwindow_tab_update(self):
     else:
         self.sensor_export_data_pushButton.setText("No Data to Export")
         self.sensor_export_data_pushButton.setEnabled(False)
+
+
+def export_UI_update(self, mode):
+    if mode == 0:
+        self.sensor_export_data_pushButton.setText("Exporting...")
+        self.sensor_export_data_pushButton.setEnabled(False)
+    elif mode == 1:
+        self.sensor_export_data_pushButton.setText("Export Complete")
+        self.sensor_export_data_pushButton.setEnabled(True)
