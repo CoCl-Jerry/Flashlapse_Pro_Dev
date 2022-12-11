@@ -190,7 +190,6 @@ def sensor_export_data(self):
                 self,
                 "Save CSV File",
                 General.default_storage_directory,
-                "Ambient_Sensor_data_" + General.current_date,
                 "CSV Files (*.csv)",
                 options=options,
             )

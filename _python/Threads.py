@@ -265,7 +265,7 @@ class Ambient(QThread):
             ):
                 if scd4x.data_ready:
                     General.ambient_sensor_time_stamp.append(
-                        round(perf_counter(), 2) - General.ambient_sensor_initial_time
+                        round(perf_counter() - General.ambient_sensor_initial_time), 2
                     )
                     General.ambient_sensor_previous_time = (
                         General.ambient_sensor_time_stamp[-1]
