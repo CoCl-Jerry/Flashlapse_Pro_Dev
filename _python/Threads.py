@@ -271,11 +271,12 @@ class Ambient(QThread):
                         General.ambient_sensor_time_stamp[-1]
                     )
                     General.ambient_temperature.append(
-                        round(scd4x.temperature, 2) + General.ambient_temperature_offset
+                        round(scd4x.temperature + General.ambient_temperature_offset, 2)
                     )
                     General.ambient_humidity.append(
-                        round(scd4x.relative_humidity, 2)
-                        + General.ambient_humidity_offset
+                        round(
+                            scd4x.relative_humidity + General.ambient_humidity_offset, 2
+                        )
                     )
                     General.ambient_CO2.append(scd4x.CO2)
                     General.ambient_o2.append(

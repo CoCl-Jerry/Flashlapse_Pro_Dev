@@ -180,19 +180,21 @@ def extractor(hex_string):
 # ---------------------------------------------------------------------------- #
 def soil_sensor_data_processor(data):
     General.soil_temperature.append(
-        (data["TemperatureValue"] / 100) + General.soil_temperature_offset
+        round((data["TemperatureValue"] / 100) + General.soil_temperature_offset, 2)
     )
     General.soil_water_content.append(
-        (data["WaterContentValue"] / 100) + General.soil_water_content_offset
+        round((data["WaterContentValue"] / 100) + General.soil_water_content_offset, 2)
     )
-    General.soil_EC.append(data["ECValue"] + General.soil_EC_offset)
-    General.soil_pH.append((data["PHValue"] / 10) + General.soil_pH_offset)
-    General.soil_nitrogen.append(data["NitrogenValue"] + General.soil_nitrogen_offset)
+    General.soil_EC.append(round(data["ECValue"] + General.soil_EC_offset, 2))
+    General.soil_pH.append(round((data["PHValue"] / 10) + General.soil_pH_offset, 2))
+    General.soil_nitrogen.append(
+        round(data["NitrogenValue"] + General.soil_nitrogen_offset, 2)
+    )
     General.soil_phosphorus.append(
-        data["PhosphorusValue"] + General.soil_phosphorus_offset
+        round(data["PhosphorusValue"] + General.soil_phosphorus_offset, 2)
     )
     General.soil_potassium.append(
-        data["PotassiumValue"] + General.soil_potassium_offset
+        round(data["PotassiumValue"] + General.soil_potassium_offset, 2)
     )
 
 
