@@ -85,10 +85,7 @@ def error_UI_update(self):
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
 def lighting_slider_changed(self):
-    self.lighting_brightness_spinBox.blockSignals(True)
-    self.lighting_red_spinBox.blockSignals(True)
-    self.lighting_green_spinBox.blockSignals(True)
-    self.lighting_blue_spinBox.blockSignals(True)
+    lighting_spinbox_block_signals(self)
 
     General.lighting_brightness = self.lighting_brightness_slider.value()
     General.lighting_red = self.lighting_red_slider.value()
@@ -100,18 +97,12 @@ def lighting_slider_changed(self):
     self.lighting_green_spinBox.setValue(General.lighting_green)
     self.lighting_blue_spinBox.setValue(General.lighting_blue)
 
-    self.lighting_brightness_spinBox.blockSignals(False)
-    self.lighting_red_spinBox.blockSignals(False)
-    self.lighting_green_spinBox.blockSignals(False)
-    self.lighting_blue_spinBox.blockSignals(False)
+    lighting_spinbox_unblock_signals(self)
 
 
 # ---------------------------------------------------------------------------- #
 def lighting_spinbox_changed(self):
-    self.lighting_brightness_slider.blockSignals(True)
-    self.lighting_red_slider.blockSignals(True)
-    self.lighting_green_slider.blockSignals(True)
-    self.lighting_blue_slider.blockSignals(True)
+    lighting_slider_block_signals(self)
 
     General.lighting_brightness = self.lighting_brightness_spinBox.value()
     General.lighting_red = self.lighting_red_spinBox.value()
@@ -123,22 +114,13 @@ def lighting_spinbox_changed(self):
     self.lighting_green_slider.setValue(General.lighting_green)
     self.lighting_blue_slider.setValue(General.lighting_blue)
 
-    self.lighting_brightness_slider.blockSignals(False)
-    self.lighting_red_slider.blockSignals(False)
-    self.lighting_green_slider.blockSignals(False)
-    self.lighting_blue_slider.blockSignals(False)
+    lighting_slider_unblock_signals(self)
 
 
 # ---------------------------------------------------------------------------- #
 def lighting_update(self):
-    self.lighting_brightness_slider.blockSignals(True)
-    self.lighting_red_slider.blockSignals(True)
-    self.lighting_green_slider.blockSignals(True)
-    self.lighting_blue_slider.blockSignals(True)
-    self.lighting_brightness_spinBox.blockSignals(True)
-    self.lighting_red_spinBox.blockSignals(True)
-    self.lighting_green_spinBox.blockSignals(True)
-    self.lighting_blue_spinBox.blockSignals(True)
+    lighting_spinbox_block_signals(self)
+    lighting_slider_block_signals(self)
 
     self.lighting_brightness_slider.setValue(General.lighting_brightness)
     self.lighting_red_slider.setValue(General.lighting_red)
@@ -149,14 +131,36 @@ def lighting_update(self):
     self.lighting_green_spinBox.setValue(General.lighting_green)
     self.lighting_blue_spinBox.setValue(General.lighting_blue)
 
-    self.lighting_brightness_slider.blockSignals(False)
-    self.lighting_red_slider.blockSignals(False)
-    self.lighting_green_slider.blockSignals(False)
-    self.lighting_blue_slider.blockSignals(False)
+    lighting_spinbox_unblock_signals(self)
+    lighting_spinbox_unblock_signals(self)
+
+
+def lighting_spinbox_block_signals(self):
+    self.lighting_brightness_spinBox.blockSignals(True)
+    self.lighting_red_spinBox.blockSignals(True)
+    self.lighting_green_spinBox.blockSignals(True)
+    self.lighting_blue_spinBox.blockSignals(True)
+
+
+def lighting_spinbox_unblock_signals(self):
     self.lighting_brightness_spinBox.blockSignals(False)
     self.lighting_red_spinBox.blockSignals(False)
     self.lighting_green_spinBox.blockSignals(False)
     self.lighting_blue_spinBox.blockSignals(False)
+
+
+def lighting_slider_block_signals(self):
+    self.lighting_brightness_horizontalSlider.blockSignals(True)
+    self.lighting_red_horizontalSlider.blockSignals(True)
+    self.lighting_green_horizontalSlider.blockSignals(True)
+    self.lighting_blue_horizontalSlider.blockSignals(True)
+
+
+def lighting_slider_unblock_signals(self):
+    self.lighting_brightness_horizontalSlider.blockSignals(False)
+    self.lighting_red_horizontalSlider.blockSignals(False)
+    self.lighting_green_horizontalSlider.blockSignals(False)
+    self.lighting_blue_horizontalSlider.blockSignals(False)
 
 
 # ---------------------------------------------------------------------------- #
