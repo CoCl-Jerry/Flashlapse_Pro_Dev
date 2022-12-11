@@ -77,7 +77,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -104,7 +104,7 @@
          <x>10</x>
          <y>290</y>
          <width>401</width>
-         <height>201</height>
+         <height>221</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_16">
@@ -2616,7 +2616,7 @@
       <item row="4" column="0">
        <widget class="QPushButton" name="pushButton">
         <property name="text">
-         <string>SET SENSOR INTERVAL</string>
+         <string>Set Sensor Interval</string>
         </property>
        </widget>
       </item>
@@ -2629,7 +2629,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>START AMBIENT SENSORS</string>
+         <string>Start Ambient Sensors</string>
         </property>
        </widget>
       </item>
@@ -2658,14 +2658,14 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>START SOIL SENSORS</string>
+         <string>Start Soil Sensors</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QPushButton" name="pushButton_2">
         <property name="text">
-         <string>EXPORT CURRENT DATA</string>
+         <string>Export Current Data</string>
         </property>
        </widget>
       </item>
