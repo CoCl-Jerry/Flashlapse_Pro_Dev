@@ -190,7 +190,10 @@ def sensor_export_data(self):
             file_name, _ = QFileDialog.getSaveFileName(
                 self,
                 "Save CSV File",
-                General.default_storage_directory + "/soil_sensor_data.csv",
+                General.default_storage_directory
+                + "/ambient_sensor_data"
+                + General.current_date
+                + ".csv",
                 "CSV Files (*.csv)",
                 options=options,
             )
