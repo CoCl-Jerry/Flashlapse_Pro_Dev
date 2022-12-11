@@ -1,6 +1,7 @@
 import General
 import Communication
 import UI_Update
+import time
 
 # ---------------------------------------------------------------------------- #
 def lighting_confirm(self):
@@ -78,4 +79,5 @@ def lighting_cycle_nighttime():
 
 def lighting_cycle_daytime():
     Communication.sendCMD("1~4~" + str(General.lighting_brightness))
+    time.sleep(1)
     Communication.sendCMD("1~4~" + str(General.lighting_brightness))
