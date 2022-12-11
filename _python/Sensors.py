@@ -4,6 +4,8 @@ import adafruit_vl53l4cd  # type: ignore
 import adafruit_scd4x  # type: ignore
 
 from DFRobot_EOxygenSensor import *
+from PyQt5.QtWidgets import QFileDialog
+import csv
 
 
 import General
@@ -176,3 +178,35 @@ def soil_sensor_data_processor(data):
     General.soil_nitrogen.append(data["NitrogenValue"])
     General.soil_phosphorus.append(data["PhosphorusValue"])
     General.soil_potassium.append(data["PotassiumValue"])
+
+
+# ---------------------------------------------------------------------------- #
+def sensor_export_data(self):
+    try:
+        options = QFileDialog.Options()
+        options |= QFileDialog.DontUseNativeDialog
+        if self.mainwindow_tabWidget.currentIndex() == 3:
+            file_name, _ = QFileDialog.getSaveFileName(
+                self,
+                "Save CSV File",
+                General.default_storage_directory,
+                "Ambient_Sensor_data_" + General.current_date,
+                "CSV Files (*.csv)",
+                options=options,
+            )
+            if file_name:
+                export = list(
+                    zip(
+                        General.ambient_sensor_time_stamp,
+                        General.ambient_temperature,
+                        General.ambient_humidity,
+                        General.ambient_CO2,
+                        General.ambient_o2,
+                    )
+                )
+                with open(file_name, "w", newline="") as csvfile:
+                    writer = csv.writer(csvfile)
+                    writer.writerow(["Time", "Temperature", "Humidity", "CO2", "O2"])
+                    writer.writerows(export)
+    except Exception as e:
+        print(e, "Export failure, contact Jerry for support")

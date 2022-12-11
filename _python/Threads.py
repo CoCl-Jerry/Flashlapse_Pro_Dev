@@ -6,8 +6,6 @@ import adafruit_vl53l4cd  # type: ignore
 import adafruit_scd4x  # type: ignore
 from picamera import PiCamera  # type: ignore
 from DFRobot_EOxygenSensor import *
-from PyQt5.QtWidgets import QFileDialog
-import csv
 
 import General
 import Sensors
@@ -385,44 +383,3 @@ class Soil(QThread):
                     General.soil_sensor_crc16_check = False
                     print("CRC16 check failed, retrying...")
                     continue
-
-
-class Export(QThread):
-    def __init__(self):
-        QThread.__init__(self)
-
-    def __del__(self):
-        self._running = False
-
-    def run(self):
-        try:
-            options = QFileDialog.Options()
-            options |= QFileDialog.DontUseNativeDialog
-            if not General.sensor_export_mode:
-                file_name, _ = QFileDialog.getSaveFileName(
-                    self,
-                    "Save CSV File",
-                    General.default_storage_directory,
-                    "Ambient_Sensor_data_" + General.current_date,
-                    "CSV Files (*.csv)",
-                    options=options,
-                )
-                if file_name:
-                    export = list(
-                        zip(
-                            General.ambient_sensor_time_stamp,
-                            General.ambient_temperature,
-                            General.ambient_humidity,
-                            General.ambient_CO2,
-                            General.ambient_o2,
-                        )
-                    )
-                    with open(file_name, "w", newline="") as csvfile:
-                        writer = csv.writer(csvfile)
-                        writer.writerow(
-                            ["Time", "Temperature", "Humidity", "CO2", "O2"]
-                        )
-                        writer.writerows(export)
-        except Exception as e:
-            print(e, "Camera failure, contact Jerry for support")
-            General.camera_error = True

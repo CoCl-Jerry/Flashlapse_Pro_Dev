@@ -39,9 +39,6 @@ def init():
     global lighting_cycle_thread_running
     lighting_cycle_thread_running = False
 
-    global export_thread_running
-    export_thread_running = False
-
     # ---------------------------------------------------------------------------- #
     #                       start of error flag declarations                       #
     # ---------------------------------------------------------------------------- #
@@ -196,9 +193,6 @@ def init():
     # ---------------------------------------------------------------------------- #
     global sensor_capture_interval
     sensor_capture_interval = 5
-
-    global sensor_export_mode
-    sensor_export_mode = 0
 
     # ---------------------------------------------------------------------------- #
     #                     start of ambient sensor declarations                     #

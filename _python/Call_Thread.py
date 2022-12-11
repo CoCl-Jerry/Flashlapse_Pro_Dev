@@ -200,18 +200,3 @@ def soil_sensors(self):
         self.Soil_Thread.start()
     else:
         General.soil_thread_running = False
-
-
-# ---------------------------------------------------------------------------- #
-#                          call thread for data export                         #
-# ---------------------------------------------------------------------------- #
-# ---------------------------------------------------------------------------- #
-def data_export(self):
-    if not General.export_thread_running:
-        self.Export_Thread = Threads.Export()
-        self.Export_Thread.started.connect(lambda: UI_Update.export_UI_update(self, 0))
-        self.Export_Thread.finished.connect(lambda: UI_Update.export_UI_update(self, 1))
-        General.export_thread_running = True
-        self.Export_Thread.start()
-    else:
-        General.export_thread_running = False
