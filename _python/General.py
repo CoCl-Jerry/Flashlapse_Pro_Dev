@@ -14,7 +14,7 @@ def init():
     global serial_reference
     serial_reference = serial.Serial(
         port="/dev/ttyUSB0",
-        baudrate=4800,
+        baudrate=2400,
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
         bytesize=serial.EIGHTBITS,
