@@ -164,6 +164,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         # ---------------------------------------------------------------------------- #
         #                      start of ambient sensor activities                      #
         # ---------------------------------------------------------------------------- #
+        self.ambient_sensors_tabWidget.currentChanged.connect(
+            lambda: UI_Update.ambient_sensor_tab_update(self)
+        )
         self.start_ambient_sensors_pushButton.clicked.connect(
             lambda: Call_Thread.ambient_sensors(self)
         )
