@@ -198,6 +198,24 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.soil_temperature_offset_pushButton.clicked.connect(
             lambda: Sensors.soil_sensor_offset(self)
         )
+        self.soil_water_content_offset_pushButton.clicked.connect(
+            lambda: Sensors.soil_sensor_offset(self)
+        )
+        self.soil_EC_offset_pushButton.clicked.connect(
+            lambda: Sensors.soil_sensor_offset(self)
+        )
+        self.soil_pH_offset_pushButton.clicked.connect(
+            lambda: Sensors.soil_sensor_offset(self)
+        )
+        self.soil_nitrogen_offset_pushButton.clicked.connect(
+            lambda: Sensors.soil_sensor_offset(self)
+        )
+        self.soil_phosphorus_offset_pushButton.clicked.connect(
+            lambda: Sensors.soil_sensor_offset(self)
+        )
+        self.soil_potassium_offset_pushButton.clicked.connect(
+            lambda: Sensors.soil_sensor_offset(self)
+        )
         # ---------------------------------------------------------------------------- #
         #                          start of export activities                          #
         # ---------------------------------------------------------------------------- #
