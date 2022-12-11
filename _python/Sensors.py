@@ -185,11 +185,13 @@ def sensor_export_data(self):
     try:
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
+        UI_Update.export_UI_update(self, 0)
         if self.mainwindow_tabWidget.currentIndex() == 3:
             file_name, _ = QFileDialog.getSaveFileName(
                 self,
                 "Save CSV File",
                 General.default_storage_directory,
+                "test.csv",
                 "CSV Files (*.csv)",
                 options=options,
             )
@@ -207,5 +209,6 @@ def sensor_export_data(self):
                     writer = csv.writer(csvfile)
                     writer.writerow(["Time", "Temperature", "Humidity", "CO2", "O2"])
                     writer.writerows(export)
+                UI_Update.export_UI_update(self, 1)
     except Exception as e:
         print(e, "Export failure, contact Jerry for support")
