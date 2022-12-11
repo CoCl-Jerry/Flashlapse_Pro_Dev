@@ -515,9 +515,11 @@ def mainwindow_tab_update(self):
     if self.mainwindow_tabWidget.currentIndex() == 3:
         self.sensor_export_data_pushButton.setText("Export Ambient Data")
         self.sensor_export_data_pushButton.setEnabled(True)
+        General.sensor_export_mode = 0
     elif self.mainwindow_tabWidget.currentIndex() == 4:
         self.sensor_export_data_pushButton.setText("Export Soil Data")
         self.sensor_export_data_pushButton.setEnabled(True)
+        General.sensor_export_mode = 1
     else:
         self.sensor_export_data_pushButton.setText("No Data to Export")
         self.sensor_export_data_pushButton.setEnabled(False)

@@ -2,9 +2,9 @@
 import board  # type: ignore
 import adafruit_vl53l4cd  # type: ignore
 import adafruit_scd4x  # type: ignore
-import csv
+
 from DFRobot_EOxygenSensor import *
-from PyQt5.QtWidgets import QFileDialog
+
 
 import General
 import UI_Update
@@ -176,18 +176,3 @@ def soil_sensor_data_processor(data):
     General.soil_nitrogen.append(data["NitrogenValue"])
     General.soil_phosphorus.append(data["PhosphorusValue"])
     General.soil_potassium.append(data["PotassiumValue"])
-
-
-# ---------------------------------------------------------------------------- #
-def export_data(self):
-    if self.mainwindow_tabWidget.currentIndex() == 3:
-        options = QFileDialog.Options()
-        options |= QFileDialog.DontUseNativeDialog
-        file_name, _ = QFileDialog.getSaveFileName(
-            self, "Save CSV File", "", "CSV Files (*.csv)", options=options
-        )
-        if file_name:
-            with open(file_name, "w", newline="") as csvfile:
-                writer = csv.writer(csvfile)
-                writer.writerow(["header1", "header2"])
-                # writer.writerows(combined)
