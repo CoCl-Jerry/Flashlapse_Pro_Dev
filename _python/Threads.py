@@ -368,7 +368,7 @@ class Soil(QThread):
                         Sensors.extractor(soil_sensor_raw_data)
                     )
                     General.soil_sensor_time_stamp.append(
-                        round(perf_counter(), 2) - General.soil_sensor_initial_time
+                        round(perf_counter() - General.soil_sensor_initial_time, 2)
                     )
                     General.soil_sensor_previous_time = General.soil_sensor_time_stamp[
                         -1
