@@ -13,10 +13,6 @@ void exeCMD() {
           break;
         case 1:
           stripUpdate();
-          stripShow();
-          break;
-        case 2:
-          stripUpdate();
           break;
         case 3:
           stripShow();

@@ -1,5 +1,6 @@
 import General
 import Communication
+import UI_Update
 
 # ---------------------------------------------------------------------------- #
 def lighting_confirm(self):
@@ -15,12 +16,13 @@ def lighting_confirm(self):
 
 
 # ---------------------------------------------------------------------------- #
-def lighting_reset():
+def lighting_reset(self):
     General.lighting_red = 0
     General.lighting_green = 0
     General.lighting_blue = 0
     General.lighting_brightness = 100
     build_lighting_cmd(0)
+    UI_Update.lighting_update(self)
 
 
 # ---------------------------------------------------------------------------- #
