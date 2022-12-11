@@ -198,6 +198,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.mainwindow_tabWidget.currentChanged.connect(
             lambda: UI_Update.mainwindow_tab_update(self)
         )
+        self.sensor_export_data_pushButton.clicked.connect(
+            lambda: Sensors.export_data(self)
+        )
 
 
 def main():
