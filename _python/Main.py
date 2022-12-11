@@ -64,8 +64,12 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
             lambda: UI_Update.lighting_spinbox_changed(self)
         )
 
-        self.lighting_confirm_pushButton.clicked.connect(Lighting.lighting_confirm)
-        self.lighting_reset_pushButton.clicked.connect(Lighting.lighting_reset)
+        self.lighting_confirm_pushButton.clicked.connect(
+            lambda: Lighting.lighting_confirm(self)
+        )
+        self.lighting_reset_pushButton.clicked.connect(
+            lambda: Lighting.lighting_reset(self)
+        )
         # ---------------------------------------------------------------------------- #
         #                          start of imaging activities                         #
         # ---------------------------------------------------------------------------- #
