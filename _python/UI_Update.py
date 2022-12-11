@@ -32,7 +32,7 @@ def graph_init(self):
 
     self.soil_temperature_graphWidget.setBackground("#fbfbfb")
     self.soil_temperature_graphWidget.showGrid(x=True, y=True)
-    self.soil_temperature_graphWidget.setLabel("left", "Oxygen (%)", **styles)
+    self.soil_temperature_graphWidget.setLabel("left", "Temperature (°C)", **styles)
     self.soil_temperature_graphWidget.setLabel("bottom", "Time (s)", **styles)
 
     self.soil_water_content_graphWidget.setBackground("#fbfbfb")
