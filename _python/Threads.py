@@ -41,7 +41,7 @@ class Lighting_Cycle(QThread):
             self.nighttime.emit()
             for x in range(General.lighting_cycle_nighttime_value * 60):
                 self.countdown.emit()
-                General.lighting_cycle_nighttime_value = (
+                General.lighting_cycle_countdown_value = (
                     General.lighting_cycle_nighttime_value * 60 - x
                 )
                 sleep(1)
