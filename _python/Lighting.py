@@ -70,7 +70,8 @@ def build_lighting_cmd(mode):
             + "~"
             + str(General.lighting_brightness)
         )
-    Communication.sendCMD(cmd)
+    while not Communication.sendCMD(cmd):
+        pass
     General.lighting_commands_list.append(cmd)
     Communication.sendCMD("1~2")
 

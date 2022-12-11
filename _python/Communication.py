@@ -18,6 +18,7 @@ import smbus  # type: ignore
 #             print(e, "communication failure,contact Jerry for support")
 #         pass
 
+
 def sendCMD(cont):
     print("sending command...\n" + cont)
     temp = cont + "\n"
@@ -30,8 +31,8 @@ def sendCMD(cont):
     except Exception as e:
         General.communication_error = True
         print(e, "i2c Communication error,contact Jerry for support")
-        
-
+        return False
+    return True
 
 
 def reset_arduino():
