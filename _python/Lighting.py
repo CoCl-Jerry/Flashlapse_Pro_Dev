@@ -72,20 +72,15 @@ def build_lighting_cmd(mode):
         )
     while not Communication.sendCMD(cmd):
         pass
-
-    while not Communication.sendCMD("1~2"):
-        pass
     General.lighting_commands_list.append(cmd)
+    Communication.sendCMD("1~2")
 
 
 def lighting_cycle_nighttime():
-    while not Communication.sendCMD("1~0"):
-        pass
+    Communication.sendCMD("1~0")
 
 
 def lighting_cycle_daytime():
     for x in General.lighting_commands_list:
-        while not Communication.sendCMD(x):
-            pass
-    while not Communication.sendCMD("1~2"):
-        pass
+        Communication.sendCMD(x)
+    Communication.sendCMD("1~2")
