@@ -222,7 +222,7 @@ def TOF_update_pushButton_toggle(self):
 # ---------------------------------------------------------------------------- #
 def motion_frames_toggle(self):
     self.motion_control_frame.setEnabled(not self.motion_control_frame.isEnabled())
-    self.motion_Slider_frame.setEnabled(not self.motion_Slider_frame.isEnabled())
+    self.motion_slider_frame.setEnabled(not self.motion_Slider_frame.isEnabled())
     self.motion_settings_frame.setEnabled(not self.motion_settings_frame.isEnabled())
 
 
