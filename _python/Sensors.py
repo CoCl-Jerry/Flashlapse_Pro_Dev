@@ -22,6 +22,14 @@ def init(self):
 
 
 # ---------------------------------------------------------------------------- #
+#                           general sensor functions                           #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+def sensor_set_interval(self):
+    General.sensor_capture_interval = self.sensor_set_interval_spinBox.value()
+
+
+# ---------------------------------------------------------------------------- #
 #                             TOF sensor functions                             #
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
@@ -171,13 +179,34 @@ def extractor(hex_string):
 
 # ---------------------------------------------------------------------------- #
 def soil_sensor_data_processor(data):
-    General.soil_temperature.append(data["TemperatureValue"] / 100)
-    General.soil_water_content.append(data["WaterContentValue"] / 100)
-    General.soil_EC.append(data["ECValue"])
-    General.soil_pH.append(data["PHValue"] / 10)
-    General.soil_nitrogen.append(data["NitrogenValue"])
-    General.soil_phosphorus.append(data["PhosphorusValue"])
-    General.soil_potassium.append(data["PotassiumValue"])
+    General.soil_temperature.append(
+        (data["TemperatureValue"] / 100) + General.soil_temperature_offset
+    )
+    General.soil_water_content.append(
+        (data["WaterContentValue"] / 100) + General.soil_water_content_offset
+    )
+    General.soil_EC.append(data["ECValue"] + General.soil_EC_offset)
+    General.soil_pH.append((data["PHValue"] / 10) + General.soil_pH_offset)
+    General.soil_nitrogen.append(data["NitrogenValue"] + General.soil_nitrogen_offset)
+    General.soil_phosphorus.append(
+        data["PhosphorusValue"] + General.soil_phosphorus_offset
+    )
+    General.soil_potassium.append(
+        data["PotassiumValue"] + General.soil_potassium_offset
+    )
+
+
+# ---------------------------------------------------------------------------- #
+def soil_sensor_offset(self):
+    General.soil_temperature_offset = self.soil_temperature_offset_doubleSpinBox.value()
+    General.soil_water_content_offset = (
+        self.soil_water_content_offset_doubleSpinBox.value()
+    )
+    General.soil_EC_offset = self.soil_EC_offset_doubleSpinBox.value()
+    General.soil_pH_offset = self.soil_pH_offset_doubleSpinBox.value()
+    General.soil_nitrogen_offset = self.soil_nitrogen_offset_doubleSpinBox.value()
+    General.soil_phosphorus_offset = self.soil_phosphorus_offset_doubleSpinBox.value()
+    General.soil_potassium_offset = self.soil_potassium_offset_doubleSpinBox.value()
 
 
 # ---------------------------------------------------------------------------- #

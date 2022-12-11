@@ -192,6 +192,12 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.start_soil_sensors_pushButton.clicked.connect(
             lambda: Call_Thread.soil_sensors(self)
         )
+        self.sensor_set_interval_pushButton.clicked.connect(
+            lambda: Sensors.sensor_set_interval(self)
+        )
+        self.soil_temperature_offset_pushButton.clicked.connect(
+            lambda: Sensors.soil_sensor_offset(self)
+        )
         # ---------------------------------------------------------------------------- #
         #                          start of export activities                          #
         # ---------------------------------------------------------------------------- #

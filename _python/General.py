@@ -267,6 +267,27 @@ def init():
     global soil_sensor_crc16_check
     soil_sensor_crc16_check = True
 
+    global soil_temperature_offset
+    soil_temperature_offset = 0
+
+    global soil_water_content_offset
+    soil_water_content_offset = 0
+
+    global soil_EC_offset
+    soil_EC_offset = 0
+
+    global soil_pH_offset
+    soil_pH_offset = 0
+
+    global soil_nitrogen_offset
+    soil_nitrogen_offset = 0
+
+    global soil_phosphorus_offset
+    soil_phosphorus_offset = 0
+
+    global soil_potassium_offset
+    soil_potassium_offset = 0
+
     # ---------------------------------------------------------------------------- #
     #                     start of graph reference declarations                    #
     # ---------------------------------------------------------------------------- #

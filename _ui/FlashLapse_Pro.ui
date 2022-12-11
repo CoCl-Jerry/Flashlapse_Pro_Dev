@@ -2614,7 +2614,7 @@
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="4" column="0">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="sensor_set_interval_pushButton">
         <property name="text">
          <string>Set Sensor Interval</string>
         </property>
@@ -2637,7 +2637,7 @@
        </widget>
       </item>
       <item row="5" column="0">
-       <widget class="QSpinBox" name="spinBox">
+       <widget class="QSpinBox" name="sensor_set_interval_spinBox">
         <property name="suffix">
          <string> s</string>
         </property>

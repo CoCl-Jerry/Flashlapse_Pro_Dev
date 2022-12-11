@@ -433,7 +433,7 @@ def soil_UI_update(self):
         self.start_soil_sensors_pushButton.setText("Stop Soil Sensors")
     else:
         self.start_soil_sensors_pushButton.setText("Start Soil Sensors")
-        self.soil_temperture_value_label.setText("N/A °C")
+        self.soil_temperature_value_label.setText("N/A °C")
         self.soil_water_content_value_label.setText("N/A %")
         self.soil_EC_value_label.setText("N/A μS/cm")
         self.soil_pH_value_label.setText("N/A")
