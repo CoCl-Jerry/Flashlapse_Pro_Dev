@@ -5,12 +5,10 @@ void stripUpdate() {
     }
   }
   strip.setBrightness(int(commands[7]));
-  strip.show();
 }
 
 void brightnessUpdate() {
   strip.setBrightness(int(commands[2]));
-  strip.show();
 }
 
 void stripClear() {

@@ -14,10 +14,10 @@ void exeCMD() {
         case 1:
           stripUpdate();
           break;
-        case 3:
+        case 2:
           stripShow();
           break;
-        case 4:
+        case 3:
           brightnessUpdate();
           break;
         default:

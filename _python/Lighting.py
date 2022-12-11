@@ -71,13 +71,15 @@ def build_lighting_cmd(mode):
             + str(General.lighting_brightness)
         )
     Communication.sendCMD(cmd)
+    General.lighting_commands_list.append(cmd)
+    Communication.sendCMD("1~2")
 
 
 def lighting_cycle_nighttime():
-    Communication.sendCMD("1~4~0")
+    Communication.sendCMD("1~0")
 
 
 def lighting_cycle_daytime():
-    Communication.sendCMD("1~4~" + str(General.lighting_brightness))
-    time.sleep(1)
-    Communication.sendCMD("1~4~" + str(General.lighting_brightness))
+    for x in General.lighting_commands_list:
+        Communication.sendCMD(x)
+    Communication.sendCMD("1~2")

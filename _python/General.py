@@ -105,6 +105,9 @@ def init():
     global lighting_cycle_thread_running
     lighting_cycle_thread_running = False
 
+    global lighting_commands_list
+    lighting_commands_list = []
+
     # ---------------------------------------------------------------------------- #
     #                         start of imaging declarations                        #
     # ---------------------------------------------------------------------------- #
