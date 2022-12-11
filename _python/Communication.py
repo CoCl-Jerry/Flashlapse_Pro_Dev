@@ -30,9 +30,7 @@ def sendCMD(cont):
         bus.write_i2c_block_data(0x08, 0x5E, converted)
     except Exception as e:
         General.communication_error = True
-        print(e, "i2c Communication error,contact Jerry for support")
-        return False
-    return True
+        print(e, "i2c Communication error, skipping command")
 
 
 def reset_arduino():
