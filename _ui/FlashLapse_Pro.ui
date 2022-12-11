@@ -1311,7 +1311,7 @@
      <attribute name="title">
       <string>AMBIENT SENSORS</string>
      </attribute>
-     <widget class="QTabWidget" name="tabWidget_2">
+     <widget class="QTabWidget" name="ambient_sensors_tabWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1740,7 +1740,7 @@
      <attribute name="title">
       <string>SOIL SENSORS</string>
      </attribute>
-     <widget class="QTabWidget" name="tabWidget_3">
+     <widget class="QTabWidget" name="soil_sensors_tabWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
