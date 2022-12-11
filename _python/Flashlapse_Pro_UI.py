@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         self.lighting_control_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.lighting_control_frame.setObjectName("lighting_control_frame")
         self.gridLayoutWidget_16 = QtWidgets.QWidget(self.lighting_control_frame)
-        self.gridLayoutWidget_16.setGeometry(QtCore.QRect(10, 290, 401, 221))
+        self.gridLayoutWidget_16.setGeometry(QtCore.QRect(10, 290, 401, 201))
         self.gridLayoutWidget_16.setObjectName("gridLayoutWidget_16")
         self.gridLayout_16 = QtWidgets.QGridLayout(self.gridLayoutWidget_16)
         self.gridLayout_16.setContentsMargins(0, 0, 0, 0)
@@ -1109,9 +1109,9 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(3)
-        self.tabWidget_2.setCurrentIndex(3)
-        self.tabWidget_3.setCurrentIndex(6)
+        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget_2.setCurrentIndex(0)
+        self.tabWidget_3.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
