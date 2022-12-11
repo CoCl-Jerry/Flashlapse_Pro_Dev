@@ -84,13 +84,13 @@ def error_UI_update(self):
 #                              lighting UI update                              #
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
-def lighting_slider_changed(self):
+def lighting_horizontalSlider_changed(self):
     lighting_spinbox_block_signals(self)
 
-    General.lighting_brightness = self.lighting_brightness_slider.value()
-    General.lighting_red = self.lighting_red_slider.value()
-    General.lighting_green = self.lighting_green_slider.value()
-    General.lighting_blue = self.lighting_blue_slider.value()
+    General.lighting_brightness = self.lighting_brightness_horizontalSlider.value()
+    General.lighting_red = self.lighting_red_horizontalSlider.value()
+    General.lighting_green = self.lighting_green_horizontalSlider.value()
+    General.lighting_blue = self.lighting_blue_horizontalSlider.value()
 
     self.lighting_brightness_spinBox.setValue(General.lighting_brightness)
     self.lighting_red_spinBox.setValue(General.lighting_red)
@@ -102,30 +102,30 @@ def lighting_slider_changed(self):
 
 # ---------------------------------------------------------------------------- #
 def lighting_spinbox_changed(self):
-    lighting_slider_block_signals(self)
+    lighting_horizontalSlider_block_signals(self)
 
     General.lighting_brightness = self.lighting_brightness_spinBox.value()
     General.lighting_red = self.lighting_red_spinBox.value()
     General.lighting_green = self.lighting_green_spinBox.value()
     General.lighting_blue = self.lighting_blue_spinBox.value()
 
-    self.lighting_brightness_slider.setValue(General.lighting_brightness)
-    self.lighting_red_slider.setValue(General.lighting_red)
-    self.lighting_green_slider.setValue(General.lighting_green)
-    self.lighting_blue_slider.setValue(General.lighting_blue)
+    self.lighting_brightness_horizontalSlider.setValue(General.lighting_brightness)
+    self.lighting_red_horizontalSlider.setValue(General.lighting_red)
+    self.lighting_green_horizontalSlider.setValue(General.lighting_green)
+    self.lighting_blue_horizontalSlider.setValue(General.lighting_blue)
 
-    lighting_slider_unblock_signals(self)
+    lighting_horizontalSlider_unblock_signals(self)
 
 
 # ---------------------------------------------------------------------------- #
 def lighting_update(self):
     lighting_spinbox_block_signals(self)
-    lighting_slider_block_signals(self)
+    lighting_horizontalSlider_block_signals(self)
 
-    self.lighting_brightness_slider.setValue(General.lighting_brightness)
-    self.lighting_red_slider.setValue(General.lighting_red)
-    self.lighting_green_slider.setValue(General.lighting_green)
-    self.lighting_blue_slider.setValue(General.lighting_blue)
+    self.lighting_brightness_horizontalSlider.setValue(General.lighting_brightness)
+    self.lighting_red_horizontalSlider.setValue(General.lighting_red)
+    self.lighting_green_horizontalSlider.setValue(General.lighting_green)
+    self.lighting_blue_horizontalSlider.setValue(General.lighting_blue)
     self.lighting_brightness_spinBox.setValue(General.lighting_brightness)
     self.lighting_red_spinBox.setValue(General.lighting_red)
     self.lighting_green_spinBox.setValue(General.lighting_green)
@@ -149,14 +149,14 @@ def lighting_spinbox_unblock_signals(self):
     self.lighting_blue_spinBox.blockSignals(False)
 
 
-def lighting_slider_block_signals(self):
+def lighting_horizontalSlider_block_signals(self):
     self.lighting_brightness_horizontalSlider.blockSignals(True)
     self.lighting_red_horizontalSlider.blockSignals(True)
     self.lighting_green_horizontalSlider.blockSignals(True)
     self.lighting_blue_horizontalSlider.blockSignals(True)
 
 
-def lighting_slider_unblock_signals(self):
+def lighting_horizontalSlider_unblock_signals(self):
     self.lighting_brightness_horizontalSlider.blockSignals(False)
     self.lighting_red_horizontalSlider.blockSignals(False)
     self.lighting_green_horizontalSlider.blockSignals(False)
@@ -187,7 +187,9 @@ def TOF_update_pushButton_toggle(self):
 # ---------------------------------------------------------------------------- #
 def motion_frames_toggle(self):
     self.motion_control_frame.setEnabled(not self.motion_control_frame.isEnabled())
-    self.motion_slider_frame.setEnabled(not self.motion_slider_frame.isEnabled())
+    self.motion_horizontalSlider_frame.setEnabled(
+        not self.motion_horizontalSlider_frame.isEnabled()
+    )
     self.motion_settings_frame.setEnabled(not self.motion_settings_frame.isEnabled())
 
 
@@ -208,7 +210,7 @@ def motion_target_position_setting_update(self):
 
 
 # ---------------------------------------------------------------------------- #
-def motion_slider_value_changed(self):
+def motion_horizontalSlider_value_changed(self):
     General.target_position = self.motion_position_verticalSlider.value()
     motion_target_position_setting_update(self)
 
@@ -301,7 +303,7 @@ def timelapse_countdown(self):
 
 
 # ---------------------------------------------------------------------------- #
-def imaging_AOI_slider_changed(self):
+def imaging_AOI_horizontalSlider_changed(self):
     self.imaging_xAxis_label.setText(
         "AXIS A: " + str(self.imaging_xAxis_horizontalSlider.sliderPosition() / 100)
     )
