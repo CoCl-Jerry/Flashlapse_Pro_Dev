@@ -1,4 +1,5 @@
 import General
+import time
 import smbus  # type: ignore
 
 # ------------------ for sending i2c commands to the arduino ----------------- #
@@ -24,6 +25,7 @@ def sendCMD(cont):
     temp = cont + "\n"
     try:
         bus = smbus.SMBus(1)
+        time.sleep(1)
         converted = []
         for b in temp:
             converted.append(ord(b))
