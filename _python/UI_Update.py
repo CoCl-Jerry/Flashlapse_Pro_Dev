@@ -203,9 +203,7 @@ def TOF_update_pushButton_toggle(self):
 # ---------------------------------------------------------------------------- #
 def motion_frames_toggle(self):
     self.motion_control_frame.setEnabled(not self.motion_control_frame.isEnabled())
-    self.motion_horizontalSlider_frame.setEnabled(
-        not self.motion_horizontalSlider_frame.isEnabled()
-    )
+    self.motion_Slider_frame.setEnabled(not self.motion_Slider_frame.isEnabled())
     self.motion_settings_frame.setEnabled(not self.motion_settings_frame.isEnabled())
 
 
@@ -226,7 +224,7 @@ def motion_target_position_setting_update(self):
 
 
 # ---------------------------------------------------------------------------- #
-def motion_horizontalSlider_value_changed(self):
+def motion_slider_value_changed(self):
     General.target_position = self.motion_position_verticalSlider.value()
     motion_target_position_setting_update(self)
 
