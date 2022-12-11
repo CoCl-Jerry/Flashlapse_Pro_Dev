@@ -132,7 +132,7 @@ def lighting_update(self):
     self.lighting_blue_spinBox.setValue(General.lighting_blue)
 
     lighting_spinbox_unblock_signals(self)
-    lighting_spinbox_unblock_signals(self)
+    lighting_horizontalSlider_unblock_signals(self)
 
 
 def lighting_spinbox_block_signals(self):
