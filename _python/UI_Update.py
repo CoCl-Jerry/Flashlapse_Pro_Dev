@@ -505,3 +505,19 @@ def soil_update_labels(self):
         str(General.soil_phosphorus[-1]) + " mg/kg"
     )
     self.soil_potassium_value_label.setText(str(General.soil_potassium[-1]) + " mg/kg")
+
+
+# ---------------------------------------------------------------------------- #
+#                             data export UI update                            #
+# ---------------------------------------------------------------------------- #
+# ---------------------------------------------------------------------------- #
+def mainwindow_tab_update(self):
+    if self.mainwindow_tabWidget.currentIndex() == 3:
+        self.sensor_export_data_pushButton.setText("Export Ambient Data")
+        self.sensor_export_data_pushButton.setEnabled(True)
+    elif self.mainwindow_tabWidget.currentIndex() == 4:
+        self.sensor_export_data_pushButton.setText("Export Soil Data")
+        self.sensor_export_data_pushButton.setEnabled(True)
+    else:
+        self.sensor_export_data_pushButton.setText("No Data to Export")
+        self.sensor_export_data_pushButton.setEnabled(False)

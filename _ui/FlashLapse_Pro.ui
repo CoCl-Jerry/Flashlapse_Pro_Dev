@@ -67,7 +67,7 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QTabWidget" name="main_window_tabWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -2622,6 +2622,9 @@
       </item>
       <item row="0" column="0">
        <widget class="QPushButton" name="start_ambient_sensors_pushButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -2651,6 +2654,9 @@
       </item>
       <item row="1" column="0">
        <widget class="QPushButton" name="start_soil_sensors_pushButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -2663,9 +2669,12 @@
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="sensor_export_data_pushButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="text">
-         <string>Export Current Data</string>
+         <string>No Data to Export</string>
         </property>
        </widget>
       </item>

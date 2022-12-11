@@ -192,6 +192,12 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.start_soil_sensors_pushButton.clicked.connect(
             lambda: Call_Thread.soil_sensors(self)
         )
+        # ---------------------------------------------------------------------------- #
+        #                          start of export activities                          #
+        # ---------------------------------------------------------------------------- #
+        self.mainwindow_tabWidget.currentChanged.connect(
+            lambda: UI_Update.mainwindow_tab_update(self)
+        )
 
 
 def main():
