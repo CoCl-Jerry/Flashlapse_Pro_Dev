@@ -91,7 +91,7 @@ def error_UI_update(self):
         self.imaging_preview_frame.setPixmap(
             QPixmap(General.storage_critical_error_image)
         )
-        General.storage_critical_error = False
+        self.MainWindow.setEnabled(False)
 
 
 # ---------------------------------------------------------------------------- #
