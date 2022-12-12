@@ -71,7 +71,7 @@ def init(self):
     filesystem = os.statvfs("/")
     free_space = filesystem.f_bsize * filesystem.f_bavail
     free_space_mb = free_space / (1024 * 1024)
-    if free_space_mb < 5000:
+    if free_space_mb < 500:
         General.storage_critical_error = True
         error_UI_update(self)
 
