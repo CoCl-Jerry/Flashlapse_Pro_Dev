@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Flashlapse GUI Refresh
+Name=Flashlapse Refresh
 Comment=Updates and Resets Flashlapse GUI
 Icon=/home/pi/Documents/Flashlapse_Pro_Dev/_image/update.ico
 Exec=sh /home/pi/Documents/Flashlapse_Pro_Dev/update.sh
