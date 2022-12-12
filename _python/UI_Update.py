@@ -87,6 +87,11 @@ def error_UI_update(self):
     if General.communication_error:
         self.imaging_preview_frame.setPixmap(QPixmap(General.communication_error_image))
         General.communication_error = False
+    if General.storage_critical_error:
+        self.imaging_preview_frame.setPixmap(
+            QPixmap(General.storage_critical_error_image)
+        )
+        General.storage_critical_error = False
 
 
 # ---------------------------------------------------------------------------- #
