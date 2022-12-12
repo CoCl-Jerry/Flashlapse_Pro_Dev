@@ -286,9 +286,9 @@ class Ambient(QThread):
                         round(SEN0496.read_oxygen_concentration(), 2)
                     )
 
-                    if len(General.ambient_sensor_time_stamp) == 1:
+                    if len(General.ambient_sensor_time_stamp) == 2:
                         self.initialized.emit()
-                    else:
+                    elif len(General.ambient_sensor_time_stamp) > 2:
                         self.ambient_sensor_update.emit()
 
 
@@ -378,9 +378,9 @@ class Soil(QThread):
                         -1
                     ]
                     General.soil_sensor_crc16_check = True
-                    if len(General.soil_sensor_time_stamp) == 1:
+                    if len(General.soil_sensor_time_stamp) == 2:
                         self.initialized.emit()
-                    else:
+                    elif len(General.soil_sensor_time_stamp) > 2:
                         self.soil_sensor_update.emit()
 
                 else:
