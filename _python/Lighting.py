@@ -1,7 +1,6 @@
 import General
 import Communication
 import UI_Update
-import time
 
 # ---------------------------------------------------------------------------- #
 def lighting_confirm(self):
