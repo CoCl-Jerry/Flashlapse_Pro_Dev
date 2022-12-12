@@ -74,6 +74,7 @@ def init(self):
     if free_space_mb < 500:
         General.storage_critical_error = True
         error_UI_update(self)
+        print("remaining storage space:" + str(free_space_mb))
 
 
 # ---------------------------------------------------------------------------- #
