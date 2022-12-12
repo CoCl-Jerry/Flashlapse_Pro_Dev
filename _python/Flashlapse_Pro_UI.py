@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(1024, 600))
         MainWindow.setMaximumSize(QtCore.QSize(1024, 600))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../_image/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("../_image/logo.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -1121,7 +1121,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "FlashLapse Commad Point"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Flashlapse Director v1.0"))
         self.lighting_reset_pushButton.setText(_translate("MainWindow", "Reset"))
         self.lighting_outer_ring_checkBox.setText(_translate("MainWindow", "Outer Ring"))
         self.lighting_blue_label.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:700;\">Blue:</span></p></body></html>"))

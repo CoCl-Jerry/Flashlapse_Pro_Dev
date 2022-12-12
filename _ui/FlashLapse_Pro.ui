@@ -29,11 +29,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>FlashLapse Commad Point</string>
+   <string>Flashlapse Director v1.0</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../_image/icon.png</normaloff>../_image/icon.png</iconset>
+    <normaloff>../_image/logo.ico</normaloff>../_image/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="imaging_preview_frame">

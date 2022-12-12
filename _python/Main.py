@@ -28,7 +28,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.setupUi(self)
 
         General.init()
-        UI_Update.graph_init(self)
+        UI_Update.init(self)
         Sensors.init(self)
         Communication.reset_arduino()
 

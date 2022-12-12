@@ -1,5 +1,6 @@
 import General
 import Lighting
+import os
 from PyQt5.QtGui import QImage, QPixmap
 from pyqtgraph import mkPen  # type: ignore
 
@@ -7,7 +8,7 @@ from pyqtgraph import mkPen  # type: ignore
 #                             graph initialization                             #
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
-def graph_init(self):
+def init(self):
     styles = {"color": "r", "font-size": "15px"}
 
     self.ambient_temperature_graphWidget.setBackground("#fbfbfb")
@@ -66,6 +67,13 @@ def graph_init(self):
     self.soil_potassium_graphWidget.showGrid(x=True, y=True)
     self.soil_potassium_graphWidget.setLabel("left", "Potassium (mg/kg)", **styles)
     self.soil_potassium_graphWidget.setLabel("bottom", "Time (s)", **styles)
+
+    filesystem = os.statvfs("/")
+    free_space = filesystem.f_bsize * filesystem.f_bavail
+    free_space_mb = free_space / (1024 * 1024)
+    if free_space_mb < 5000:
+        General.storage_critical_error = True
+        error_UI_update(self)
 
 
 # ---------------------------------------------------------------------------- #

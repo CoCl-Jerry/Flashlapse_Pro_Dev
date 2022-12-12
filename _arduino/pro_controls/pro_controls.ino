@@ -69,6 +69,7 @@ void setup() {
   digitalWrite(DIR_PIN, 1);
 
   Wire.begin(SLAVE_ADDRESS);
+  Wire.setTimeout(100);
   Wire.onReceive(receiveData);
 
   startup();
