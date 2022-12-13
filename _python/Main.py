@@ -159,7 +159,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.airflow_horizontalSlider.sliderReleased.connect(
             lambda: Motion.airflow_update(self)
         )
-        self.airflow_horizontalSlider.sliderChanged.connect(
+        self.airflow_horizontalSlider.valueChanged.connect(
             lambda: UI_Update.airflow_slider_changed(self)
         )
         # ---------------------------------------------------------------------------- #
