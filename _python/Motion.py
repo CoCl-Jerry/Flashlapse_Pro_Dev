@@ -63,4 +63,4 @@ def disable_motor():
 
 # ---------------------------------------------------------------------------- #
 def airflow_update(self):
-    Communication.sendCMD("4~"+int(self.airflow_horizontalSlider.value()*2.55))
+    Communication.sendCMD("4~"+str(int(self.airflow_horizontalSlider.value()*2.55)))
