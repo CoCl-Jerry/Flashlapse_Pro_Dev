@@ -60,3 +60,7 @@ def disable_motor():
     General.motion_thread_running = False
     build_cmd = "2~0~1"
     Communication.sendCMD(build_cmd)
+
+# ---------------------------------------------------------------------------- #
+def airflow_update(self):
+    Communication.sendCMD("4~"+int(self.airflow_horizontalSlider.value()*2.55))

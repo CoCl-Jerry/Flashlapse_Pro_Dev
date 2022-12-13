@@ -128,7 +128,7 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         )
 
         # ---------------------------------------------------------------------------- #
-        #                           start of motor activities                          #
+        #                           start of motion activities                          #
         # ---------------------------------------------------------------------------- #
         self.TOF_update_pushButton.clicked.connect(lambda: Sensors.TOF_range(self))
         self.up_pushButton.clicked.connect(
@@ -156,7 +156,12 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         self.motion_torque_dial.valueChanged.connect(
             lambda: UI_Update.motion_dials_update(self)
         )
-
+        self.airflow_horizontalSlider.sliderReleased.connect(
+            lambda: Motion.airflow_update(self)
+        )
+        self.airflow_horizontalSlider.sliderChanged.connect(
+            lambda: UI_Update.airflow_slider_changed(self)
+        )
         # ---------------------------------------------------------------------------- #
         #                      start of ambient sensor activities                      #
         # ---------------------------------------------------------------------------- #

@@ -49,6 +49,8 @@ void exeCMD() {
         default:
           break;
       }
+    case 4:
+      analogWrite(FAN_PIN, commands[1]);
       break;
 
     default:

@@ -185,10 +185,10 @@ def lighting_horizontalSlider_unblock_signals(self):
 # ---------------------------------------------------------------------------- #
 def lighting_adaptive_IR_toggle(self):
     if not General.lighting_adaptive_IR:
-        self.lighting_adaptive_IR_pushButton.setText("Adaptive IR: OFF")
+        self.lighting_adaptive_IR_pushButton.setText("Adaptive IR: ON")
         General.lighting_adaptive_IR = 1
     else:
-        self.lighting_adaptive_IR_pushButton.setText("Adaptive IR: ON")
+        self.lighting_adaptive_IR_pushButton.setText("Adaptive IR: OFF")
         General.lighting_adaptive_IR = 0
     Lighting.lighting_adaptive_IR()
 
@@ -276,6 +276,9 @@ def motion_dials_update(self):
     self.motion_torque_dial_value_label.setText(
         "Torque Level: " + str(self.motion_torque_dial.value())
     )
+
+def airflow_slider_changed(self):
+    self.airflow_value_label.setText(str(self.airflow_horizontalSlider.value()) + " %")
 
 
 # ---------------------------------------------------------------------------- #

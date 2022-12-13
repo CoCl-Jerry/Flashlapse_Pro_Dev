@@ -73,7 +73,7 @@ void setup() {
   Wire.onReceive(receiveData);
 
   startup();
-  digitalWrite(FAN_PIN, HIGH);
+  analogWrite(FAN_PIN, 255);
   digitalWrite(IR_PIN, LOW);
 }
 
