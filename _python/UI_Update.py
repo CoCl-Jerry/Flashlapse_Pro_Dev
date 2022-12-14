@@ -277,6 +277,7 @@ def motion_dials_update(self):
         "Torque Level: " + str(self.motion_torque_dial.value())
     )
 
+
 def airflow_slider_changed(self):
     self.airflow_value_label.setText(str(self.airflow_horizontalSlider.value()) + " %")
 
@@ -432,7 +433,7 @@ def ambient_o2_frame_toggle(self):
 
 
 def ambient_sensor_tab_update(self):
-    if General.ambient_sensor_time_stamp:
+    if len(General.ambient_sensor_time_stamp) > 1:
         if self.mainwindow_tabWidget.currentIndex() == 3:
             if self.ambient_sensors_tabWidget.currentIndex() == 0:
                 General.ambient_temperature_graph_ref.setData(
@@ -494,7 +495,6 @@ def soil_sensor_initialize(self):
     General.soil_potassium_graph_ref = self.soil_potassium_graphWidget.plot(
         General.soil_sensor_time_stamp, General.soil_potassium, pen=pen
     )
-
     soil_update_labels(self)
 
 
@@ -542,7 +542,7 @@ def soil_sensor_reset(self):
 
 # ---------------------------------------------------------------------------- #
 def soil_sensors_tab_update(self):
-    if General.soil_sensor_time_stamp:
+    if len(General.soil_sensor_time_stamp) > 1:
         if self.mainwindow_tabWidget.currentIndex() == 4:
             if self.soil_sensors_tabWidget.currentIndex() == 0:
                 General.soil_temperature_graph_ref.setData(
