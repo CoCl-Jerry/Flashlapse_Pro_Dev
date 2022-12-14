@@ -3,6 +3,8 @@ import Communication
 import UI_Update
 
 # ---------------------------------------------------------------------------- #
+
+
 def lighting_confirm(self):
     if (
         self.lighting_inner_ring_checkBox.isChecked()

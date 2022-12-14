@@ -176,7 +176,7 @@ def init():
     #                         start of motion declarations                         #
     # ---------------------------------------------------------------------------- #
     global current_speed
-    current_speed = 2
+    current_speed = 3
 
     global current_position
     current_position = 0
@@ -191,7 +191,7 @@ def init():
     target_direction = 0
 
     global max_position
-    max_position = 155
+    max_position = 135
 
     global min_position
     min_position = 65

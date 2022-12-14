@@ -4,6 +4,8 @@ import Call_Thread
 import Communication
 
 # ---------------------------------------------------------------------------- #
+
+
 def postion_increment(self, direction):
     if (
         direction
@@ -62,5 +64,8 @@ def disable_motor():
     Communication.sendCMD(build_cmd)
 
 # ---------------------------------------------------------------------------- #
+
+
 def airflow_update(self):
-    Communication.sendCMD("4~"+str(int(self.airflow_horizontalSlider.value()*2.55)))
+    Communication.sendCMD(
+        "4~"+str(int(self.airflow_horizontalSlider.value()*2.55)))

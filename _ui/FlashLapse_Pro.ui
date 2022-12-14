@@ -1085,7 +1085,7 @@
            <string> mm</string>
           </property>
           <property name="minimum">
-           <number>60</number>
+           <number>65</number>
           </property>
           <property name="maximum">
            <number>135</number>
@@ -1238,7 +1238,7 @@
            </size>
           </property>
           <property name="minimum">
-           <number>60</number>
+           <number>65</number>
           </property>
           <property name="maximum">
            <number>135</number>
