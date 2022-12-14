@@ -435,7 +435,7 @@
         <item row="10" column="0">
          <widget class="QLabel" name="label_20">
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:700;&quot;&gt;Air Flow Fan&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:696;&quot;&gt;Airflow Fan&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -2681,13 +2681,42 @@
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="4" column="0">
-       <widget class="QPushButton" name="sensor_set_interval_pushButton">
+      <item row="3" column="0">
+       <widget class="Line" name="line_18">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="sensor_export_data_pushButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
         <property name="toolTip">
-         <string>Confirm sensor data gathering interval</string>
+         <string>Export data as a .csv file</string>
         </property>
         <property name="text">
-         <string>Set Sensor Interval</string>
+         <string>No Data to Export</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="start_soil_sensors_pushButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Start collecting data from soil sensor</string>
+        </property>
+        <property name="text">
+         <string>Start Soil Sensors</string>
         </property>
        </widget>
       </item>
@@ -2732,42 +2761,13 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="start_soil_sensors_pushButton">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+      <item row="6" column="0">
+       <widget class="QPushButton" name="sensor_set_interval_pushButton">
         <property name="toolTip">
-         <string>Start collecting data from soil sensor</string>
+         <string>Confirm sensor data gathering interval</string>
         </property>
         <property name="text">
-         <string>Start Soil Sensors</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="sensor_export_data_pushButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="toolTip">
-         <string>Export data as a .csv file</string>
-        </property>
-        <property name="text">
-         <string>No Data to Export</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="Line" name="line_18">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <string>Set Sensor Interval</string>
         </property>
        </widget>
       </item>
