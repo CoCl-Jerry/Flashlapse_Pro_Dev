@@ -1085,10 +1085,10 @@
            <string> mm</string>
           </property>
           <property name="minimum">
-           <number>65</number>
+           <number>60</number>
           </property>
           <property name="maximum">
-           <number>155</number>
+           <number>135</number>
           </property>
          </widget>
         </item>
@@ -1238,10 +1238,10 @@
            </size>
           </property>
           <property name="minimum">
-           <number>65</number>
+           <number>60</number>
           </property>
           <property name="maximum">
-           <number>155</number>
+           <number>135</number>
           </property>
           <property name="orientation">
            <enum>Qt::Vertical</enum>
