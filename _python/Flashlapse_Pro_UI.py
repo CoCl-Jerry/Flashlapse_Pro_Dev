@@ -48,7 +48,7 @@ class Ui_MainWindow(object):
         self.lighting_control_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.lighting_control_frame.setObjectName("lighting_control_frame")
         self.gridLayoutWidget_16 = QtWidgets.QWidget(self.lighting_control_frame)
-        self.gridLayoutWidget_16.setGeometry(QtCore.QRect(10, 290, 401, 229))
+        self.gridLayoutWidget_16.setGeometry(QtCore.QRect(10, 290, 401, 201))
         self.gridLayoutWidget_16.setObjectName("gridLayoutWidget_16")
         self.gridLayout_16 = QtWidgets.QGridLayout(self.gridLayoutWidget_16)
         self.gridLayout_16.setContentsMargins(0, 0, 0, 0)

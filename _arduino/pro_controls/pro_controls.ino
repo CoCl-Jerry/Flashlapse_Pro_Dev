@@ -31,6 +31,7 @@ int current = 300;
 boolean dir = false;
 
 boolean ms_change = false;
+boolean reset_soil = false;
 
 unsigned long NextTime = 0;
 
@@ -93,5 +94,11 @@ void loop() {
   if (micros() - NextTime > interval) {
     digitalWrite(STEP_PIN, !digitalRead(STEP_PIN));
     NextTime = micros();  // reset for next pulse
+  }
+  if (reset_soil) {
+    digitalWrite(SOIL_PIN, LOW);
+    delay(2000);
+    digitalWrite(SOIL_PIN, HIGH);
+    reset_soil =false;
   }
 }

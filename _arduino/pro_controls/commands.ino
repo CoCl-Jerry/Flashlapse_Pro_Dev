@@ -54,9 +54,7 @@ void exeCMD() {
       break;
 
     case 5:
-      digitalWrite(SOIL_PIN, LOW);
-      delay(2000);
-      digitalWrite(SOIL_PIN, HIGH);
+      reset_soil = true;
       break;
 
     default:

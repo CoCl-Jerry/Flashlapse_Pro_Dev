@@ -325,6 +325,7 @@ class o2_sensor_calibration(QThread):
 class Soil(QThread):
     soil_sensor_update = pyqtSignal()
     initialized = pyqtSignal()
+    error = pyqtSignal()
 
     def __init__(self):
         QThread.__init__(self)
@@ -399,3 +400,5 @@ class Soil(QThread):
 
                 else:
                     print("empty return, retrying...")
+                    self.error.emit()
+                    sleep(5)
