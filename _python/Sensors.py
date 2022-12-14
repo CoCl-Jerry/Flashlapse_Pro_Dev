@@ -11,8 +11,11 @@ import csv
 import General
 import UI_Update
 import Call_Thread
+import Communication
 
 # ---------------------------------------------------------------------------- #
+
+
 def init(self):
     # start of sensor tests and initialization
 
@@ -95,7 +98,8 @@ def ambient_o2_calibration(self, mode):
 # ---------------------------------------------------------------------------- #
 def hexListConvert(data: str):
 
-    hex_bytes = bytes.fromhex(data)  # Takes a hex string and turns it into a byte array
+    # Takes a hex string and turns it into a byte array
+    hex_bytes = bytes.fromhex(data)
     #  print(hex_bytes)  # Output: b'\xde\xad\xbe\xef'
     hex_list = list(hex_bytes)
     return hex_list
@@ -125,7 +129,8 @@ def crc16_generator_hex(data: list[int]) -> str:
 # ---------------------------------------------------------------------------- #
 def hexListConvert(data: str):
 
-    hex_bytes = bytes.fromhex(data)  # Takes a hex string and turns it into a byte array
+    # Takes a hex string and turns it into a byte array
+    hex_bytes = bytes.fromhex(data)
     #  print(hex_bytes)  # Output: b'\xde\xad\xbe\xef'
     hex_list = list(hex_bytes)
     print(hex_list)
@@ -176,7 +181,7 @@ def extractor(hex_string):
     obj = {}
     for i in range(loop_num):
         s_indx = first_data_bit_index + (data_segment_bits * i)
-        str_segment = hex_string[s_indx : s_indx + data_segment_bits]
+        str_segment = hex_string[s_indx: s_indx + data_segment_bits]
         bytes_segment = bytes.fromhex(str_segment)
         dec_ = int(bytes_segment.hex(), 16)
         obj[keyValues[i]] = dec_
@@ -187,13 +192,16 @@ def extractor(hex_string):
 # ---------------------------------------------------------------------------- #
 def soil_sensor_data_processor(data):
     General.soil_temperature.append(
-        round((data["TemperatureValue"] / 100) + General.soil_temperature_offset, 2)
+        round((data["TemperatureValue"] / 100) +
+              General.soil_temperature_offset, 2)
     )
     General.soil_water_content.append(
-        round((data["WaterContentValue"] / 100) + General.soil_water_content_offset, 2)
+        round((data["WaterContentValue"] / 100) +
+              General.soil_water_content_offset, 2)
     )
     General.soil_EC.append(round(data["ECValue"] + General.soil_EC_offset, 2))
-    General.soil_pH.append(round((data["PHValue"] / 10) + General.soil_pH_offset, 2))
+    General.soil_pH.append(
+        round((data["PHValue"] / 10) + General.soil_pH_offset, 2))
     General.soil_nitrogen.append(
         round(data["NitrogenValue"] + General.soil_nitrogen_offset, 2)
     )
@@ -248,7 +256,8 @@ def sensor_export_data(self):
                 )
                 with open(file_name, "w", newline="") as csvfile:
                     writer = csv.writer(csvfile)
-                    writer.writerow(["Time", "Temperature", "Humidity", "CO2", "O2"])
+                    writer.writerow(
+                        ["Time", "Temperature", "Humidity", "CO2", "O2"])
                     writer.writerows(export)
                     UI_Update.export_UI_update(self, 1)
         elif self.mainwindow_tabWidget.currentIndex() == 4:
@@ -294,3 +303,7 @@ def sensor_export_data(self):
                     UI_Update.export_UI_update(self, 1)
     except Exception as e:
         print(e, "Export failure, contact Jerry for support")
+
+
+def soil_sensor_reset(self):
+    Communication.sendCMD("5")

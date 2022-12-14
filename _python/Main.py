@@ -130,14 +130,16 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         # ---------------------------------------------------------------------------- #
         #                           start of motion activities                          #
         # ---------------------------------------------------------------------------- #
-        self.TOF_update_pushButton.clicked.connect(lambda: Sensors.TOF_range(self))
+        self.TOF_update_pushButton.clicked.connect(
+            lambda: Sensors.TOF_range(self))
         self.up_pushButton.clicked.connect(
             lambda: Motion.postion_increment(self, False)
         )
         self.down_pushButton.clicked.connect(
             lambda: Motion.postion_increment(self, True)
         )
-        self.motion_stop_pushButton.clicked.connect(lambda: Motion.disable_motor())
+        self.motion_stop_pushButton.clicked.connect(
+            lambda: Motion.disable_motor())
         self.motion_position_verticalSlider.valueChanged.connect(
             lambda: UI_Update.motion_slider_value_changed(self)
         )
@@ -225,6 +227,9 @@ class MainWindow(QMainWindow, Flashlapse_Pro_UI.Ui_MainWindow):
         )
         self.soil_potassium_offset_pushButton.clicked.connect(
             lambda: Sensors.soil_sensor_offset(self)
+        )
+        self.soil_sensor_reset_pushButton.clicked.connect(
+            lambda: Sensors.soil_sensor_reset(self)
         )
         # ---------------------------------------------------------------------------- #
         #                          start of export activities                          #

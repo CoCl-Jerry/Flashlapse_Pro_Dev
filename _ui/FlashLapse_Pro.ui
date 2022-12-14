@@ -104,7 +104,7 @@
          <x>10</x>
          <y>290</y>
          <width>401</width>
-         <height>201</height>
+         <height>229</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_16">
@@ -2677,18 +2677,59 @@
        <x>10</x>
        <y>10</y>
        <width>151</width>
-       <height>171</height>
+       <height>183</height>
       </rect>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="3" column="0">
+      <item row="5" column="0">
        <widget class="Line" name="line_18">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
+      <item row="0" column="0">
+       <widget class="QPushButton" name="start_ambient_sensors_pushButton">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="toolTip">
+         <string>Start collecting data from ambient sensors</string>
+        </property>
+        <property name="text">
+         <string>Start Ambient Sensors</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QSpinBox" name="sensor_set_interval_spinBox">
+        <property name="toolTip">
+         <string>Set data gathering interval</string>
+        </property>
+        <property name="suffix">
+         <string> s</string>
+        </property>
+        <property name="prefix">
+         <string/>
+        </property>
+        <property name="minimum">
+         <number>10</number>
+        </property>
+        <property name="maximum">
+         <number>999</number>
+        </property>
+        <property name="value">
+         <number>60</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
        <widget class="QPushButton" name="sensor_export_data_pushButton">
         <property name="enabled">
          <bool>false</bool>
@@ -2720,54 +2761,20 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="start_ambient_sensors_pushButton">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="toolTip">
-         <string>Start collecting data from ambient sensors</string>
-        </property>
-        <property name="text">
-         <string>Start Ambient Sensors</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QSpinBox" name="sensor_set_interval_spinBox">
-        <property name="toolTip">
-         <string>Set data gathering interval</string>
-        </property>
-        <property name="suffix">
-         <string> s</string>
-        </property>
-        <property name="prefix">
-         <string/>
-        </property>
-        <property name="minimum">
-         <number>10</number>
-        </property>
-        <property name="maximum">
-         <number>999</number>
-        </property>
-        <property name="value">
-         <number>60</number>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
+      <item row="8" column="0">
        <widget class="QPushButton" name="sensor_set_interval_pushButton">
         <property name="toolTip">
          <string>Confirm sensor data gathering interval</string>
         </property>
         <property name="text">
          <string>Set Sensor Interval</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="soil_sensor_reset_pushButton">
+        <property name="text">
+         <string>Reset Soil Sensors</string>
         </property>
        </widget>
       </item>

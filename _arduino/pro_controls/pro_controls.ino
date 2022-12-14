@@ -3,9 +3,9 @@
 #include <Wire.h>
 #include <avr/wdt.h>
 
-#define DIR_PIN   10
-#define STEP_PIN  11
-#define EN_PIN    12
+#define DIR_PIN 10
+#define STEP_PIN 11
+#define EN_PIN 12
 
 #define LED_PIN 6
 #define NUM_LEDS 108
@@ -13,6 +13,7 @@
 #define BUZZER_PIN A8
 #define IR_PIN A0
 #define FAN_PIN 8
+#define SOIL_PIN 5
 
 #define SLAVE_ADDRESS 0x08
 #define COMMANDSIZE 6
@@ -29,7 +30,7 @@ int microstep = 64;
 int current = 300;
 boolean dir = false;
 
- boolean ms_change = false;
+boolean ms_change = false;
 
 unsigned long NextTime = 0;
 
@@ -42,6 +43,7 @@ void setup() {
   pinMode(IR_PIN, OUTPUT);
   pinMode(FAN_PIN, OUTPUT);
   pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(SOIL_PIN, OUTPUT);
 
   pinMode(DIR_PIN, OUTPUT);
   pinMode(STEP_PIN, OUTPUT);
@@ -51,12 +53,12 @@ void setup() {
   strip.begin();
   strip.show();
 
-  digitalWrite(EN_PIN, HIGH);   // Disable driver in hardware
+  digitalWrite(EN_PIN, HIGH);  // Disable driver in hardware
 
-  Motor.pdn_disable(true);     // Use PDN/UART pin for communication
-  Motor.I_scale_analog(false); // Use internal voltage reference
-  Motor.rms_current(currentLimit);      // Set driver current 500mA
-  Motor.toff(2);               // Enable driver in software
+  Motor.pdn_disable(true);          // Use PDN/UART pin for communication
+  Motor.I_scale_analog(false);      // Use internal voltage reference
+  Motor.rms_current(currentLimit);  // Set driver current 500mA
+  Motor.toff(2);                    // Enable driver in software
   Motor.mstep_reg_select(true);
   Motor.microsteps(microstep);
   Motor.dedge(true);
@@ -75,13 +77,13 @@ void setup() {
   startup();
   analogWrite(FAN_PIN, 255);
   digitalWrite(IR_PIN, LOW);
+  digitalWrite(SOIL_PIN, HIGH);
 }
 
 void loop() {
-  if (ms_change)
-  {
+  if (ms_change) {
     Motor.microsteps(microstep);
-    Motor.rms_current(current);  
+    Motor.rms_current(current);
     ms_change = false;
   }
 
@@ -90,6 +92,6 @@ void loop() {
 
   if (micros() - NextTime > interval) {
     digitalWrite(STEP_PIN, !digitalRead(STEP_PIN));
-    NextTime = micros();         // reset for next pulse
+    NextTime = micros();  // reset for next pulse
   }
 }

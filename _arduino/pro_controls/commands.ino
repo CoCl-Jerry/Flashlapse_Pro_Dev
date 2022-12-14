@@ -53,6 +53,12 @@ void exeCMD() {
       analogWrite(FAN_PIN, commands[1]);
       break;
 
+    case 5:
+      digitalWrite(SOIL_PIN, LOW);
+      delay(2000);
+      digitalWrite(SOIL_PIN, HIGH);
+      break;
+
     default:
       // statements
       break;

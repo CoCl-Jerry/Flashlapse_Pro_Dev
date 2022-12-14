@@ -16,6 +16,8 @@ from time import sleep, perf_counter
 #                             threads for lighting                             #
 # ---------------------------------------------------------------------------- #
 # ---------------------------------------------------------------------------- #
+
+
 class Lighting_Cycle(QThread):
     daytime = pyqtSignal()
     nighttime = pyqtSignal()
@@ -146,7 +148,8 @@ class Preview(QThread):
                     General.AOI_W,
                     General.AOI_H,
                 )
-                camera.resolution = (General.x_resolution, General.y_resolution)
+                camera.resolution = (General.x_resolution,
+                                     General.y_resolution)
                 camera._set_rotation(90 * General.imaging_rotation)
 
                 if General.image_format:
@@ -175,7 +178,8 @@ class Livefeed(QThread):
                     General.AOI_W,
                     General.AOI_H,
                 )
-                camera.resolution = (General.x_resolution, General.y_resolution)
+                camera.resolution = (General.x_resolution,
+                                     General.y_resolution)
                 camera._set_rotation(90 * General.imaging_rotation)
                 camera.start_preview()
                 sleep(General.live_duration)
@@ -216,7 +220,8 @@ class Timelapse(QThread):
                         General.AOI_W,
                         General.AOI_H,
                     )
-                    camera.resolution = (General.x_resolution, General.y_resolution)
+                    camera.resolution = (
+                        General.x_resolution, General.y_resolution)
                     camera._set_rotation(90 * General.imaging_rotation)
                     camera.capture(General.current_full_file_name)
                     self.complete.emit()
@@ -268,13 +273,15 @@ class Ambient(QThread):
             ):
                 if scd4x.data_ready:
                     General.ambient_sensor_time_stamp.append(
-                        round(perf_counter() - General.ambient_sensor_initial_time, 2)
+                        round(perf_counter() -
+                              General.ambient_sensor_initial_time, 2)
                     )
                     General.ambient_sensor_previous_time = (
                         General.ambient_sensor_time_stamp[-1]
                     )
                     General.ambient_temperature.append(
-                        round(scd4x.temperature + General.ambient_temperature_offset, 2)
+                        round(scd4x.temperature +
+                              General.ambient_temperature_offset, 2)
                     )
                     General.ambient_humidity.append(
                         round(
@@ -342,8 +349,10 @@ class Soil(QThread):
                     if not General.serial_reference.is_open:
                         General.serial_reference.open()
                     General.serial_reference.write(General.soil_sensor_request)
+                    General.serial_reference.flushInput()
                     sleep(1)
-                    soil_sensor_raw_data = General.serial_reference.read(19).hex()
+                    soil_sensor_raw_data = General.serial_reference.read(
+                        19).hex()
                     General.serial_reference.close()
                 except Exception as e:
                     print(e, "Soil sensor error, retrying...")
@@ -371,7 +380,8 @@ class Soil(QThread):
                             Sensors.extractor(soil_sensor_raw_data)
                         )
                         General.soil_sensor_time_stamp.append(
-                            round(perf_counter() - General.soil_sensor_initial_time, 2)
+                            round(perf_counter() -
+                                  General.soil_sensor_initial_time, 2)
                         )
                         General.soil_sensor_previous_time = (
                             General.soil_sensor_time_stamp[-1]
