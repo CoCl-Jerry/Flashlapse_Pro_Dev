@@ -198,7 +198,7 @@ def init():
     #                     start of general sensor declarations                     #
     # ---------------------------------------------------------------------------- #
     global sensor_capture_interval
-    sensor_capture_interval = 5
+    sensor_capture_interval = 60
 
     # ---------------------------------------------------------------------------- #
     #                     start of ambient sensor declarations                     #

@@ -337,7 +337,6 @@ class Soil(QThread):
                 - General.soil_sensor_previous_time
                 > General.sensor_capture_interval
                 or len(General.soil_sensor_time_stamp) == 0
-                or not General.soil_sensor_crc16_check
             ):
                 try:
                     if not General.serial_reference.is_open:
