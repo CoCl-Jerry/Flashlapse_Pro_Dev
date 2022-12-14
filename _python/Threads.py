@@ -345,10 +345,14 @@ class Soil(QThread):
                     General.serial_reference.flushInput()
                     soil_sensor_raw_data = General.serial_reference.readline().hex()
                     General.serial_reference.close()
+                except Exception as e:
+                    print(e, "Soil sensor error, retrying...")
+                    General.soil_sensor_crc16_check = False
 
-                    soil_sensor_processed_data = Sensors.hexListConvert(
-                        soil_sensor_raw_data
-                    )
+                soil_sensor_processed_data = Sensors.hexListConvert(
+                    soil_sensor_raw_data
+                )
+                if soil_sensor_processed_data:
                     sensor_crc = [
                         hex(soil_sensor_processed_data.pop()),
                         hex(soil_sensor_processed_data.pop()),
@@ -358,31 +362,29 @@ class Soil(QThread):
                     )
                     print(reference_crc)
                     print(sensor_crc)
-                except Exception as e:
-                    print(e, "Soil sensor error, retrying...")
-                    General.soil_sensor_crc16_check = False
-                    break
 
-                if (
-                    reference_crc[0] == sensor_crc[0]
-                    and reference_crc[1] == sensor_crc[1]
-                ):
-                    Sensors.soil_sensor_data_processor(
-                        Sensors.extractor(soil_sensor_raw_data)
-                    )
-                    General.soil_sensor_time_stamp.append(
-                        round(perf_counter() - General.soil_sensor_initial_time, 2)
-                    )
-                    General.soil_sensor_previous_time = General.soil_sensor_time_stamp[
-                        -1
-                    ]
-                    General.soil_sensor_crc16_check = True
-                    if len(General.soil_sensor_time_stamp) == 2:
-                        self.initialized.emit()
-                    elif len(General.soil_sensor_time_stamp) > 2:
-                        self.soil_sensor_update.emit()
+                    if (
+                        reference_crc[0] == sensor_crc[0]
+                        and reference_crc[1] == sensor_crc[1]
+                    ):
+                        Sensors.soil_sensor_data_processor(
+                            Sensors.extractor(soil_sensor_raw_data)
+                        )
+                        General.soil_sensor_time_stamp.append(
+                            round(perf_counter() - General.soil_sensor_initial_time, 2)
+                        )
+                        General.soil_sensor_previous_time = (
+                            General.soil_sensor_time_stamp[-1]
+                        )
+                        General.soil_sensor_crc16_check = True
+                        if len(General.soil_sensor_time_stamp) == 2:
+                            self.initialized.emit()
+                        elif len(General.soil_sensor_time_stamp) > 2:
+                            self.soil_sensor_update.emit()
+
+                    else:
+                        General.soil_sensor_crc16_check = False
+                        print("CRC16 check failed, retrying...")
 
                 else:
-                    General.soil_sensor_crc16_check = False
-                    print("CRC16 check failed, retrying...")
-                    continue
+                    print("empty return, retrying...")
