@@ -206,7 +206,7 @@ def lighting_adaptive_IR_toggle(self):
     else:
         self.lighting_adaptive_IR_pushButton.setText("Adaptive IR: OFF")
         General.lighting_adaptive_IR = 0
-    Lighting.lighting_adaptive_IR()
+    Lighting.lighting_adaptive_IR(self)
 
 
 # ---------------------------------------------------------------------------- #
