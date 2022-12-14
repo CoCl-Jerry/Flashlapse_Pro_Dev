@@ -341,8 +341,8 @@ class Soil(QThread):
                 try:
                     if not General.serial_reference.is_open:
                         General.serial_reference.open()
-                    General.serial_reference.write(General.soil_sensor_request)
                     General.serial_reference.flushInput()
+                    General.serial_reference.write(General.soil_sensor_request)
                     soil_sensor_raw_data = General.serial_reference.readline().hex()
                     General.serial_reference.close()
                 except Exception as e:
@@ -385,6 +385,7 @@ class Soil(QThread):
                     else:
                         General.soil_sensor_crc16_check = False
                         print("CRC16 check failed, retrying...")
+                        time.sleep(5)
 
                 else:
                     print("empty return, retrying...")
