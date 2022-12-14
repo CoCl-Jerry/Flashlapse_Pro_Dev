@@ -18,9 +18,8 @@ def init():
         parity=serial.PARITY_NONE,
         stopbits=serial.STOPBITS_ONE,
         bytesize=serial.EIGHTBITS,
-        timeout=1,
     )
-
+    # timeout=1
     # ---------------------------------------------------------------------------- #
     #                       start of thread flag declarations                      #
     # ---------------------------------------------------------------------------- #
