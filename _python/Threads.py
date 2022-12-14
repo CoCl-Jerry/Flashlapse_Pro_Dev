@@ -341,7 +341,6 @@ class Soil(QThread):
                 try:
                     if not General.serial_reference.is_open:
                         General.serial_reference.open()
-                    General.serial_reference.flushInput()
                     General.serial_reference.write(General.soil_sensor_request)
                     sleep(1)
                     soil_sensor_raw_data = General.serial_reference.readline().hex()
