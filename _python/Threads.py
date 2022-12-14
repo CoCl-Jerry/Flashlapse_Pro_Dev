@@ -343,7 +343,7 @@ class Soil(QThread):
                         General.serial_reference.open()
                     General.serial_reference.write(General.soil_sensor_request)
                     sleep(1)
-                    soil_sensor_raw_data = General.serial_reference.read(15).hex()
+                    soil_sensor_raw_data = General.serial_reference.read(18).hex()
                     General.serial_reference.close()
                 except Exception as e:
                     print(e, "Soil sensor error, retrying...")
